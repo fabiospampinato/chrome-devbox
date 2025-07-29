@@ -11,6 +11,7 @@ import strict from './plugin_strict';
 
 const config = defineConfig ( ({ mode }) => ({
   build: {
+    emptyOutDir: false,
     minify: mode === 'production',
     rollupOptions: {
       input: {
