@@ -1,0 +1,16 @@
+
+html {
+  margin: 0;
+  padding: 0;
+  color: #1f1f1f;
+  background-color: #ffffff;
+  min-width: 320px;
+  max-width: 1280px;
+}
+
+body {
+  display: flex;
+  place-items: center;
+  margin: 0;
+  padding: 2rem;
+}

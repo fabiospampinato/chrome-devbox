@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "DevBox",
+  "description": "A collection of utilities for web developers.",
+  "version": "0.0.0",
+  "action": {
+    "default_title": "DevBox",
+    "default_icon": "./resources/icon/icon-256.png",
+    "default_popup": "./src/popup/index.html"
+  },
+  "options_page": "./src/options/index.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "file://*/*",
+        "http://*/*",
+        "https://*/*"
+      ],
+      "type": "module",
+      "js": [
+        "./assets/contentAll.js"
+      ],
+      "ts": [
+        "./src/content/all.ts"
+      ]
+    }
+  ],
+  "icons": {
+    "256": "./resources/icon/icon-256.png"
+  },
+  "permissions": [
+    "scripting",
+    "storage",
+    "tabs"
+  ]
+}
