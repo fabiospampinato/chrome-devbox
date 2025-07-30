@@ -15,4 +15,8 @@ type ObservableReadonly<T> = import ( 'voby' ).ObservableReadonly<T>;
 
 /* MAIN */
 
-//TODO
+type ToolConfig = {
+  name: string,
+  type: 'action' | 'toggle',
+  trigger: () => Disposer | void,
+};
