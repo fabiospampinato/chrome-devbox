@@ -81,7 +81,7 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
       ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
 
       const descendants = element.querySelectorAll ( '*' ).length;
-      const label = `${descendants}`;
+      const label = `${descendants + 1}`;
 
       if ( descendants < 1 ) return;
 
