@@ -15,8 +15,15 @@ type ObservableReadonly<T> = import ( 'voby' ).ObservableReadonly<T>;
 
 /* MAIN */
 
+type Box = {
+  element: Element,
+  level: number,
+  rect: DOMRect
+};
+
 type ToolConfig = {
+  id: string,
   name: string,
   type: 'action' | 'toggle',
-  trigger: () => Disposer | void,
+  trigger: () => Disposer | void
 };

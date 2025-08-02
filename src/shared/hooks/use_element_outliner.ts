@@ -2,20 +2,18 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import {findChildElement, isTruthy} from '../utils';
+import {forEachRight, traverseElement} from '../utils';
 import useAnimationLoop from './use_animation_loop';
 import useCanvasOverlay from './use_canvas_overlay';
 
 /* HELPERS */
 
-const BACKGROUNDS = ['#220A4F', '#004FD0', '#18B817', '#998F00', '#995400', '#900000'];
-const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'];
+const BACKGROUNDS = ['#220A4F', '#004FD0', '#18B817', '#998F00', '#995400', '#900000', '#D0006F', '#8A2BE2', '#008080', '#FF8C00'];
+const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'];
 
 /* MAIN */
 
-//TODO: Take care of z-index layers, if that's possible somehow
-
-const useElementOutliner = ( ref: $<Element | undefined> = document.documentElement ): void => {
+const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void => {
 
   const canvas = useCanvasOverlay ();
   const ctx = canvas.getContext ( '2d' );
@@ -30,72 +28,74 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.documentElem
 
   const paint = (): void => {
 
-    const target = $$(ref);
+    const root = $$(ref);
 
-    if ( !target ) return;
+    if ( !root ) return;
 
-    const viewbox = target.getBoundingClientRect ();
+    /* COMPUTING BOXES */
 
-    if ( !viewbox.width || !viewbox.height ) return;
+    const boxes: Box[] = [];
+    const viewportHeight = window.outerHeight;
+    const viewportWidth = window.outerWidth;
 
-    const elements = Array.from ( target.querySelectorAll ( '*' ) );
-    const leaves = elements.filter ( element => !element.childElementCount );
-    const traversed = new Set ();
+    traverseElement ( root, ( element, level ) => {
 
-    const paint = ( elements: Element[], level: number ): void => {
+      const rect = element.getBoundingClientRect ();
 
-      if ( !elements.length ) return;
+      if ( !rect.width || !rect.height ) return;
+      if ( rect.top > viewportHeight || rect.bottom < 0 ) return;
+      if ( rect.left > viewportWidth || rect.right < 0 ) return;
 
+      boxes.push ({ element, level, rect });
+
+    });
+
+    /* FILTERING BOXES */
+
+    const boxesIds = new Set<string>();
+
+    const boxesFiltered = boxes.filter ( box => {
+
+      const {top, left, width, height} = box.rect;
+      const id = `${left}-${top}-${width}-${height}`;
+
+      if ( boxesIds.has ( id ) ) return false; // This box won't be visible
+
+      boxesIds.add ( id );
+
+      return true;
+
+    });
+
+    /* PAINTING BOXES */
+
+    forEachRight ( boxesFiltered, box => {
+
+      const {element, level, rect} = box;
       const background = BACKGROUNDS[level % BACKGROUNDS.length];
       const foreground = FOREGROUNDS[level % FOREGROUNDS.length];
 
-      for ( let i = 0, l = elements.length; i < l; i++ ) {
+      ctx.strokeStyle = background;
+      ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
 
-        const element = elements[i];
+      const descendants = element.querySelectorAll ( '*' ).length;
+      const label = `${descendants}`;
 
-        if ( traversed.has ( element ) ) continue;
+      if ( descendants < 1 ) return;
 
-        if ( findChildElement ( element, child => !traversed.has ( child ) ) ) continue;
+      ctx.font = '10px sans-serif';
 
-        traversed.add ( element );
+      const measure = ctx.measureText ( label );
+      const width = measure.width;
+      const height = 10;
 
-        const rect = element.getBoundingClientRect ();
+      ctx.fillStyle = background;
+      ctx.fillRect ( rect.left, rect.top, width + 2, height + 4 );
 
-        if ( !rect.width || !rect.height ) continue;
-        if ( rect.top > viewbox.bottom || rect.bottom < viewbox.top ) continue;
-        if ( rect.left > viewbox.right || rect.right < viewbox.left ) continue;
+      ctx.fillStyle = foreground;
+      ctx.fillText ( label, rect.left + 1, rect.top + height );
 
-        ctx.strokeStyle = background;
-        ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
-
-        const nr = element.querySelectorAll ( '*' ).length;
-        const label = `${nr}`;
-
-        if ( nr < 1 ) continue;
-
-        ctx.font = '10px sans-serif';
-
-        const measure = ctx.measureText ( label );
-        const width = measure.width;
-        const height = 10;
-
-        ctx.fillStyle = background;
-        ctx.fillRect ( rect.left, rect.top, width + 2, height + 4 );
-
-        ctx.fillStyle = foreground;
-        ctx.fillText ( label, rect.left + 1, rect.top + height );
-
-      }
-
-      const parents = elements.map ( leaf => leaf.parentElement ).filter ( isTruthy ).filter ( parent => target.contains ( parent ) );
-
-      if ( !parents.length ) return;
-
-      paint ( parents, level + 1 );
-
-    };
-
-    paint ( leaves, 0 );
+    });
 
   };
 
