@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useDevicePixelRatio from './use_device_pixel_ratio';
-import useDimensions from './use_dimensions';
+import useWindowDimensions from './use_window_dimensions';
 import useEffect from './use_effect';
 
 /* MAIN */
@@ -11,7 +11,7 @@ const useCanvasOverlay = (): HTMLCanvasElement => {
 
   const canvas = document.createElement ( 'canvas' );
   const context = canvas.getContext ( '2d' );
-  const dimensions = useDimensions ( document.body );
+  const dimensions = useWindowDimensions ();
   const ratio = useDevicePixelRatio ();
 
   canvas.style.position = 'fixed';
