@@ -12,10 +12,9 @@ import useEventListener from './use_event_listener';
 
 import useCanvasOverlay from './use_canvas_overlay';
 import useDevicePixelRatio from './use_device_pixel_ratio';
-import useDimensions from './use_dimensions';
 import useElementOutliner from './use_element_outliner';
-import useResizeObserver from './use_resize_observer';
 import useTool from './use_tool';
+import useWindowDimensions from './use_window_dimensions';
 
 /* MAIN */
 
@@ -31,8 +30,7 @@ export {
 
   useCanvasOverlay,
   useDevicePixelRatio,
-  useDimensions,
   useElementOutliner,
-  useResizeObserver,
-  useTool
+  useTool,
+  useWindowDimensions
 };
