@@ -2,21 +2,19 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import useResizeObserver from './use_resize_observer';
+import useEventListener from './use_event_listener';
 
 /* MAIN */
-
-//TODO: Implement with a media query instead
 
 const useDevicePixelRatio = (): ObservableReadonly<number> => {
 
   const devicePixelRatio = $(window.devicePixelRatio);
 
-  useResizeObserver ( document.body, () => {
+  const update = (): void => {
+    devicePixelRatio(window.devicePixelRatio);
+  };
 
-    devicePixelRatio ( window.devicePixelRatio );
-
-  });
+  useEventListener ( window, 'resize', update );
 
   return devicePixelRatio;
 
