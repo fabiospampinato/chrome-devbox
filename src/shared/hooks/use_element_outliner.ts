@@ -40,6 +40,8 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
     traverseElement ( root, ( element, level ) => {
 
+      if ( element === canvas ) return;
+
       const rect = element.getBoundingClientRect ();
 
       if ( !rect.width || !rect.height ) return;
