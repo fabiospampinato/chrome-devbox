@@ -81,9 +81,11 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
       ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
 
       const descendants = element.querySelectorAll ( '*' ).length;
-      const label = `${descendants + 1}`;
+      const modifier = element === canvas.parentElement ? 0 : 1; // Count itself, but not the canvas
+      const count = descendants + modifier;
+      const label = `${count}`;
 
-      if ( descendants < 1 ) return;
+      if ( count < 2 ) return;
 
       ctx.font = '10px sans-serif';
 
