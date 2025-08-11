@@ -2,9 +2,6 @@
   "extends": "tsex/tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "voby",
-    "paths": {
-      "~/*": ["./src/shared/*"]
-    }
+    "jsxImportSource": "voby"
   }
 }
