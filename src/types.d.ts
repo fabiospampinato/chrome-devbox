@@ -24,6 +24,8 @@ type Box = {
 type ToolConfig = {
   id: string,
   name: string,
+  command: string,
+  shortcut: string,
   type: 'action' | 'toggle',
   trigger: () => Disposer | void
 };

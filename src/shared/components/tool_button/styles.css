@@ -1,0 +1,51 @@
+
+.tool-button {
+
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: #00000000;
+  gap: 4px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  min-height: 32px;
+  max-width: 100%;
+  user-select: none;
+
+  &:hover {
+    background-color: #00000012;
+  }
+
+  &.selected {
+    background-color: #5390EF24;
+    &:hover {
+      background-color: #5390EF36;
+    }
+  }
+
+  .tool-button-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    flex: 1 1 0;
+    gap: 4px;
+    margin-right: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .tool-button-shortcut {
+    background-color: #00000014;
+    font-size: 11px;
+    padding: 4px 6px;
+    border-radius: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+}
