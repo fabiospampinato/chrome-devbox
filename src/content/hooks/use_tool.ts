@@ -1,12 +1,12 @@
 
 /* IMPORT */
 
-import useCleanup from './use_cleanup';
-import useRoot from './use_root';
+import useCleanup from '@hooks/use_cleanup';
+import useRoot from '@hooks/use_root';
 
 /* MAIN */
 
-const useTool = ( tool: ToolConfig ): Callback => {
+const useTool = ( fn: () => Disposer | void, isToggle: boolean = true ): Callback => {
 
   let disposeRoot: Disposer | void;
   let disposeTool: Disposer | void;
@@ -21,13 +21,12 @@ const useTool = ( tool: ToolConfig ): Callback => {
   const enable = (): void => {
     useRoot ( dispose => {
       disposeRoot = dispose;
-      disposeTool = tool.trigger ();
+      disposeTool = fn ();
     });
   };
 
   const toggle = (): void => {
-    const isAction = tool.type === 'action';
-    const shouldEnable = isAction || !disposeRoot;
+    const shouldEnable = !isToggle || !disposeRoot;
     disable ();
     if ( shouldEnable ) {
       enable ();

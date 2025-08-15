@@ -2,19 +2,16 @@
 /* IMPORT */
 
 import ShoSho from 'shosho';
-import {useTool} from '../shared/hooks';
-import {ElementOutliner} from '../shared/tools';
-
-/* HELPERS */
-
-const toggleElementOutliner = useTool ( ElementOutliner );
+import Dashboard from '@tools/dashboard';
+import ElementOutliner from '@tools/element_outliner';
 
 /* MAIN */
 
-const initEvents = (): void => {
+const initCommands = (): void => {
 
   const COMMANDS = {
-    [ElementOutliner.command]: toggleElementOutliner
+    [Dashboard.command]: Dashboard.trigger,
+    [ElementOutliner.command]: ElementOutliner.trigger
   };
 
   chrome.runtime.onMessage.addListener ( command => {
@@ -27,12 +24,24 @@ const initEvents = (): void => {
 
 const initShortcuts = (): void => {
 
+  const SHORTCUTS = {
+    [Dashboard.shortcut]: Dashboard.trigger,
+    [ElementOutliner.shortcut]: ElementOutliner.trigger
+  };
+
   const shortcuts = new ShoSho ({
     capture: true,
     target: document
   });
 
-  shortcuts.register ( ElementOutliner.shortcut, toggleElementOutliner );
+  for ( const [shortcut, action] of Object.entries ( SHORTCUTS ) ) {
+
+    shortcuts.register ( shortcut, () => {
+      action ();
+      return true;
+    });
+
+  }
 
   shortcuts.start ();
 
@@ -40,7 +49,7 @@ const initShortcuts = (): void => {
 
 const init = (): void => {
 
-  initEvents ();
+  initCommands ();
   initShortcuts ();
 
 };

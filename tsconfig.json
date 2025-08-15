@@ -2,6 +2,15 @@
   "extends": "tsex/tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "voby"
+    "jsxImportSource": "voby",
+    "paths": {
+      "@components": ["./src/content/components"],
+      "@components/*": ["./src/content/components/*"],
+      "@hooks": ["./src/content/hooks"],
+      "@hooks/*": ["./src/content/hooks/*"],
+      "@tools": ["./src/content/tools"],
+      "@tools/*": ["./src/content/tools/*"],
+      "@utils": ["./src/content/utils.ts"]
+    }
   }
 }

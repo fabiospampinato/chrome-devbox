@@ -1,22 +1,23 @@
 
 /* IMPORT */
 
-import useDevicePixelRatio from './use_device_pixel_ratio';
-import useWindowDimensions from './use_window_dimensions';
-import useEffect from './use_effect';
+import useDevicePixelRatio from '@hooks/use_device_pixel_ratio';
+import useEffect from '@hooks/use_effect';
+import useWindowDimensions from '@hooks/use_window_dimensions';
 
 /* MAIN */
 
-const useCanvasOverlay = (): HTMLCanvasElement => {
+const useCanvasOverlay = ( name: string ): HTMLCanvasElement => {
 
   const canvas = document.createElement ( 'canvas' );
   const context = canvas.getContext ( '2d' );
   const dimensions = useWindowDimensions ();
   const ratio = useDevicePixelRatio ();
 
+  canvas.className = `devbox-${name}-overlay`;
   canvas.style.position = 'fixed';
   canvas.style.inset = '0';
-  canvas.style.zIndex = '9999999999';
+  canvas.style.zIndex = '2147483647';
   canvas.style.pointerEvents = 'none';
 
   useEffect ( () => {

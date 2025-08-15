@@ -5,8 +5,10 @@
   "version": "0.0.0",
   "action": {
     "default_title": "DevBox",
-    "default_icon": "./resources/icon/icon-256.png",
-    "default_popup": "./src/popup/index.html"
+    "default_icon": "./resources/icon/icon-256.png"
+  },
+  "background": {
+    "service_worker": "./assets/background.js"
   },
   "content_scripts": [
     {

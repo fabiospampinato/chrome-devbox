@@ -2,9 +2,17 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import {forEachRight, traverseElement} from '../utils';
-import useAnimationLoop from './use_animation_loop';
-import useCanvasOverlay from './use_canvas_overlay';
+import useAnimationLoop from '@hooks/use_animation_loop';
+import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import {forEachRight, traverseElement} from '@utils';
+
+/* TYPES */
+
+type Box = {
+  element: Element,
+  level: number,
+  rect: DOMRect
+};
 
 /* HELPERS */
 
@@ -15,7 +23,7 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void => {
 
-  const canvas = useCanvasOverlay ();
+  const canvas = useCanvasOverlay ( 'element-outliner' );
   const ctx = canvas.getContext ( '2d' );
 
   if ( !ctx ) return;

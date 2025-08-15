@@ -9,7 +9,7 @@ import type {Props} from './types';
 const ToolButtons = ( { children }: Props ): JSX.Element => {
 
   return (
-    <div class="tool-buttons">
+    <div class="devbox-tool-buttons">
       {children}
     </div>
   );

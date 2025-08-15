@@ -2,9 +2,7 @@
 /* MAIN */
 
 type Props = {
-  command: $<string>,
-  name: $<string>,
-  shortcut: $<string>
+  tool: $<ToolConfig>
 };
 
 /* EXPORT */

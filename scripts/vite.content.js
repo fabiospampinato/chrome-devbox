@@ -2,6 +2,8 @@
 /* IMPORT */
 
 import {defineConfig} from 'vite';
+import cssInjectedByJs from 'vite-plugin-css-injected-by-js';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import voby from 'voby-vite';
 import manifest from '../manifest.json';
 import assets from './plugin_assets';
@@ -24,7 +26,9 @@ const config = defineConfig ( ({ mode }) => ({
   },
   plugins: [
     assets (),
+    cssInjectedByJs (),
     strict ( 'contentAll.js' ),
+    tsconfigPaths (),
     voby ()
   ]
 }));

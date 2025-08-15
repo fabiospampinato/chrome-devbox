@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import {isEqual} from '../utils';
-import useEventListener from './use_event_listener';
+import useEventListener from '@hooks/use_event_listener';
+import {isEqual} from '@utils';
 
 /* MAIN */
 

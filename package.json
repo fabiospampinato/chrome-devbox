@@ -9,11 +9,11 @@
   "scripts": {
     "clean": "tsex clean",
     "build:content:dev": "vite build --config scripts/vite.content.js --mode development --watch",
-    "build:popup:dev": "vite build --config scripts/vite.popup.js --mode development --watch",
-    "build:dev": "scex -p build:content:dev build:popup:dev",
+    "build:worker:dev": "vite build --config scripts/vite.worker.js --mode development --watch",
+    "build:dev": "scex -p build:content:dev build:worker:dev",
     "build:content:prod": "vite build --config scripts/vite.content.js --mode production",
-    "build:popup:prod": "vite build --config scripts/vite.popup.js --mode production",
-    "build:prod": "scex -p build:content:prod build:popup:prod",
+    "build:worker:prod": "vite build --config scripts/vite.worker.js --mode production",
+    "build:prod": "scex -p build:content:prod build:worker:prod",
     "build:icons": "cd resources/icon && convert icon.png -resize 256x256 icon-256.png",
     "build:tiles": "cd resources/tiles && convert tile.png -resize 1400x560^ -gravity center -extent 1400x560 tile-1400x560.png && convert tile.png -resize 920x680^ -gravity center -extent 920x680 tile-920x680.png && convert tile.png -resize 440x280^ -gravity center -extent 440x280 tile-440x280.png",
     "dev": "scex -s clean build:dev",
@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "are-deeply-equal": "^1.1.2",
-    "chrome-extension-livereload": "^1.0.0",
     "oby": "^15.1.2",
     "shosho": "^1.4.3",
     "voby": "^0.58.1"
@@ -33,6 +32,8 @@
     "tsex": "^4.0.2",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-tsconfig-paths": "^5.1.4",
     "voby-vite": "^1.2.5"
   }
 }

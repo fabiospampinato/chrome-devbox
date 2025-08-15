@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import useEventListener from './use_event_listener';
+import useEventListener from '@hooks/use_event_listener';
 
 /* MAIN */
 
