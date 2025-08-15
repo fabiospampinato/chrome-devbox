@@ -30,6 +30,7 @@
     "256": "./resources/icon/icon-256.png"
   },
   "permissions": [
+    "debugger",
     "scripting",
     "storage",
     "tabs"

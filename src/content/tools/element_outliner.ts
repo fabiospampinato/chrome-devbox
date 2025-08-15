@@ -9,7 +9,7 @@ import useTool from '@hooks/use_tool';
 const ElementOutliner: ToolConfig = {
   id: 'element-outliner',
   name: 'Element Outliner',
-  command: 'element-outliner.toggle',
+  command: 'devbox.element-outliner.toggle',
   shortcut: 'Ctrl+Cmd+E',
   trigger: useTool ( useElementOutliner )
 };

@@ -2,8 +2,68 @@
 /* IMPORT */
 
 import isEqual from 'are-deeply-equal';
+import memoize from 'lomemo';
+
+/* HELPERS */
+
+const {getPrototypeOf} = Object;
+const {toString} = Object.prototype;
 
 /* MAIN */
+
+const attachDebugger = (() => {
+
+  const attach = memoize ( async ( tabId: number ): Promise<void> => {
+
+    return new Promise ( ( resolve, reject ) => {
+
+      chrome.debugger.attach ( { tabId }, '1.3', () => {
+
+        if ( chrome.runtime.lastError ) {
+
+          console.error ( chrome.runtime.lastError );
+
+          reject ( chrome.runtime.lastError );
+
+        } else {
+
+          resolve ();
+
+        }
+
+      });
+
+    });
+
+  });
+
+  chrome.debugger?.onDetach.addListener ( source => {
+
+    attach.cache.delete ( source.tabId );
+
+  });
+
+  return attach;
+
+})();
+
+const callDebugger = async ( command: string, params: Record<string, unknown> ): Promise<void> => {
+
+  const tabId = await getCurrentTabId ();
+
+  if ( !tabId ) return;
+
+  await attachDebugger ( tabId );
+
+  chrome.debugger.sendCommand ( { tabId }, command, params );
+
+};
+
+const callDebuggerInWorker = ( command: string, params: Record<string, unknown> ): void => {
+
+  chrome.runtime.sendMessage ({ message: 'devbox.debugger.command', args: [command, params] });
+
+};
 
 const forEach = <T> ( values: T[], iterator: ( value: T, index: number ) => void ): void => {
 
@@ -22,6 +82,15 @@ const forEachRight = <T> ( values: T[], iterator: ( value: T, index: number ) =>
     iterator ( values[i], i );
 
   }
+
+};
+
+const getCurrentTabId = async (): Promise<number | undefined> => {
+
+  const [tab] = await chrome.tabs.query ({ active: true, currentWindow: true });
+  const tabId = tab.id;
+
+  return tabId;
 
 };
 
@@ -46,6 +115,24 @@ const getElementChildren = ( element: Element ): Element[] => {
 const isNil = ( value: unknown ): value is null | undefined => {
 
   return value === null || value === undefined;
+
+};
+
+const isObjectLike = ( value: unknown ): value is object => {
+
+  return typeof value === 'object' && value !== null;
+
+};
+
+const isPlainObject = ( value: unknown ): value is Record<string | number | symbol, unknown> => {
+
+  if ( !isObjectLike ( value ) || toString.call ( value ) !== '[object Object]' ) return false;
+
+  const prototype = getPrototypeOf ( value );
+
+  if ( prototype === null ) return true;
+
+  return getPrototypeOf ( prototype ) === null;
 
 };
 
@@ -91,11 +178,18 @@ const traverseElement = ( root: Element, iterator: ( value: Element, level: numb
 /* EXPORT */
 
 export {
+  attachDebugger,
+  callDebugger,
+  callDebuggerInWorker,
   forEach,
   forEachRight,
+  getCurrentTabId,
   getElementChildren,
   isEqual,
   isNil,
+  isObjectLike,
+  isPlainObject,
   isTruthy,
+  memoize,
   traverseElement
 };

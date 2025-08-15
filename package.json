@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "are-deeply-equal": "^1.1.2",
+    "lomemo": "^1.0.1",
     "oby": "^15.1.2",
     "shosho": "^1.4.3",
     "voby": "^0.58.1"
