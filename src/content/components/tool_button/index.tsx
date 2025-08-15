@@ -14,14 +14,14 @@ const ToolButton = ( { tool }: Props ): JSX.Element => {
   const onClick = () => $$(tool).trigger ();
 
   return (
-    <button class="devbox-tool-button" tabIndex={0} title={name} onClick={onClick}>
+    <div class="devbox-tool-button" onClick={onClick}>
       <div class="devbox-tool-button-name">
         {name}
       </div>
       <div class="devbox-tool-button-shortcut">
         {shortcut}
       </div>
-    </button>
+    </div>
   );
 
 };

@@ -12,7 +12,7 @@ import PaintHighlighter from '@tools/paint_highlighter';
 const Dashboard = (): JSX.Element => {
 
   return (
-    <div autofocus class="devbox-dashboard" tabIndex={0}>
+    <div class="devbox-dashboard">
       <ToolButtons>
         <ToolButton tool={ElementOutliner} />
         <ToolButton tool={PaintHighlighter} />
