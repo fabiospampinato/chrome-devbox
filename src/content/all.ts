@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import ShoSho from 'shosho';
+import ConsoleClearer from '@tools/console_clearer';
 import Dashboard from '@tools/dashboard';
 import Debugger from '@tools/debugger';
 import ElementOutliner from '@tools/element_outliner';
@@ -16,6 +17,7 @@ import {isPlainObject} from '@utils';
 const initCommands = (): void => {
 
   const COMMANDS = {
+    [ConsoleClearer.command]: ConsoleClearer.trigger,
     [Dashboard.command]: Dashboard.trigger,
     [Debugger.command]: Debugger.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
@@ -38,6 +40,7 @@ const initCommands = (): void => {
 const initShortcuts = (): void => {
 
   const SHORTCUTS = {
+    [ConsoleClearer.shortcut]: ConsoleClearer.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
     [Debugger.shortcut]: Debugger.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,

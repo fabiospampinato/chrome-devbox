@@ -4,6 +4,7 @@
 import './styles.css';
 import ToolButton from '@components/tool_button';
 import ToolButtons from '@components/tool_buttons';
+import ConsoleClearer from '@tools/console_clearer';
 import Debugger from '@tools/debugger';
 import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
@@ -18,6 +19,7 @@ const Dashboard = (): JSX.Element => {
   return (
     <div class="devbox-dashboard">
       <ToolButtons>
+        <ToolButton tool={ConsoleClearer} />
         <ToolButton tool={Debugger} />
         <ToolButton tool={ElementOutliner} />
         <ToolButton tool={FPSMeter} />
