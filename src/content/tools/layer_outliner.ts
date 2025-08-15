@@ -7,9 +7,9 @@ import Debugger from '@lib/debugger';
 /* MAIN */
 
 const LayerOutliner: ToolConfig = {
-  id: 'layer-highlighter',
-  name: 'Layer Highlighter',
-  command: 'devbox.layer-highlighter.toggle',
+  id: 'layer-outliner',
+  name: 'Layer Outliner',
+  command: 'devbox.layer-outliner.toggle',
   shortcut: 'Ctrl+Cmd+L',
   trigger: useTool ( (): Disposer => {
     Debugger.callInWorker ( 'Overlay.setShowDebugBorders', { show: true }, 1 );

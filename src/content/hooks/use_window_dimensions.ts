@@ -3,7 +3,7 @@
 
 import {$} from 'voby';
 import useEventListener from '@hooks/use_event_listener';
-import {isEqual} from '@utils';
+import {isShallowEqual} from '@utils';
 
 /* MAIN */
 
@@ -11,7 +11,7 @@ const useWindowDimensions = (): ObservableReadonly<{ width: number; height: numb
 
   const height = window.innerHeight;
   const width = window.innerWidth;
-  const dimensions = $({ width, height }, { equals: isEqual });
+  const dimensions = $({ width, height }, { equals: isShallowEqual });
 
   const update = (): void => {
     const height = window.innerHeight;

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "voby",
+    "noUnusedParameters": false,
     "paths": {
       "@components": ["./src/content/components"],
       "@components/*": ["./src/content/components/*"],

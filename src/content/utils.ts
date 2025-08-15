@@ -2,6 +2,8 @@
 /* IMPORT */
 
 import isEqual from 'are-deeply-equal';
+import isShallowEqual from 'are-shallow-equal';
+import cloneDeepJSON from 'json-clone-deep';
 import memoize from 'lomemo';
 
 /* HELPERS */
@@ -55,6 +57,12 @@ const getElementChildren = ( element: Element ): Element[] => {
   }
 
   return children;
+
+};
+
+const isFunction = ( value: unknown ): value is Function => {
+
+  return typeof value === 'function';
 
 };
 
@@ -124,14 +132,17 @@ const traverseElement = ( root: Element, iterator: ( value: Element, level: numb
 /* EXPORT */
 
 export {
+  cloneDeepJSON,
   forEach,
   forEachRight,
   getCurrentTabId,
   getElementChildren,
   isEqual,
+  isFunction,
   isNil,
   isObjectLike,
   isPlainObject,
+  isShallowEqual,
   isTruthy,
   memoize,
   traverseElement

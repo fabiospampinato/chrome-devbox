@@ -7,6 +7,7 @@ import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
 import LayerOutliner from '@tools/layer_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
+import Rulers from '@tools/rulers';
 import {isPlainObject} from '@utils';
 
 /* MAIN */
@@ -18,7 +19,8 @@ const initCommands = (): void => {
     [ElementOutliner.command]: ElementOutliner.trigger,
     [FPSMeter.command]: FPSMeter.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
-    [PaintHighlighter.command]: PaintHighlighter.trigger
+    [PaintHighlighter.command]: PaintHighlighter.trigger,
+    [Rulers.command]: Rulers.trigger
   };
 
   chrome.runtime.onMessage.addListener ( data => {
@@ -38,7 +40,8 @@ const initShortcuts = (): void => {
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
     [FPSMeter.shortcut]: FPSMeter.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
-    [PaintHighlighter.shortcut]: PaintHighlighter.trigger
+    [PaintHighlighter.shortcut]: PaintHighlighter.trigger,
+    [Rulers.shortcut]: Rulers.trigger
   };
 
   const shortcuts = new ShoSho ({
