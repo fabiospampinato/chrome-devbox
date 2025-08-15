@@ -10,7 +10,7 @@
   flex-direction: column;
   box-sizing: border-box;
   min-width: 275px;
-  border-radius: 12px;
+  border-radius: 20px;
   background-color: #000000DD;
   backdrop-filter: blur(3px);
   color: #fafafa;

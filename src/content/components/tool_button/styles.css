@@ -12,9 +12,9 @@
   color: #fafafa;
   outline: none;
   gap: 4px;
-  border-radius: 6px;
-  padding: 4px 8px;
-  min-height: 24px;
+  border-radius: 26px;
+  padding: 4px 6px 4px 10px;
+  min-height: 26px;
   max-width: 100%;
   user-select: none;
 
