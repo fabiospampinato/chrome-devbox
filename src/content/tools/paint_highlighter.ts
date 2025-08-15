@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useTool from '@hooks/use_tool';
-import {callDebuggerInWorker} from '@utils';
+import Debugger from '@lib/debugger';
 
 /* MAIN */
 
@@ -12,9 +12,9 @@ const PaintHighlighter: ToolConfig = {
   command: 'devbox.paint-highlighter.toggle',
   shortcut: 'Ctrl+Cmd+P',
   trigger: useTool ( (): Disposer => {
-    callDebuggerInWorker ( 'Overlay.setShowPaintRects', { result: true } );
+    Debugger.callInWorker ( 'Overlay.setShowPaintRects', { result: true }, 1 );
     return (): void => {
-      callDebuggerInWorker ( 'Overlay.setShowPaintRects', { result: false } );
+      Debugger.callInWorker ( 'Overlay.setShowPaintRects', { result: false }, -1 );
     };
   })
 };

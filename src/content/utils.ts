@@ -11,60 +11,6 @@ const {toString} = Object.prototype;
 
 /* MAIN */
 
-const attachDebugger = (() => {
-
-  const attach = memoize ( async ( tabId: number ): Promise<void> => {
-
-    return new Promise ( ( resolve, reject ) => {
-
-      chrome.debugger.attach ( { tabId }, '1.3', () => {
-
-        if ( chrome.runtime.lastError ) {
-
-          console.error ( chrome.runtime.lastError );
-
-          reject ( chrome.runtime.lastError );
-
-        } else {
-
-          resolve ();
-
-        }
-
-      });
-
-    });
-
-  });
-
-  chrome.debugger?.onDetach.addListener ( source => {
-
-    attach.cache.delete ( source.tabId );
-
-  });
-
-  return attach;
-
-})();
-
-const callDebugger = async ( command: string, params: Record<string, unknown> ): Promise<void> => {
-
-  const tabId = await getCurrentTabId ();
-
-  if ( !tabId ) return;
-
-  await attachDebugger ( tabId );
-
-  chrome.debugger.sendCommand ( { tabId }, command, params );
-
-};
-
-const callDebuggerInWorker = ( command: string, params: Record<string, unknown> ): void => {
-
-  chrome.runtime.sendMessage ({ message: 'devbox.debugger.command', args: [command, params] });
-
-};
-
 const forEach = <T> ( values: T[], iterator: ( value: T, index: number ) => void ): void => {
 
   for ( let i = 0; i < values.length; i++ ) {
@@ -178,9 +124,6 @@ const traverseElement = ( root: Element, iterator: ( value: Element, level: numb
 /* EXPORT */
 
 export {
-  attachDebugger,
-  callDebugger,
-  callDebuggerInWorker,
   forEach,
   forEachRight,
   getCurrentTabId,

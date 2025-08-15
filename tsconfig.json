@@ -8,6 +8,8 @@
       "@components/*": ["./src/content/components/*"],
       "@hooks": ["./src/content/hooks"],
       "@hooks/*": ["./src/content/hooks/*"],
+      "@lib": ["./src/content/lib"],
+      "@lib/*": ["./src/content/lib/*"],
       "@tools": ["./src/content/tools"],
       "@tools/*": ["./src/content/tools/*"],
       "@utils": ["./src/content/utils.ts"]

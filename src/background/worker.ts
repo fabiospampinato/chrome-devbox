@@ -1,7 +1,8 @@
 
 /* IMPORT */
 
-import {callDebugger, getCurrentTabId, isPlainObject} from '@utils';
+import Debugger from '@lib/debugger';
+import {getCurrentTabId, isPlainObject} from '@utils';
 
 /* MAIN */
 
@@ -21,13 +22,15 @@ const initAction = (): void => {
 
 const initDebugger = (): void => {
 
+  Debugger.init ();
+
   chrome.runtime.onMessage.addListener ( data => {
 
     if ( !isPlainObject ( data ) ) return;
 
     if ( data['message'] === 'devbox.debugger.command' ) {
 
-      callDebugger ( data['args'][0], data['args'][1] );
+      Debugger.call ( data['command'], data['params'], data['refCountModifier'] );
 
     }
 
