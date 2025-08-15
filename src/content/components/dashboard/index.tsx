@@ -5,6 +5,7 @@ import './styles.css';
 import ToolButton from '@components/tool_button';
 import ToolButtons from '@components/tool_buttons';
 import ElementOutliner from '@tools/element_outliner';
+import LayerOutliner from '@tools/layer_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
 
 /* MAIN */
@@ -15,6 +16,7 @@ const Dashboard = (): JSX.Element => {
     <div class="devbox-dashboard">
       <ToolButtons>
         <ToolButton tool={ElementOutliner} />
+        <ToolButton tool={LayerOutliner} />
         <ToolButton tool={PaintHighlighter} />
       </ToolButtons>
     </div>
