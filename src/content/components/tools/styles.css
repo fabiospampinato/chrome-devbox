@@ -1,12 +1,20 @@
 
 .devbox-tools {
 
+  font-family: inherit;
+  color: inherit;
+
+  &:first-child {
+    padding-top: 8px;
+  }
+
   .devbox-tools-name {
-    all: unset;
+    all: initial;
     display: flex;
     align-items: end;
-    padding: 0 14px;
-    min-height: 20px;
+    padding: 0 16px;
+    min-height: 22px;
+    font-family: inherit;
     font-size: 12px;
     font-weight: 600;
     color: #808080;
@@ -14,15 +22,13 @@
   }
 
   .devbox-tools-buttons {
-    all: unset;
+    all: initial;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     margin: 6px;
-  }
-
-  &:first-child > .devbox-tools-name:first-child {
-    padding-top: 8px;
+    color: inherit;
+    font-family: inherit;
   }
 
 }
