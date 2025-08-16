@@ -10,7 +10,7 @@ import useFallbacked from '@hooks/use_fallbacked';
 import useLocalStorage from '@hooks/use_local_storage';
 import useResolved from '@hooks/use_resolved';
 import useWindowRect from '@hooks/use_window_rect';
-import {cloneDeepJSON} from '@utils';
+import {cloneDeepJSON, isEqual} from '@utils';
 
 /* TYPES */
 
@@ -60,9 +60,6 @@ const FONT_FAMILY = 'sans-serif';
 const CLOSEST_RADIUS = 5;
 
 /* MAIN */
-
-//TODO: Support moving an existing line
-//TODO: Support deleting an existing line
 
 const useRulers = (): void => {
 
@@ -440,6 +437,18 @@ const useRulers = (): void => {
       });
 
     });
+
+  });
+
+  useEventListener ( window, 'click', ({ altKey, clientX, clientY }) => { // Deleting a line on alt click
+
+    if ( !altKey ) return;
+
+    const line = getClosestLine ( clientX, clientY, CLOSEST_RADIUS );
+
+    if ( !line ) return;
+
+    lines ( prev => prev.filter ( other => !isEqual ( other, line ) ) );
 
   });
 
