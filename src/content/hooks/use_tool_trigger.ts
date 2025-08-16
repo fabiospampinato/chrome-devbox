@@ -6,7 +6,7 @@ import useRoot from '@hooks/use_root';
 
 /* MAIN */
 
-const useTool = ( fn: () => Disposer | void, isToggle: boolean = true ): Callback => {
+const useToolTrigger = ( fn: () => Disposer | void, isToggle: boolean = true ): Callback => {
 
   let disposeRoot: Disposer | void;
   let disposeTool: Disposer | void;
@@ -41,4 +41,4 @@ const useTool = ( fn: () => Disposer | void, isToggle: boolean = true ): Callbac
 
 /* EXPORT */
 
-export default useTool;
+export default useToolTrigger;

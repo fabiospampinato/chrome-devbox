@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useElementOutliner from '@hooks/use_element_outliner';
-import useTool from '@hooks/use_tool';
+import useToolTrigger from '@hooks/use_tool_trigger';
 
 /* MAIN */
 
@@ -11,7 +11,7 @@ const ElementOutliner: ToolConfig = {
   name: 'Element Outliner',
   command: 'devbox.element-outliner.toggle',
   shortcut: 'Ctrl+Cmd+E',
-  trigger: useTool ( useElementOutliner )
+  trigger: useToolTrigger ( useElementOutliner )
 };
 
 /* EXPORT */

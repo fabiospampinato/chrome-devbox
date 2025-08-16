@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import useTool from '@hooks/use_tool';
+import useToolTrigger from '@hooks/use_tool_trigger';
 
 /* MAIN */
 
@@ -10,7 +10,7 @@ const ConsoleClear: ToolConfig = {
   name: 'Clear Console',
   command: 'devbox.console-clear.trigger',
   shortcut: 'Ctrl+Cmd+K',
-  trigger: useTool ( () => {
+  trigger: useToolTrigger ( () => {
     console.clear ();
   }, false )
 };

@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
-import useStorage from '@hooks/use_storage';
 import useSingleton from '@hooks/use_singleton';
+import useStorage from '@hooks/use_storage';
 
 /* MAIN */
 

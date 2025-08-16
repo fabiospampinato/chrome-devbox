@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import useTool from '@hooks/use_tool';
+import useToolTrigger from '@hooks/use_tool_trigger';
 
 /* MAIN */
 
@@ -10,7 +10,7 @@ const DebuggerStart: ToolConfig = {
   name: 'Start Debugger',
   command: 'devbox.debugger-start.trigger',
   shortcut: 'Ctrl+Cmd+I',
-  trigger: useTool ( () => {
+  trigger: useToolTrigger ( () => {
     debugger;
   }, false )
 };

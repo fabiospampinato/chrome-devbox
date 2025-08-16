@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import DashboardComponent from '@components/dashboard';
-import useTool from '@hooks/use_tool';
+import useToolTrigger from '@hooks/use_tool_trigger';
 import usePortal from '@hooks/use_portal';
 
 /* MAIN */
@@ -12,7 +12,7 @@ const Dashboard: ToolConfig = {
   name: 'Dashboard',
   command: 'devbox.dashboard.toggle',
   shortcut: 'Ctrl+Cmd+Space',
-  trigger: useTool ( () => usePortal ( DashboardComponent ) )
+  trigger: useToolTrigger ( () => usePortal ( DashboardComponent ) )
 };
 
 /* EXPORT */
