@@ -5,10 +5,10 @@ import useTool from '@hooks/use_tool';
 
 /* MAIN */
 
-const Debugger: ToolConfig = {
-  id: 'debugger',
-  name: 'Debugger',
-  command: 'devbox.debugger.trigger',
+const DebuggerStart: ToolConfig = {
+  id: 'debugger-start',
+  name: 'Start Debugger',
+  command: 'devbox.debugger-start.trigger',
   shortcut: 'Ctrl+Cmd+I',
   trigger: useTool ( () => {
     debugger;
@@ -17,4 +17,4 @@ const Debugger: ToolConfig = {
 
 /* EXPORT */
 
-export default Debugger;
+export default DebuggerStart;

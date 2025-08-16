@@ -4,7 +4,7 @@
 import ShoSho from 'shosho';
 import ConsoleClear from '@tools/console_clear';
 import Dashboard from '@tools/dashboard';
-import Debugger from '@tools/debugger';
+import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
 import LayerOutliner from '@tools/layer_outliner';
@@ -19,7 +19,7 @@ const initCommands = (): void => {
   const COMMANDS = {
     [ConsoleClear.command]: ConsoleClear.trigger,
     [Dashboard.command]: Dashboard.trigger,
-    [Debugger.command]: Debugger.trigger,
+    [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
     [FPSMeter.command]: FPSMeter.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
@@ -42,7 +42,7 @@ const initShortcuts = (): void => {
   const SHORTCUTS = {
     [ConsoleClear.shortcut]: ConsoleClear.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
-    [Debugger.shortcut]: Debugger.trigger,
+    [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
     [FPSMeter.shortcut]: FPSMeter.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
