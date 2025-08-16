@@ -7,6 +7,7 @@ import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
+import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
@@ -22,6 +23,7 @@ const initCommands = (): void => {
     [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
     [FPSMeter.command]: FPSMeter.trigger,
+    [LagRadar.command]: LagRadar.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
     [PaintHighlighter.command]: PaintHighlighter.trigger,
     [Rulers.command]: Rulers.trigger
@@ -45,6 +47,7 @@ const initShortcuts = (): void => {
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
     [FPSMeter.shortcut]: FPSMeter.trigger,
+    [LagRadar.shortcut]: LagRadar.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
     [PaintHighlighter.shortcut]: PaintHighlighter.trigger,
     [Rulers.shortcut]: Rulers.trigger

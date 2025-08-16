@@ -96,6 +96,12 @@ const isTruthy = <T> ( value: T ): value is Exclude<T, 0 | -0 | 0n | -0n | '' | 
 
 };
 
+const sigmoid = ( value: number ): number => {
+
+  return 1 / ( 1 + Math.exp ( -value ) );
+
+};
+
 const traverseElement = ( root: Element, iterator: ( value: Element, level: number ) => boolean | void ): void => {
 
   const queues: [number, Element[]][] = [[0, [root]]];
@@ -145,5 +151,6 @@ export {
   isShallowEqual,
   isTruthy,
   memoize,
+  sigmoid,
   traverseElement
 };

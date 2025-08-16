@@ -9,6 +9,8 @@ type BoundingBox = { bottom: number, height: number, left: number, right: number
 
 type Callback = () => void;
 
+type Dimensions = { height: number, width: number };
+
 type Disposer = () => void;
 
 type JSONPrimitive = null | boolean | number | string;

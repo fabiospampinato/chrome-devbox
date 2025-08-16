@@ -7,7 +7,7 @@ import {isShallowEqual} from '@utils';
 
 /* MAIN */
 
-const useWindowDimensions = (): ObservableReadonly<{ width: number; height: number }> => {
+const useWindowDimensions = (): ObservableReadonly<Dimensions> => {
 
   const height = window.innerHeight;
   const width = window.innerWidth;
