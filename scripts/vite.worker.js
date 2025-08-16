@@ -8,6 +8,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 const config = defineConfig ( ({ mode }) => ({
   build: {
+    assetsInlineLimit: Infinity,
     emptyOutDir: false,
     minify: mode === 'production',
     rollupOptions: {

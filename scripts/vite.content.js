@@ -13,6 +13,7 @@ import strict from './plugin_strict';
 
 const config = defineConfig ( ({ mode }) => ({
   build: {
+    assetsInlineLimit: Infinity,
     emptyOutDir: false,
     minify: mode === 'production',
     rollupOptions: {

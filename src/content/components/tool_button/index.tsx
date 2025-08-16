@@ -3,6 +3,7 @@
 
 import './styles.css';
 import {$$} from 'voby';
+import ShortcutPill from '@components/shortcut_pill';
 import type {Props} from './types';
 
 /* MAIN */
@@ -18,9 +19,9 @@ const ToolButton = ( { tool }: Props ): JSX.Element => {
       <div class="devbox-tool-button-name">
         {name}
       </div>
-      <div class="devbox-tool-button-shortcut">
+      <ShortcutPill>
         {shortcut}
-      </div>
+      </ShortcutPill>
     </div>
   );
 
