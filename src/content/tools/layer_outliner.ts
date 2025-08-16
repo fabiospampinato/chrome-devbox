@@ -14,7 +14,7 @@ const LayerOutliner: ToolConfig = {
   trigger: useTool ( (): Disposer => {
     Debugger.callInWorker ( 'Overlay.setShowDebugBorders', { show: true }, 1 );
     return (): void => {
-      Debugger.callInWorker ( 'Overlay.setShowDebugBorders', { show: false }, 1 );
+      Debugger.callInWorker ( 'Overlay.setShowDebugBorders', { show: false }, -1 );
     };
   })
 };
