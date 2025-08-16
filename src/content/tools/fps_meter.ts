@@ -14,7 +14,7 @@ const FPSMeter: ToolConfig = {
   trigger: useTool ( (): Disposer => {
     Debugger.callInWorker ( 'Overlay.setShowFPSCounter', { show: true }, 1 );
     return (): void => {
-      Debugger.callInWorker ( 'Overlay.setShowFPSCounter', { show: false }, 1 );
+      Debugger.callInWorker ( 'Overlay.setShowFPSCounter', { show: false }, -1 );
     };
   })
 };
