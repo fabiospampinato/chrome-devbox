@@ -1,0 +1,28 @@
+
+.devbox-tools {
+
+  .devbox-tools-name {
+    all: unset;
+    display: flex;
+    align-items: end;
+    padding: 0 14px;
+    min-height: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #808080;
+    user-select: none;
+  }
+
+  .devbox-tools-buttons {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 6px;
+  }
+
+  &:first-child > .devbox-tools-name:first-child {
+    padding-top: 8px;
+  }
+
+}

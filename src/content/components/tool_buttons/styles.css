@@ -1,8 +1,0 @@
-
-.devbox-tool-buttons {
-  all: unset;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 6px;
-}

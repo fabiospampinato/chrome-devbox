@@ -2,8 +2,7 @@
 /* IMPORT */
 
 import './styles.css';
-import ToolButton from '@components/tool_button';
-import ToolButtons from '@components/tool_buttons';
+import Tools from '@components/tools';
 import ConsoleClearer from '@tools/console_clearer';
 import Debugger from '@tools/debugger';
 import ElementOutliner from '@tools/element_outliner';
@@ -18,15 +17,9 @@ const Dashboard = (): JSX.Element => {
 
   return (
     <div class="devbox-dashboard">
-      <ToolButtons>
-        <ToolButton tool={ConsoleClearer} />
-        <ToolButton tool={Debugger} />
-        <ToolButton tool={ElementOutliner} />
-        <ToolButton tool={FPSMeter} />
-        <ToolButton tool={LayerOutliner} />
-        <ToolButton tool={PaintHighlighter} />
-        <ToolButton tool={Rulers} />
-      </ToolButtons>
+      <Tools name="Actions" tools={[ConsoleClearer, Debugger]} />
+      <Tools name="Native Tools" tools={[FPSMeter, LayerOutliner, PaintHighlighter]} />
+      <Tools name="Custom Tools" tools={[ElementOutliner, Rulers]} />
     </div>
   );
 

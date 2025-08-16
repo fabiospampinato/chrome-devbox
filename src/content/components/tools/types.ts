@@ -2,7 +2,8 @@
 /* MAIN */
 
 type Props = {
-  children: JSX.Children
+  name: $<string>,
+  tools: $<ToolConfig[]>
 };
 
 /* EXPORT */
