@@ -5,10 +5,10 @@ import useTool from '@hooks/use_tool';
 
 /* MAIN */
 
-const ConsoleClearer: ToolConfig = {
-  id: 'console-clearer',
-  name: 'Console Clearer',
-  command: 'devbox.console-clearer.trigger',
+const ConsoleClear: ToolConfig = {
+  id: 'console-clear',
+  name: 'Clear Console',
+  command: 'devbox.console-clear.trigger',
   shortcut: 'Ctrl+Cmd+K',
   trigger: useTool ( () => {
     console.clear ();
@@ -17,4 +17,4 @@ const ConsoleClearer: ToolConfig = {
 
 /* EXPORT */
 
-export default ConsoleClearer;
+export default ConsoleClear;
