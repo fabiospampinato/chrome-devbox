@@ -22,6 +22,7 @@
   "dependencies": {
     "are-deeply-equal": "^1.1.2",
     "are-shallow-equal": "^2.0.2",
+    "chrome-rpc": "^1.0.2",
     "json-clone-deep": "^2.0.1",
     "lomemo": "^1.0.1",
     "oby": "^15.1.2",

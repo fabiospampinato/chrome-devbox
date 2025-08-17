@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
-import Debugger from '@lib/debugger';
+import RPC from '@lib/rpc_frontend';
 
 /* MAIN */
 
@@ -15,7 +15,7 @@ const GarbageCollect: ToolConfig = {
   command: 'devbox.garbage-collect.trigger',
   shortcut: 'Ctrl+Cmd+G',
   trigger: useToolTrigger ( (): void => {
-    Debugger.callInWorker ( 'HeapProfiler.collectGarbage', {}, 0 );
+    RPC.debuggerCall ( 'HeapProfiler.collectGarbage', {}, 0 );
   }, false )
 };
 

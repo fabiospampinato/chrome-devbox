@@ -84,12 +84,6 @@ const Debugger = {
 
   },
 
-  callInWorker: ( command: string, params: Record<string, unknown>, refCountModifier: number ): void => {
-
-    chrome.runtime.sendMessage ({ message: 'devbox.debugger.command', command, params, refCountModifier });
-
-  },
-
   detach: ( tabId: number ): Promise<void> => {
 
     return new Promise ( ( resolve, reject ) => {
@@ -114,7 +108,7 @@ const Debugger = {
 
   },
 
-  init: (): void => {
+  init: (): void => { //TODO
 
     // Resetting on detach, which could also happen externally
 

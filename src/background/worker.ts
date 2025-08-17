@@ -2,7 +2,8 @@
 /* IMPORT */
 
 import Debugger from '@lib/debugger';
-import {getCurrentTabId, isPlainObject} from '@utils';
+import RPC from '@lib/rpc_backend';
+import {getCurrentTabId} from '@utils';
 
 /* MAIN */
 
@@ -24,17 +25,11 @@ const initDebugger = (): void => {
 
   Debugger.init ();
 
-  chrome.runtime.onMessage.addListener ( data => {
+};
 
-    if ( !isPlainObject ( data ) ) return;
+const initRPC = (): void => {
 
-    if ( data['message'] === 'devbox.debugger.command' ) {
-
-      Debugger.call ( data['command'], data['params'], data['refCountModifier'] );
-
-    }
-
-  });
+  RPC.init ();
 
 };
 
@@ -42,6 +37,7 @@ const init = (): void => {
 
   initAction ();
   initDebugger ();
+  initRPC ();
 
 };
 

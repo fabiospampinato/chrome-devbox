@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
-import Debugger from '@lib/debugger';
+import RPC from '@lib/rpc_frontend';
 
 /* MAIN */
 
@@ -15,9 +15,9 @@ const AnimationThrottler: ToolConfig = {
   command: 'devbox.animation-throttler.toggle',
   shortcut: 'Ctrl+Cmd+A',
   trigger: useToolTrigger ( (): Disposer => {
-    Debugger.callInWorker ( 'Animation.setPlaybackRate', { playbackRate: 0.2 }, 1 );
+    RPC.debuggerCall ( 'Animation.setPlaybackRate', { playbackRate: 0.2 }, 1 );
     return (): void => {
-      Debugger.callInWorker ( 'Animation.setPlaybackRate', { playbackRate: 1 }, -1 );
+      RPC.debuggerCall ( 'Animation.setPlaybackRate', { playbackRate: 1 }, -1 );
     };
   })
 };

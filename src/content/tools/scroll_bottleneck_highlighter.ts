@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
-import Debugger from '@lib/debugger';
+import RPC from '@lib/rpc_frontend';
 
 /* MAIN */
 
@@ -13,9 +13,9 @@ const ScrollBottleneckHighlighter: ToolConfig = {
   command: 'devbox.scroll-bottleneck-highlighter.toggle',
   shortcut: 'Ctrl+Cmd+S',
   trigger: useToolTrigger ( (): Disposer => {
-    Debugger.callInWorker ( 'Overlay.setShowScrollBottleneckRects', { show: true }, 1 );
+    RPC.debuggerCall ( 'Overlay.setShowScrollBottleneckRects', { show: true }, 1 );
     return (): void => {
-      Debugger.callInWorker ( 'Overlay.setShowScrollBottleneckRects', { show: false }, -1 );
+      RPC.debuggerCall ( 'Overlay.setShowScrollBottleneckRects', { show: false }, -1 );
     };
   })
 };

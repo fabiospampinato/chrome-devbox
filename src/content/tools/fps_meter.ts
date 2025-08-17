@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
-import Debugger from '@lib/debugger';
+import RPC from '@lib/rpc_frontend';
 
 /* MAIN */
 
@@ -13,9 +13,9 @@ const FPSMeter: ToolConfig = {
   command: 'devbox.fps-meter.toggle',
   shortcut: 'Ctrl+Cmd+F',
   trigger: useToolTrigger ( (): Disposer => {
-    Debugger.callInWorker ( 'Overlay.setShowFPSCounter', { show: true }, 1 );
+    RPC.debuggerCall ( 'Overlay.setShowFPSCounter', { show: true }, 1 );
     return (): void => {
-      Debugger.callInWorker ( 'Overlay.setShowFPSCounter', { show: false }, -1 );
+      RPC.debuggerCall ( 'Overlay.setShowFPSCounter', { show: false }, -1 );
     };
   })
 };
