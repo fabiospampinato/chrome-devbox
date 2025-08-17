@@ -14,6 +14,7 @@ import LayerOutliner from '@tools/layer_outliner';
 import MutationHighlighter from '@tools/mutation_highlighter';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
+import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
 import {isPlainObject} from '@utils';
 
 /* MAIN */
@@ -32,7 +33,8 @@ const initCommands = (): void => {
     [LayerOutliner.command]: LayerOutliner.trigger,
     [MutationHighlighter.command]: MutationHighlighter.trigger,
     [PaintHighlighter.command]: PaintHighlighter.trigger,
-    [Rulers.command]: Rulers.trigger
+    [Rulers.command]: Rulers.trigger,
+    [ScrollBottleneckHighlighter.command]: ScrollBottleneckHighlighter.trigger
   };
 
   chrome.runtime.onMessage.addListener ( data => {
@@ -59,7 +61,8 @@ const initShortcuts = (): void => {
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
     [MutationHighlighter.shortcut]: MutationHighlighter.trigger,
     [PaintHighlighter.shortcut]: PaintHighlighter.trigger,
-    [Rulers.shortcut]: Rulers.trigger
+    [Rulers.shortcut]: Rulers.trigger,
+    [ScrollBottleneckHighlighter.shortcut]: ScrollBottleneckHighlighter.trigger
   };
 
   const shortcuts = new ShoSho ({
