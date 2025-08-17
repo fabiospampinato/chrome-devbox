@@ -46,19 +46,39 @@ const Debugger = {
 
     DebuggerReferenceCounts.set ( tabId, refCountNext );
 
-    if ( refCount > 0 && refCountNext <= 0 ) { // We no longer need the debugger, detaching it
+    if ( refCountModifier === 0 ) { // This is a trigger command that does not need reference counting
 
-      await Debugger.detach ( tabId );
+      if ( refCount === 0 ) { // Attaching before the command
 
-    } else if ( refCount <= 0 && refCountNext > 0 ) { // We now need the debugger, attaching it
+        await Debugger.attach ( tabId );
 
-      await Debugger.attach ( tabId );
-
-    }
-
-    if ( refCountNext >= 1 ) { // We need to actually execute the command
+      }
 
       await chrome.debugger.sendCommand ( { tabId }, command, params );
+
+      if ( refCount === 0 ) { // Detaching after the command
+
+        await Debugger.detach ( tabId );
+
+      }
+
+    } else { // This is a toggle command that does need reference counting
+
+      if ( refCount > 0 && refCountNext <= 0 ) { // We no longer need the debugger, detaching it
+
+        await Debugger.detach ( tabId );
+
+      } else if ( refCount <= 0 && refCountNext > 0 ) { // We now need the debugger, attaching it
+
+        await Debugger.attach ( tabId );
+
+      }
+
+      if ( refCountNext >= 1 ) { // We need to actually execute the command
+
+        await chrome.debugger.sendCommand ( { tabId }, command, params );
+
+      }
 
     }
 
