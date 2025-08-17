@@ -9,6 +9,7 @@ import Debugger from '@lib/debugger';
 const LayerOutliner: ToolConfig = {
   id: 'layer-outliner',
   name: 'Layer Outliner',
+  description: 'Toggle the layer outliner, to spot issues with the resulting layers in the page',
   command: 'devbox.layer-outliner.toggle',
   shortcut: 'Ctrl+Cmd+L',
   trigger: useToolTrigger ( (): Disposer => {

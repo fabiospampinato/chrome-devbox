@@ -10,6 +10,7 @@ import usePortal from '@hooks/use_portal';
 const Dashboard: ToolConfig = {
   id: 'dashboard',
   name: 'Dashboard',
+  description: 'Toggle the dashboard',
   command: 'devbox.dashboard.toggle',
   shortcut: 'Ctrl+Cmd+Space',
   trigger: useToolTrigger ( () => usePortal ( DashboardComponent ) )

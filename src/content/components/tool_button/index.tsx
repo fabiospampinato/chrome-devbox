@@ -11,11 +11,12 @@ import type {Props} from './types';
 const ToolButton = ( { tool }: Props ): JSX.Element => {
 
   const name = () => $$(tool).name;
+  const description = () => $$(tool).description;
   const shortcut = () => $$(tool).shortcut;
   const onClick = () => $$(tool).trigger ();
 
   return (
-    <div class="devbox-tool-button" onClick={onClick}>
+    <div class="devbox-tool-button" title={description} onClick={onClick}>
       <div class="devbox-tool-button-name">
         {name}
       </div>

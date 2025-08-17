@@ -9,6 +9,7 @@ import Debugger from '@lib/debugger';
 const FPSMeter: ToolConfig = {
   id: 'fps-meter',
   name: 'FPS Meter',
+  description: 'Toggle the FPS meter, to spot smoothness issues in the page',
   command: 'devbox.fps-meter.toggle',
   shortcut: 'Ctrl+Cmd+F',
   trigger: useToolTrigger ( (): Disposer => {

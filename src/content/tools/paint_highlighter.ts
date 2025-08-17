@@ -9,6 +9,7 @@ import Debugger from '@lib/debugger';
 const PaintHighlighter: ToolConfig = {
   id: 'paint-highlighter',
   name: 'Paint Highlighter',
+  description: 'Toggle the paint highlighter, to spot unnecessary painting events happening in the page',
   command: 'devbox.paint-highlighter.toggle',
   shortcut: 'Ctrl+Cmd+P',
   trigger: useToolTrigger ( (): Disposer => {

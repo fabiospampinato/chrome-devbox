@@ -34,6 +34,7 @@ type ObservableReadonlyLike<T> = import ( 'voby' ).ObservableReadonlyLike<T>;
 type ToolConfig = {
   id: string,
   name: string,
+  description: string,
   command: string,
   shortcut: string,
   trigger: () => Disposer | void

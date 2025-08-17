@@ -9,6 +9,7 @@ import useToolTrigger from '@hooks/use_tool_trigger';
 const ElementOutliner: ToolConfig = {
   id: 'element-outliner',
   name: 'Element Outliner',
+  description: 'Toggle the element outliner, to spot unnecessary elements being used in the page',
   command: 'devbox.element-outliner.toggle',
   shortcut: 'Ctrl+Cmd+E',
   trigger: useToolTrigger ( useElementOutliner )
