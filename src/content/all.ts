@@ -3,6 +3,7 @@
 
 import ShoSho from 'shosho';
 import ConsoleClear from '@tools/console_clear';
+import CPUThrottler from '@tools/cpu_throttler';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
@@ -20,6 +21,7 @@ const initCommands = (): void => {
 
   const COMMANDS = {
     [ConsoleClear.command]: ConsoleClear.trigger,
+    [CPUThrottler.command]: CPUThrottler.trigger,
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
@@ -45,6 +47,7 @@ const initShortcuts = (): void => {
 
   const SHORTCUTS = {
     [ConsoleClear.shortcut]: ConsoleClear.trigger,
+    [CPUThrottler.shortcut]: CPUThrottler.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
