@@ -9,6 +9,7 @@ import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
+import MutationHighlighter from '@tools/mutation_highlighter';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
 import {isPlainObject} from '@utils';
@@ -25,6 +26,7 @@ const initCommands = (): void => {
     [FPSMeter.command]: FPSMeter.trigger,
     [LagRadar.command]: LagRadar.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
+    [MutationHighlighter.command]: MutationHighlighter.trigger,
     [PaintHighlighter.command]: PaintHighlighter.trigger,
     [Rulers.command]: Rulers.trigger
   };
@@ -49,6 +51,7 @@ const initShortcuts = (): void => {
     [FPSMeter.shortcut]: FPSMeter.trigger,
     [LagRadar.shortcut]: LagRadar.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
+    [MutationHighlighter.shortcut]: MutationHighlighter.trigger,
     [PaintHighlighter.shortcut]: PaintHighlighter.trigger,
     [Rulers.shortcut]: Rulers.trigger
   };

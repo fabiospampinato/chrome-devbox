@@ -60,6 +60,12 @@ const getElementChildren = ( element: Element ): Element[] => {
 
 };
 
+const isElement = ( value: unknown ): value is Element => {
+
+  return value instanceof Element;
+
+};
+
 const isFunction = ( value: unknown ): value is Function => {
 
   return typeof value === 'function';
@@ -87,6 +93,12 @@ const isPlainObject = ( value: unknown ): value is Record<string | number | symb
   if ( prototype === null ) return true;
 
   return getPrototypeOf ( prototype ) === null;
+
+};
+
+const isText = ( value: unknown ): value is Text => {
+
+  return value instanceof Text;
 
 };
 
@@ -143,12 +155,14 @@ export {
   forEachRight,
   getCurrentTabId,
   getElementChildren,
+  isElement,
   isEqual,
   isFunction,
   isNil,
   isObjectLike,
   isPlainObject,
   isShallowEqual,
+  isText,
   isTruthy,
   memoize,
   sigmoid,

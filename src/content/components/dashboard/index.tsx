@@ -9,6 +9,7 @@ import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
+import MutationHighlighter from '@tools/mutation_highlighter';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
 
@@ -20,7 +21,7 @@ const Dashboard = (): JSX.Element => {
     <div class="devbox-dashboard">
       <Tools name="Actions" tools={[ConsoleClear, DebuggerStart]} />
       <Tools name="Native Tools" tools={[FPSMeter, LayerOutliner, PaintHighlighter]} />
-      <Tools name="Custom Tools" tools={[ElementOutliner, LagRadar, Rulers]} />
+      <Tools name="Custom Tools" tools={[ElementOutliner, LagRadar, MutationHighlighter, Rulers]} />
     </div>
   );
 
