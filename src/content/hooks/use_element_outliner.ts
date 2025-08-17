@@ -4,7 +4,7 @@
 import {$$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import {forEachRight, traverseElement} from '@utils';
+import {forEachRight, getElementDescendantsCount, traverseElement} from '@utils';
 
 /* TYPES */
 
@@ -79,6 +79,8 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
     /* PAINTING BOXES */
 
+    const descendantsCountCache = new Map<Element, number> ();
+
     forEachRight ( boxesFiltered, box => {
 
       const {element, level, rect} = box;
@@ -88,7 +90,7 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
       ctx.strokeStyle = background;
       ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
 
-      const descendants = element.querySelectorAll ( '*' ).length;
+      const descendants = getElementDescendantsCount ( element, descendantsCountCache );
       const modifier = element === canvas.parentElement ? 0 : 1; // Count itself, but not the canvas
       const count = descendants + modifier;
       const label = `${count}`;

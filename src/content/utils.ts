@@ -42,11 +42,13 @@ const getCurrentTabId = async (): Promise<number | undefined> => {
 
 };
 
-const getElementChildren = ( element: DocumentFragment | Element ): Element[] => {
+const getElementChildren = ( element: Element ): Element[] => {
+
+  const root = element.shadowRoot || element; // Supporting custom elements too
 
   let index = 0;
-  let children = new Array ( element.childElementCount );
-  let child = element.firstElementChild;
+  let children = new Array ( root.childElementCount );
+  let child = root.firstElementChild;
 
   while ( child ) {
 
@@ -60,13 +62,23 @@ const getElementChildren = ( element: DocumentFragment | Element ): Element[] =>
 
 };
 
-const getElementShadowChildren = ( element: Element ): Element[] => {
+const getElementDescendantsCount = ( element: Element, cache: Map<Element, number> ): number => {
 
-  const {shadowRoot} = element;
+  const cached = cache.get ( element );
 
-  if ( !shadowRoot ) return [];
+  if ( cached !== undefined ) return cached;
 
-  return getElementChildren ( shadowRoot );
+  let count = 0;
+
+  traverseElementChildren ( element, child => {
+
+    count += 1 + getElementDescendantsCount ( child, cache );
+
+  });
+
+  cache.set ( element, count );
+
+  return count;
 
 };
 
@@ -124,9 +136,9 @@ const sigmoid = ( value: number ): number => {
 
 };
 
-const traverseElement = ( root: Element, iterator: ( value: Element, level: number ) => boolean | void ): void => {
+const traverseElement = ( element: Element, iterator: ( value: Element, level: number ) => boolean | void ): void => {
 
-  const queues: [number, Element[]][] = [[0, [root]]];
+  const queues: [number, Element[]][] = [[0, [element]]];
 
   for ( let i = 0; i < queues.length; i++ ) {
 
@@ -151,15 +163,25 @@ const traverseElement = ( root: Element, iterator: ( value: Element, level: numb
 
       }
 
-      const shadowChildren = getElementShadowChildren ( element );
-
-      if ( shadowChildren.length ) {
-
-        queues.push ([ level + 1, shadowChildren ]);
-
-      }
-
     }
+
+  }
+
+};
+
+const traverseElementChildren = ( element: Element, iterator: ( value: Element, level: number ) => boolean | void ): void => {
+
+  const root = element.shadowRoot || element; // Supporting custom elements too
+
+  let child = root.firstElementChild;
+
+  while ( child ) {
+
+    const result = iterator ( child, 0 );
+
+    if ( result === false ) return;
+
+    child = child.nextElementSibling;
 
   }
 
@@ -173,6 +195,7 @@ export {
   forEachRight,
   getCurrentTabId,
   getElementChildren,
+  getElementDescendantsCount,
   isElement,
   isEqual,
   isFunction,
@@ -184,5 +207,6 @@ export {
   isTruthy,
   memoize,
   sigmoid,
-  traverseElement
+  traverseElement,
+  traverseElementChildren
 };
