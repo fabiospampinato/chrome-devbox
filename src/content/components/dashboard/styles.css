@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   min-width: 275px;
+  max-height: calc(100vh - 24px);
+  overflow: auto;
   border-radius: 20px;
   background-color: #000000DD;
   color: #fafafa;
