@@ -5,6 +5,7 @@ import './styles.css';
 import Tools from '@components/tools';
 import ConsoleClear from '@tools/console_clear';
 import CPUThrottler from '@tools/cpu_throttler';
+import CustomElementOutliner from '@tools/custom_element_outliner';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
 import FPSMeter from '@tools/fps_meter';
@@ -22,7 +23,7 @@ const Dashboard = (): JSX.Element => {
     <div class="devbox-dashboard">
       <Tools name="Actions" tools={[ConsoleClear, DebuggerStart]} />
       <Tools name="Native Tools" tools={[CPUThrottler, FPSMeter, LayerOutliner, PaintHighlighter]} />
-      <Tools name="Custom Tools" tools={[ElementOutliner, LagRadar, MutationHighlighter, Rulers]} />
+      <Tools name="Custom Tools" tools={[CustomElementOutliner, ElementOutliner, LagRadar, MutationHighlighter, Rulers]} />
     </div>
   );
 

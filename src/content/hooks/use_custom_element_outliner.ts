@@ -4,7 +4,7 @@
 import {$$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import {forEachRight, getElementDescendantsCount, traverseElement} from '@utils';
+import {forEachRight, traverseElement} from '@utils';
 
 /* TYPES */
 
@@ -21,9 +21,9 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 /* MAIN */
 
-const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void => {
+const useCustomElementOutliner = ( ref: $<Element | undefined> = document.body ): void => {
 
-  const canvas = useCanvasOverlay ( 'element-outliner' );
+  const canvas = useCanvasOverlay ( 'custom-element-outliner' );
   const ctx = canvas.getContext ( '2d' );
 
   if ( !ctx ) return;
@@ -50,6 +50,10 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
       if ( element === canvas ) return;
 
+      const tagName = element.tagName.toLowerCase ();
+
+      if ( !tagName.includes ( '-' ) ) return; // Not a custom element
+
       const rect = element.getBoundingClientRect ();
 
       if ( !rect.width || !rect.height ) return;
@@ -60,28 +64,9 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
     });
 
-    /* FILTERING BOXES */
-
-    const boxesIds = new Set<string>();
-
-    const boxesFiltered = boxes.filter ( box => {
-
-      const {top, left, width, height} = box.rect;
-      const id = `${left}-${top}-${width}-${height}`;
-
-      if ( boxesIds.has ( id ) ) return false; // This box won't be visible
-
-      boxesIds.add ( id );
-
-      return true;
-
-    });
-
     /* PAINTING BOXES */
 
-    const descendantsCountCache = new Map<Element, number> ();
-
-    forEachRight ( boxesFiltered, box => {
+    forEachRight ( boxes, box => {
 
       const {element, level, rect} = box;
       const background = BACKGROUNDS[level % BACKGROUNDS.length];
@@ -94,12 +79,7 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
       /* PAINTING LABEL */
 
-      const descendants = getElementDescendantsCount ( element, descendantsCountCache );
-      const modifier = element === canvas.parentElement ? 0 : 1; // Count itself, but not the canvas
-      const count = descendants + modifier;
-      const label = `${count}`;
-
-      if ( count < 2 ) return;
+      const label = element.tagName.toLowerCase ();
 
       ctx.font = '10px sans-serif';
 
@@ -128,4 +108,4 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
 /* EXPORT */
 
-export default useElementOutliner;
+export default useCustomElementOutliner;
