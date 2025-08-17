@@ -50,15 +50,15 @@ const Debugger = {
 
       if ( refCount === 0 ) { // Attaching before the command
 
-        await Debugger.attach ( tabId );
+        await Debugger.attach ( tabId ).catch ( console.error );
 
       }
 
-      await chrome.debugger.sendCommand ( { tabId }, command, params );
+      await chrome.debugger.sendCommand ( { tabId }, command, params ).catch ( console.error );
 
       if ( refCount === 0 ) { // Detaching after the command
 
-        await Debugger.detach ( tabId );
+        await Debugger.detach ( tabId ).catch ( console.error );
 
       }
 
@@ -66,17 +66,17 @@ const Debugger = {
 
       if ( refCount > 0 && refCountNext <= 0 ) { // We no longer need the debugger, detaching it
 
-        await Debugger.detach ( tabId );
+        await Debugger.detach ( tabId ).catch ( console.error );
 
       } else if ( refCount <= 0 && refCountNext > 0 ) { // We now need the debugger, attaching it
 
-        await Debugger.attach ( tabId );
+        await Debugger.attach ( tabId ).catch ( console.error );
 
       }
 
       if ( refCountNext >= 1 ) { // We need to actually execute the command
 
-        await chrome.debugger.sendCommand ( { tabId }, command, params );
+        await chrome.debugger.sendCommand ( { tabId }, command, params ).catch ( console.error );
 
       }
 
