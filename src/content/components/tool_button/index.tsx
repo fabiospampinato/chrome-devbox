@@ -13,10 +13,11 @@ const ToolButton = ( { tool }: Props ): JSX.Element => {
   const name = () => $$(tool).name;
   const description = () => $$(tool).description;
   const shortcut = () => $$(tool).shortcut;
+  const active = () => !!$$($$(tool).active);
   const onClick = () => $$(tool).trigger ();
 
   return (
-    <div class="devbox-tool-button" title={description} onClick={onClick}>
+    <div class={{ 'devbox-tool-button': true, active }} title={description} onClick={onClick}>
       <div class="devbox-tool-button-name">
         {name}
       </div>

@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import {$} from 'voby';
 import useToolTrigger from '@hooks/use_tool_trigger';
 import RPC from '@lib/rpc_frontend';
 
@@ -12,9 +13,12 @@ const FPSMeter: ToolConfig = {
   description: 'Toggle the FPS meter, to spot smoothness issues in the page',
   command: 'devbox.fps-meter.toggle',
   shortcut: 'Ctrl+Cmd+F',
+  active: $(false),
   trigger: useToolTrigger ( (): Disposer => {
+    FPSMeter.active?.( true );
     RPC.debuggerCall ( 'Overlay.setShowFPSCounter', { show: true }, 1 );
     return (): void => {
+      FPSMeter.active?.( false );
       RPC.debuggerCall ( 'Overlay.setShowFPSCounter', { show: false }, -1 );
     };
   })

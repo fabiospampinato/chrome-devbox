@@ -37,5 +37,6 @@ type ToolConfig = {
   description: string,
   command: string,
   shortcut: string,
+  active?: Observable<boolean>,
   trigger: () => Disposer | void
 };
