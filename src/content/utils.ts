@@ -42,7 +42,7 @@ const getCurrentTabId = async (): Promise<number | undefined> => {
 
 };
 
-const getElementChildren = ( element: Element ): Element[] => {
+const getElementChildren = ( element: DocumentFragment | Element ): Element[] => {
 
   let index = 0;
   let children = new Array ( element.childElementCount );
@@ -57,6 +57,16 @@ const getElementChildren = ( element: Element ): Element[] => {
   }
 
   return children;
+
+};
+
+const getElementShadowChildren = ( element: Element ): Element[] => {
+
+  const {shadowRoot} = element;
+
+  if ( !shadowRoot ) return [];
+
+  return getElementChildren ( shadowRoot );
 
 };
 
@@ -138,6 +148,14 @@ const traverseElement = ( root: Element, iterator: ( value: Element, level: numb
       if ( children.length ) {
 
         queues.push ([ level + 1, children ]);
+
+      }
+
+      const shadowChildren = getElementShadowChildren ( element );
+
+      if ( shadowChildren.length ) {
+
+        queues.push ([ level + 1, shadowChildren ]);
 
       }
 
