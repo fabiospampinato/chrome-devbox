@@ -13,6 +13,8 @@ type Dimensions = { height: number, width: number };
 
 type Disposer = () => void;
 
+type EventType = 'devbox.debugger.detached';
+
 type JSONPrimitive = null | boolean | number | string;
 
 type JSONArray = Array<Value>;

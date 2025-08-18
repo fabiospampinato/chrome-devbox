@@ -114,7 +114,13 @@ const Debugger = {
 
     chrome.debugger.onDetach.addListener ( source => {
 
-      DebuggerReferenceCounts.delete ( source.tabId ?? -1 );
+      const tabId = source.tabId;
+
+      if ( !tabId ) return;
+
+      DebuggerReferenceCounts.delete ( tabId );
+
+      chrome.tabs.sendMessage ( tabId, { command: 'event.trigger', args: ['devbox.debugger.detached'] } );
 
     });
 

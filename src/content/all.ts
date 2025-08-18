@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import ShoSho from 'shosho';
+import EventEmitter from '@lib/event_emitter';
 import ConsoleClear from '@tools/console_clear';
 import CpuThrottler from '@tools/cpu_throttler';
 import CustomElementOutliner from '@tools/custom_element_outliner';
@@ -22,6 +23,7 @@ import {isPlainObject} from '@utils';
 const initCommands = (): void => {
 
   const COMMANDS = {
+    'event.trigger': EventEmitter.trigger,
     [ConsoleClear.command]: ConsoleClear.trigger,
     [CpuThrottler.command]: CpuThrottler.trigger,
     [CustomElementOutliner.command]: CustomElementOutliner.trigger,
@@ -41,7 +43,9 @@ const initCommands = (): void => {
 
     if ( !isPlainObject ( data ) ) return;
 
-    COMMANDS[`${data['command']}`]?.();
+    const args = data['args'] ?? [];
+
+    COMMANDS[`${data['command']}`]?.( ...args );
 
   });
 
