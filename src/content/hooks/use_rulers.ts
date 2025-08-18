@@ -2,7 +2,6 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import PathProp from 'path-prop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
 import useEffect from '@hooks/use_effect';
 import useEventListener from '@hooks/use_event_listener';
@@ -10,7 +9,7 @@ import useFallbacked from '@hooks/use_fallbacked';
 import useLocalStorage from '@hooks/use_local_storage';
 import useResolved from '@hooks/use_resolved';
 import useWindowRect from '@hooks/use_window_rect';
-import {cloneDeepJSON, isEqual} from '@utils';
+import {cloneDeepJSON, isEqualJSON} from '@utils';
 
 /* TYPES */
 
@@ -419,7 +418,13 @@ const useRulers = (): void => {
 
         const offsetNext = line.horizontal ? clientY - rect.y : clientX - rect.x;
 
-        lines ( prev => PathProp.set ( cloneDeepJSON ( prev ), `${lineIndex}.offset`, offsetNext ) ); //UGLY
+        lines ( prev => {
+          const clone = cloneDeepJSON ( prev );
+          const line = clone[lineIndex];
+          if ( !line ) return clone;
+          clone[lineIndex].offset = offsetNext;
+          return clone;
+        });
 
         const lineNext = lines ()[lineIndex];
 
@@ -448,7 +453,7 @@ const useRulers = (): void => {
 
     if ( !line ) return;
 
-    lines ( prev => prev.filter ( other => !isEqual ( other, line ) ) );
+    lines ( prev => prev.filter ( other => !isEqualJSON ( other, line ) ) );
 
   });
 

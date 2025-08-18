@@ -5,13 +5,13 @@ import {$, $$} from 'voby';
 import useEffect from '@hooks/use_effect';
 import useEventListener from '@hooks/use_event_listener';
 import useResizeObserver from '@hooks/use_resize_observer';
-import {isShallowEqual} from '@utils';
+import {isEqualJSON} from '@utils';
 
 /* MAIN */
 
 const useRect = ( ref: $<Element | undefined> ): ObservableReadonly<BoundingBox> => {
 
-  const rect = $<BoundingBox>({ bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0, x: 0, y: 0 }, { equals: isShallowEqual });
+  const rect = $<BoundingBox>({ bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0, x: 0, y: 0 }, { equals: isEqualJSON });
 
   useEffect ( () => {
 

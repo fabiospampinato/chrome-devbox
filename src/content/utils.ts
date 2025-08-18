@@ -1,10 +1,8 @@
 
 /* IMPORT */
 
-import isEqual from 'are-deeply-equal';
-import isShallowEqual from 'are-shallow-equal';
 import cloneDeepJSON from 'json-clone-deep';
-import memoize from 'lomemo';
+import isEqualJSON from 'json-is-sorted-equal';
 
 /* HELPERS */
 
@@ -197,15 +195,13 @@ export {
   getElementChildren,
   getElementDescendantsCount,
   isElement,
-  isEqual,
+  isEqualJSON,
   isFunction,
   isNil,
   isObjectLike,
   isPlainObject,
-  isShallowEqual,
   isText,
   isTruthy,
-  memoize,
   sigmoid,
   traverseElement,
   traverseElementChildren

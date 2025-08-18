@@ -20,13 +20,10 @@
     "prod": "scex -s clean build:prod"
   },
   "dependencies": {
-    "are-deeply-equal": "^1.1.2",
-    "are-shallow-equal": "^2.0.2",
-    "chrome-rpc": "^1.0.2",
+    "chrome-rpc": "^1.0.3",
     "json-clone-deep": "^2.0.1",
-    "lomemo": "^1.0.1",
+    "json-is-sorted-equal": "^1.0.0",
     "oby": "^15.1.2",
-    "path-prop": "^2.0.0",
     "shosho": "^1.4.3",
     "voby": "^0.58.1"
   },

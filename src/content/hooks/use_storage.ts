@@ -4,7 +4,7 @@
 import {$, untrack} from 'voby';
 import useEffect from '@hooks/use_effect';
 import useEventListener from '@hooks/use_event_listener';
-import {isEqual} from '@utils';
+import {isEqualJSON} from '@utils';
 
 /* MAIN */
 
@@ -19,7 +19,7 @@ const useStorage = <T extends JSONValue> ( storage: Storage, key: string ): Obse
   const set = ( value: string ): void => storage.setItem ( key, value );
 
   const json = $(get ());
-  const value = $<T | undefined>( undefined, { equals: isEqual } );
+  const value = $<T | undefined>( undefined, { equals: isEqualJSON } );
 
   useEventListener ( window, 'storage', ( event: StorageEvent ) => {
 

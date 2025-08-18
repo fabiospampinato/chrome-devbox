@@ -3,7 +3,7 @@
 
 import {$} from 'voby';
 import useEventListener from '@hooks/use_event_listener';
-import {isShallowEqual} from '@utils';
+import {isEqualJSON} from '@utils';
 
 /* MAIN */
 
@@ -17,7 +17,7 @@ const useWindowRect = (): ObservableReadonly<BoundingBox> => {
   const y = 0;
   const height = window.innerHeight;
   const width = window.innerWidth;
-  const dimensions = $({ top, right, bottom, left, x, y, width, height }, { equals: isShallowEqual });
+  const dimensions = $({ top, right, bottom, left, x, y, width, height }, { equals: isEqualJSON });
 
   const update = (): void => {
     const height = window.innerHeight;
