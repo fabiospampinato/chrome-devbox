@@ -2,6 +2,7 @@
 /* MAIN */
 
 type Props = {
+  active?: $<boolean>,
   tool: $<ToolConfig>
 };
 

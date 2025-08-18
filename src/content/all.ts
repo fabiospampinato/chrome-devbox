@@ -3,12 +3,12 @@
 
 import ShoSho from 'shosho';
 import ConsoleClear from '@tools/console_clear';
-import CPUThrottler from '@tools/cpu_throttler';
+import CpuThrottler from '@tools/cpu_throttler';
 import CustomElementOutliner from '@tools/custom_element_outliner';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
-import FPSMeter from '@tools/fps_meter';
+import FpsMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import MutationHighlighter from '@tools/mutation_highlighter';
@@ -23,12 +23,12 @@ const initCommands = (): void => {
 
   const COMMANDS = {
     [ConsoleClear.command]: ConsoleClear.trigger,
-    [CPUThrottler.command]: CPUThrottler.trigger,
+    [CpuThrottler.command]: CpuThrottler.trigger,
     [CustomElementOutliner.command]: CustomElementOutliner.trigger,
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
-    [FPSMeter.command]: FPSMeter.trigger,
+    [FpsMeter.command]: FpsMeter.trigger,
     [LagRadar.command]: LagRadar.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
     [MutationHighlighter.command]: MutationHighlighter.trigger,
@@ -51,12 +51,12 @@ const initShortcuts = (): void => {
 
   const SHORTCUTS = {
     [ConsoleClear.shortcut]: ConsoleClear.trigger,
-    [CPUThrottler.shortcut]: CPUThrottler.trigger,
+    [CpuThrottler.shortcut]: CpuThrottler.trigger,
     [CustomElementOutliner.shortcut]: CustomElementOutliner.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
-    [FPSMeter.shortcut]: FPSMeter.trigger,
+    [FpsMeter.shortcut]: FpsMeter.trigger,
     [LagRadar.shortcut]: LagRadar.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
     [MutationHighlighter.shortcut]: MutationHighlighter.trigger,

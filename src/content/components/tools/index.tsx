@@ -2,13 +2,11 @@
 /* IMPORT */
 
 import './styles.css';
-import {For} from 'voby';
-import ToolButton from '@components/tool_button';
 import type {Props} from './types';
 
 /* MAIN */
 
-const Tools = ( { name, tools }: Props ): JSX.Element => {
+const Tools = ( { name, children }: Props ): JSX.Element => {
 
   return (
     <div class="devbox-tools">
@@ -16,11 +14,7 @@ const Tools = ( { name, tools }: Props ): JSX.Element => {
         {name}
       </div>
       <div class="devbox-tools-buttons">
-        <For values={tools}>
-          {tool => (
-            <ToolButton tool={tool} />
-          )}
-        </For>
+        {children}
       </div>
     </div>
   );

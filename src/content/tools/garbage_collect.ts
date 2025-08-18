@@ -8,12 +8,13 @@ import RPC from '@lib/rpc_frontend';
 
 //FIXME: Figure out why this thing doesn't work...
 
-const GarbageCollect: ToolConfig = {
+const GarbageCollect: ToolConfig<{}> = {
   id: 'garbage-collect',
   name: 'Collect Garbage',
   description: 'Trigger a garbage collection',
   command: 'devbox.garbage-collect.trigger',
   shortcut: 'Ctrl+Cmd+G',
+  state: {},
   trigger: useToolTrigger ( (): void => {
     RPC.debuggerCall ( 'HeapProfiler.collectGarbage', {}, 0 );
   }, false )

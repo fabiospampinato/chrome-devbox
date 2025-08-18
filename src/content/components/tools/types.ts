@@ -3,7 +3,7 @@
 
 type Props = {
   name: $<string>,
-  tools: $<ToolConfig[]>
+  children: JSX.Children
 };
 
 /* EXPORT */

@@ -8,12 +8,11 @@ import type {Props} from './types';
 
 /* MAIN */
 
-const ToolButton = ( { tool }: Props ): JSX.Element => {
+const ToolButton = ( { active, tool }: Props ): JSX.Element => {
 
   const name = () => $$(tool).name;
   const description = () => $$(tool).description;
   const shortcut = () => $$(tool).shortcut;
-  const active = () => !!$$($$(tool).active);
   const onClick = () => $$(tool).trigger ();
 
   return (

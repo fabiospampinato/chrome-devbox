@@ -1,24 +1,24 @@
 
 /* IMPORT */
 
-import {$} from 'voby';
 import useToolTrigger from '@hooks/use_tool_trigger';
 import RPC from '@lib/rpc_frontend';
+import State from '@lib/state';
 
 /* MAIN */
 
-const CPUThrottler: ToolConfig = {
+const CpuThrottler: ToolConfig<CpuThrottlerState> = {
   id: 'cpu-throttler',
   name: 'CPU Throttler',
   description: 'Toggle 4x CPU speed throttling, to spot performance issues in the page',
   command: 'devbox.cpu-throttler.toggle',
   shortcut: 'Ctrl+Cmd+C',
-  active: $(false),
+  state: State.cpuThrottler,
   trigger: useToolTrigger ( (): Disposer => {
-    CPUThrottler.active?.( true );
+    CpuThrottler.state.active ( true );
     RPC.debuggerCall ( 'Emulation.setCPUThrottlingRate', { rate: 4 }, 1 );
     return (): void => {
-      CPUThrottler.active?.( false );
+      CpuThrottler.state.active ( false );
       RPC.debuggerCall ( 'Emulation.setCPUThrottlingRate', { rate: 1 }, -1 );
     };
   })
@@ -26,4 +26,4 @@ const CPUThrottler: ToolConfig = {
 
 /* EXPORT */
 
-export default CPUThrottler;
+export default CpuThrottler;

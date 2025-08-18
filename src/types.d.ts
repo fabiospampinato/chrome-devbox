@@ -31,12 +31,75 @@ type ObservableReadonlyLike<T> = import ( 'voby' ).ObservableReadonlyLike<T>;
 
 /* MAIN */
 
-type ToolConfig = {
+type AnimationThrottlerState = {
+  active: Observable<boolean>
+};
+
+type CpuThrottlerState = {
+  active: Observable<boolean>
+};
+
+type CustomElementOutlinerState = {
+  active: Observable<boolean>
+};
+
+type DashboardState = {
+  active: Observable<boolean>
+};
+
+type ElementOutlinerState = {
+  active: Observable<boolean>
+};
+
+type FpsMeterState = {
+  active: Observable<boolean>
+};
+
+type LagRadarState = {
+  active: Observable<boolean>
+};
+
+type LayerOutlinerState = {
+  active: Observable<boolean>
+};
+
+type MutationHighlighterState = {
+  active: Observable<boolean>
+};
+
+type PaintHighlighterState = {
+  active: Observable<boolean>
+};
+
+type RulersState = {
+  active: Observable<boolean>
+};
+
+type ScrollBottlenckHighlighterState = {
+  active: Observable<boolean>
+};
+
+type State = {
+  animationThrottler: AnimationThrottlerState,
+  cpuThrottler: CpuThrottlerState,
+  customElementOutliner: CustomElementOutlinerState,
+  dashboard: DashboardState,
+  elementOutliner: ElementOutlinerState,
+  fpsMeter: FpsMeterState,
+  lagRadar: LagRadarState,
+  layerOutliner: LayerOutlinerState,
+  mutationHighlighter: MutationHighlighterState,
+  paintHighlighter: PaintHighlighterState,
+  rulers: RulersState,
+  scrollBottleneckHighlighter: ScrollBottlenckHighlighterState
+};
+
+type ToolConfig<State extends {} = unknown> = {
   id: string,
   name: string,
   description: string,
   command: string,
   shortcut: string,
-  active?: Observable<boolean>,
+  state: State,
   trigger: () => Disposer | void
 };
