@@ -16,13 +16,13 @@ const LagRadar: ToolConfig<LagRadarState> = {
   shortcut: 'Ctrl+Cmd+B',
   state: State.lagRadar,
   trigger: useToolTrigger ( (): Disposer => {
-    LagRadar.state.active ( true );
+    State.lagRadar.active ( true );
     const dispose = useRootDispose ( useLagRadar );
     return (): void => {
-      LagRadar.state.active ( false );
+      State.lagRadar.active ( false );
       dispose ();
     };
-  })
+  }, State.lagRadar.active )
 };
 
 /* EXPORT */

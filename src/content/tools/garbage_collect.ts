@@ -17,7 +17,7 @@ const GarbageCollect: ToolConfig<{}> = {
   state: {},
   trigger: useToolTrigger ( (): void => {
     RPC.debuggerCall ( 'HeapProfiler.collectGarbage', {}, 0 );
-  }, false )
+  })
 };
 
 /* EXPORT */

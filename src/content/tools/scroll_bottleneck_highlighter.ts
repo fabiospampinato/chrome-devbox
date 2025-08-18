@@ -15,13 +15,13 @@ const ScrollBottleneckHighlighter: ToolConfig<ScrollBottlenckHighlighterState> =
   shortcut: 'Ctrl+Cmd+S',
   state: State.scrollBottleneckHighlighter,
   trigger: useToolTrigger ( (): Disposer => {
-    ScrollBottleneckHighlighter.state.active ( true );
+    State.scrollBottleneckHighlighter.active ( true );
     RPC.debuggerCall ( 'Overlay.setShowScrollBottleneckRects', { show: true }, 1 );
     return (): void => {
-      ScrollBottleneckHighlighter.state.active ( false );
+      State.scrollBottleneckHighlighter.active ( false );
       RPC.debuggerCall ( 'Overlay.setShowScrollBottleneckRects', { show: false }, -1 );
     };
-  })
+  }, State.scrollBottleneckHighlighter.active)
 };
 
 /* EXPORT */

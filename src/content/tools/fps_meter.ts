@@ -15,13 +15,13 @@ const FpsMeter: ToolConfig<FpsMeterState> = {
   shortcut: 'Ctrl+Cmd+F',
   state: State.fpsMeter,
   trigger: useToolTrigger ( (): Disposer => {
-    FpsMeter.state.active ( true );
+    State.fpsMeter.active ( true );
     RPC.debuggerCall ( 'Overlay.setShowFPSCounter', { show: true }, 1 );
     return (): void => {
-      FpsMeter.state.active ( false );
+      State.fpsMeter.active ( false );
       RPC.debuggerCall ( 'Overlay.setShowFPSCounter', { show: false }, -1 );
     };
-  })
+  }, State.fpsMeter.active )
 };
 
 /* EXPORT */

@@ -17,13 +17,13 @@ const AnimationThrottler: ToolConfig<AnimationThrottlerState> = {
   shortcut: 'Ctrl+Cmd+A',
   state: State.animationThrottler,
   trigger: useToolTrigger ( (): Disposer => {
-    AnimationThrottler.state.active ( true );
+    State.animationThrottler.active ( true );
     RPC.debuggerCall ( 'Animation.setPlaybackRate', { playbackRate: 0.2 }, 1 );
     return (): void => {
-      AnimationThrottler.state.active ( false );
+      State.animationThrottler.active ( false );
       RPC.debuggerCall ( 'Animation.setPlaybackRate', { playbackRate: 1 }, -1 );
     };
-  })
+  }, State.animationThrottler.active )
 };
 
 /* EXPORT */

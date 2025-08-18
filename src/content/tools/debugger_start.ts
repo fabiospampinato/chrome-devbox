@@ -12,9 +12,9 @@ const DebuggerStart: ToolConfig<{}> = {
   command: 'devbox.debugger-start.trigger',
   shortcut: 'Ctrl+Cmd+I',
   state: {},
-  trigger: useToolTrigger ( () => {
+  trigger: useToolTrigger ( (): void => {
     debugger;
-  }, false )
+  })
 };
 
 /* EXPORT */

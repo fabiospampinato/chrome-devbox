@@ -15,13 +15,13 @@ const PaintHighlighter: ToolConfig<PaintHighlighterState> = {
   shortcut: 'Ctrl+Cmd+P',
   state: State.paintHighlighter,
   trigger: useToolTrigger ( (): Disposer => {
-    PaintHighlighter.state.active ( true );
+    State.paintHighlighter.active ( true );
     RPC.debuggerCall ( 'Overlay.setShowPaintRects', { result: true }, 1 );
     return (): void => {
-      PaintHighlighter.state.active ( false );
+      State.paintHighlighter.active ( false );
       RPC.debuggerCall ( 'Overlay.setShowPaintRects', { result: false }, -1 );
     };
-  })
+  }, State.paintHighlighter.active )
 };
 
 /* EXPORT */

@@ -16,13 +16,13 @@ const MutationHighlighter: ToolConfig<MutationHighlighterState> = {
   shortcut: 'Ctrl+Cmd+M',
   state: State.mutationHighlighter,
   trigger: useToolTrigger ( (): Disposer => {
-    MutationHighlighter.state.active ( true );
+    State.mutationHighlighter.active ( true );
     const dispose = useRootDispose ( useMutationHighlighter );
     return (): void => {
-      MutationHighlighter.state.active ( false );
+      State.mutationHighlighter.active ( false );
       dispose ();
     };
-  })
+  }, State.mutationHighlighter.active )
 };
 
 /* EXPORT */

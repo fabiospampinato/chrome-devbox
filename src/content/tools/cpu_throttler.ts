@@ -15,13 +15,13 @@ const CpuThrottler: ToolConfig<CpuThrottlerState> = {
   shortcut: 'Ctrl+Cmd+C',
   state: State.cpuThrottler,
   trigger: useToolTrigger ( (): Disposer => {
-    CpuThrottler.state.active ( true );
+    State.cpuThrottler.active ( true );
     RPC.debuggerCall ( 'Emulation.setCPUThrottlingRate', { rate: 4 }, 1 );
     return (): void => {
-      CpuThrottler.state.active ( false );
+      State.cpuThrottler.active ( false );
       RPC.debuggerCall ( 'Emulation.setCPUThrottlingRate', { rate: 1 }, -1 );
     };
-  })
+  }, State.cpuThrottler.active )
 };
 
 /* EXPORT */

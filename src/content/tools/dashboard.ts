@@ -17,13 +17,13 @@ const Dashboard: ToolConfig<DashboardState> = {
   shortcut: 'Ctrl+Cmd+Space',
   state: State.dashboard,
   trigger: useToolTrigger ( (): Disposer => {
-    Dashboard.state.active ( true );
+    State.dashboard.active ( true );
     const dispose = useRootDispose ( () => usePortal ( DashboardComponent ) );
     return (): void => {
-      Dashboard.state.active ( false );
+      State.dashboard.active ( false );
       dispose ();
     };
-  })
+  }, State.dashboard.active )
 };
 
 /* EXPORT */

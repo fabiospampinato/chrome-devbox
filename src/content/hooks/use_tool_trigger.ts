@@ -1,39 +1,40 @@
 
 /* IMPORT */
 
+import {$$} from 'voby';
 import useCleanup from '@hooks/use_cleanup';
-import useRoot from '@hooks/use_root';
+import useEffect from '@hooks/use_effect';
 
 /* MAIN */
 
-const useToolTrigger = ( fn: () => Disposer | void, isToggle: boolean = true ): Callback => {
+const useToolTrigger = ( fn: () => Disposer | void, active?: ObservableReadonly<boolean> ): Callback => {
 
-  let disposeRoot: Disposer | void;
-  let disposeTool: Disposer | void;
+  let dispose: Disposer | void;
 
   const disable = (): void => {
-    disposeRoot?.();
-    disposeRoot = undefined;
-    disposeTool?.();
-    disposeTool = undefined;
+    dispose?.();
+    dispose = undefined;
   };
 
   const enable = (): void => {
-    useRoot ( dispose => {
-      disposeRoot = dispose;
-      disposeTool = fn ();
-    });
+    dispose = fn ();
   };
 
   const toggle = (): void => {
-    const shouldEnable = !isToggle || !disposeRoot;
-    disable ();
-    if ( shouldEnable ) {
+    if ( dispose ) { // Disabling
+      disable ();
+    } else { // Re-enabling
       enable ();
     }
   };
 
-  useCleanup ( disable );
+  useEffect ( () => { // Disposing on external deactivation
+    if ( $$(active) === false ) {
+      disable ();
+    }
+  })
+
+  useCleanup ( disable ); // Disposing on unmount
 
   return toggle;
 

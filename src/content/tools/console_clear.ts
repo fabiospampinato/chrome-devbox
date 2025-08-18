@@ -12,9 +12,9 @@ const ConsoleClear: ToolConfig<{}> = {
   command: 'devbox.console-clear.trigger',
   shortcut: 'Ctrl+Cmd+K',
   state: {},
-  trigger: useToolTrigger ( () => {
+  trigger: useToolTrigger ( (): void => {
     console.clear ();
-  }, false )
+  })
 };
 
 /* EXPORT */

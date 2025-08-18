@@ -15,13 +15,13 @@ const LayerOutliner: ToolConfig<LayerOutlinerState> = {
   shortcut: 'Ctrl+Cmd+L',
   state: State.layerOutliner,
   trigger: useToolTrigger ( (): Disposer => {
-    LayerOutliner.state.active ( true );
+    State.layerOutliner.active ( true );
     RPC.debuggerCall ( 'Overlay.setShowDebugBorders', { show: true }, 1 );
     return (): void => {
-      LayerOutliner.state.active ( false );
+      State.layerOutliner.active ( false );
       RPC.debuggerCall ( 'Overlay.setShowDebugBorders', { show: false }, -1 );
     };
-  })
+  }, State.layerOutliner.active )
 };
 
 /* EXPORT */

@@ -16,13 +16,13 @@ const CustomElementOutliner: ToolConfig<CustomElementOutlinerState> = {
   shortcut: 'Ctrl+Cmd+W',
   state: State.customElementOutliner,
   trigger: useToolTrigger ( (): Disposer => {
-    CustomElementOutliner.state.active ( true );
+    State.customElementOutliner.active ( true );
     const dispose = useRootDispose ( useCustomElementOutliner );
     return (): void => {
-      CustomElementOutliner.state.active ( false );
+      State.customElementOutliner.active ( false );
       dispose ();
     };
-  })
+  }, State.customElementOutliner.active )
 };
 
 /* EXPORT */

@@ -16,13 +16,13 @@ const ElementOutliner: ToolConfig<ElementOutlinerState> = {
   shortcut: 'Ctrl+Cmd+E',
   state: State.elementOutliner,
   trigger: useToolTrigger ( (): Disposer => {
-    ElementOutliner.state.active ( true );
+    State.elementOutliner.active ( true );
     const dispose = useRootDispose ( useElementOutliner );
     return (): void => {
-      ElementOutliner.state.active ( false );
+      State.elementOutliner.active ( false );
       dispose ();
     };
-  })
+  }, State.elementOutliner.active )
 };
 
 /* EXPORT */

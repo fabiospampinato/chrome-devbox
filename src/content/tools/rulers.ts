@@ -16,13 +16,13 @@ const Rulers: ToolConfig<RulersState> = {
   shortcut: 'Ctrl+Cmd+R',
   state: State.rulers,
   trigger: useToolTrigger ( (): Disposer => {
-    Rulers.state.active ( true );
+    State.rulers.active ( true );
     const dispose = useRootDispose ( useRulers );
     return (): void => {
-      Rulers.state.active ( false );
+      State.rulers.active ( false );
       dispose ();
     };
-  })
+  }, State.rulers.active )
 };
 
 /* EXPORT */
