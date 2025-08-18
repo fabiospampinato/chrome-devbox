@@ -23,7 +23,6 @@
     "chrome-rpc": "^1.0.3",
     "json-clone-deep": "^2.0.1",
     "json-is-sorted-equal": "^1.0.0",
-    "oby": "^15.1.2",
     "shosho": "^1.4.3",
     "voby": "^0.58.1"
   },
