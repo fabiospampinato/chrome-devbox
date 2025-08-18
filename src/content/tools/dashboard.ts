@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import DashboardComponent from '@components/dashboard';
+import App from '@components/app';
 import useRootDispose from '@hooks/use_root_dispose';
 import useToolTrigger from '@hooks/use_tool_trigger';
 import usePortal from '@hooks/use_portal';
@@ -19,7 +19,7 @@ const Dashboard: ToolConfig<DashboardState> = {
   state: State.dashboard,
   trigger: useToolTrigger ( (): Disposer => {
     State.dashboard.active ( true );
-    const dispose = useRootDispose ( () => usePortal ( DashboardComponent ) );
+    const dispose = useRootDispose ( () => usePortal ( App ) );
     return (): void => {
       State.dashboard.active ( false );
       dispose ();
