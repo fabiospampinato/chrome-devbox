@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 
 /* MAIN */
 
@@ -10,7 +11,7 @@ const ConsoleClear: ToolConfig<{}> = {
   name: 'Clear Console',
   description: 'Clear the DevTools console, for easier debugging',
   command: 'devbox.console-clear.trigger',
-  shortcut: 'Ctrl+Cmd+K',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+K' : 'Ctrl+Alt+Shift+K',
   state: {},
   trigger: useToolTrigger ( (): void => {
     console.clear ();

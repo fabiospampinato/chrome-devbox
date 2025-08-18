@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import RPC from '@lib/rpc_frontend';
 import State from '@lib/state';
 
@@ -12,7 +13,7 @@ const LayerOutliner: ToolConfig<LayerOutlinerState> = {
   name: 'Layer Outliner',
   description: 'Toggle the layer outliner, to spot issues with the resulting layers in the page',
   command: 'devbox.layer-outliner.toggle',
-  shortcut: 'Ctrl+Cmd+L',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+L' : 'Ctrl+Alt+Shift+L',
   state: State.layerOutliner,
   trigger: useToolTrigger ( (): Disposer => {
     State.layerOutliner.active ( true );

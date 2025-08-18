@@ -4,6 +4,7 @@
 import useLagRadar from '@hooks/use_lag_radar';
 import useRootDispose from '@hooks/use_root_dispose';
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import State from '@lib/state';
 
 /* MAIN */
@@ -13,7 +14,7 @@ const LagRadar: ToolConfig<LagRadarState> = {
   name: 'Lag Radar',
   description: 'Toggle the lag radar, to spot smoothness issues in the page',
   command: 'devbox.lag-radar.toggle',
-  shortcut: 'Ctrl+Cmd+B',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+B' : 'Ctrl+Alt+Shift+B',
   state: State.lagRadar,
   trigger: useToolTrigger ( (): Disposer => {
     State.lagRadar.active ( true );

@@ -4,6 +4,7 @@
 import useElementOutliner from '@hooks/use_element_outliner';
 import useRootDispose from '@hooks/use_root_dispose';
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import State from '@lib/state';
 
 /* MAIN */
@@ -13,7 +14,7 @@ const ElementOutliner: ToolConfig<ElementOutlinerState> = {
   name: 'Element Outliner',
   description: 'Toggle the element outliner, to spot unnecessary elements being used in the page',
   command: 'devbox.element-outliner.toggle',
-  shortcut: 'Ctrl+Cmd+E',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+E' : 'Ctrl+Alt+Shift+E',
   state: State.elementOutliner,
   trigger: useToolTrigger ( (): Disposer => {
     State.elementOutliner.active ( true );

@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import RPC from '@lib/rpc_frontend';
 import State from '@lib/state';
 
@@ -12,7 +13,7 @@ const PaintHighlighter: ToolConfig<PaintHighlighterState> = {
   name: 'Paint Highlighter',
   description: 'Toggle the paint highlighter, to spot unnecessary painting events happening in the page',
   command: 'devbox.paint-highlighter.toggle',
-  shortcut: 'Ctrl+Cmd+P',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+P' : 'Ctrl+Alt+Shift+P',
   state: State.paintHighlighter,
   trigger: useToolTrigger ( (): Disposer => {
     State.paintHighlighter.active ( true );

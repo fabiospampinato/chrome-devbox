@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "chrome-rpc": "^1.0.3",
+    "isoplatform": "^1.0.0",
     "json-clone-deep": "^2.0.1",
     "json-is-sorted-equal": "^1.0.0",
     "shosho": "^1.4.3",

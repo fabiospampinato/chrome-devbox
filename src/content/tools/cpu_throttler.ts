@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import RPC from '@lib/rpc_frontend';
 import State from '@lib/state';
 
@@ -12,7 +13,7 @@ const CpuThrottler: ToolConfig<CpuThrottlerState> = {
   name: 'CPU Throttler',
   description: 'Toggle 4x CPU speed throttling, to spot performance issues in the page',
   command: 'devbox.cpu-throttler.toggle',
-  shortcut: 'Ctrl+Cmd+C',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+C' : 'Ctrl+Alt+Shift+C',
   state: State.cpuThrottler,
   trigger: useToolTrigger ( (): Disposer => {
     State.cpuThrottler.active ( true );

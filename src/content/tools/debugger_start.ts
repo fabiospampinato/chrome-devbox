@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 
 /* MAIN */
 
@@ -10,7 +11,7 @@ const DebuggerStart: ToolConfig<{}> = {
   name: 'Start Debugger',
   description: 'Start debugging, to instantly freeze the page and inspect it',
   command: 'devbox.debugger-start.trigger',
-  shortcut: 'Ctrl+Cmd+I',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+I' : 'Ctrl+Alt+Shift+I',
   state: {},
   trigger: useToolTrigger ( (): void => {
     debugger;

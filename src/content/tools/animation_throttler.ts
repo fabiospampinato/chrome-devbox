@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import RPC from '@lib/rpc_frontend';
 import State from '@lib/state';
 
@@ -14,7 +15,7 @@ const AnimationThrottler: ToolConfig<AnimationThrottlerState> = {
   name: 'Animation Throttler',
   description: 'Toggle 5x animation speed throttling, to spot issues with animations in the page',
   command: 'devbox.animation-throttler.toggle',
-  shortcut: 'Ctrl+Cmd+A',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+A' : 'Ctrl+Alt+Shift+A',
   state: State.animationThrottler,
   trigger: useToolTrigger ( (): Disposer => {
     State.animationThrottler.active ( true );

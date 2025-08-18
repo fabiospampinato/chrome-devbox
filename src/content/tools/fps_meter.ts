@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import RPC from '@lib/rpc_frontend';
 import State from '@lib/state';
 
@@ -12,7 +13,7 @@ const FpsMeter: ToolConfig<FpsMeterState> = {
   name: 'FPS Meter',
   description: 'Toggle the FPS meter, to spot smoothness issues in the page',
   command: 'devbox.fps-meter.toggle',
-  shortcut: 'Ctrl+Cmd+F',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+F' : 'Ctrl+Alt+Shift+F',
   state: State.fpsMeter,
   trigger: useToolTrigger ( (): Disposer => {
     State.fpsMeter.active ( true );

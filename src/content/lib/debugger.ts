@@ -108,7 +108,7 @@ const Debugger = {
 
   },
 
-  init: (): void => { //TODO
+  init: (): void => { //TODO: reset on reload too
 
     // Resetting on detach, which could also happen externally
 

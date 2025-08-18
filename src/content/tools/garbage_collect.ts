@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import useToolTrigger from '@hooks/use_tool_trigger';
+import {IS_MAC} from '@lib/constants';
 import RPC from '@lib/rpc_frontend';
 
 /* MAIN */
@@ -13,7 +14,7 @@ const GarbageCollect: ToolConfig<{}> = {
   name: 'Collect Garbage',
   description: 'Trigger a garbage collection',
   command: 'devbox.garbage-collect.trigger',
-  shortcut: 'Ctrl+Cmd+G',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+G' : 'Ctrl+Alt+Shift+G',
   state: {},
   trigger: useToolTrigger ( (): void => {
     RPC.debuggerCall ( 'HeapProfiler.collectGarbage', {}, 0 );
