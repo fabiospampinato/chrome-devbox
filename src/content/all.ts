@@ -9,6 +9,7 @@ import CustomElementOutliner from '@tools/custom_element_outliner';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
+import ExtensionReloader from '@tools/extension_reloader';
 import FpsMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
@@ -30,6 +31,7 @@ const initCommands = (): void => {
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
+    [ExtensionReloader.command]: ExtensionReloader.trigger,
     [FpsMeter.command]: FpsMeter.trigger,
     [LagRadar.command]: LagRadar.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
@@ -60,6 +62,7 @@ const initShortcuts = (): void => {
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
+    [ExtensionReloader.shortcut]: ExtensionReloader.trigger,
     [FpsMeter.shortcut]: FpsMeter.trigger,
     [LagRadar.shortcut]: LagRadar.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
@@ -75,6 +78,8 @@ const initShortcuts = (): void => {
   });
 
   for ( const [shortcut, action] of Object.entries ( SHORTCUTS ) ) {
+
+    if ( !shortcut ) continue;
 
     shortcuts.register ( shortcut, () => {
       action ();

@@ -14,6 +14,10 @@
       "@tools": ["./src/content/tools"],
       "@tools/*": ["./src/content/tools/*"],
       "@utils": ["./src/content/utils.ts"]
-    }
+    },
+    "types": [
+      "@types/chrome",
+      "vite/client"
+    ]
   }
 }
