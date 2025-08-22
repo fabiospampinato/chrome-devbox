@@ -5,7 +5,6 @@ import ShoSho from 'shosho';
 import EventEmitter from '@lib/event_emitter';
 import ConsoleClear from '@tools/console_clear';
 import CpuThrottler from '@tools/cpu_throttler';
-import CustomElementOutliner from '@tools/custom_element_outliner';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
@@ -17,6 +16,7 @@ import MutationHighlighter from '@tools/mutation_highlighter';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
+import WebComponentOutliner from '@tools/web_component_outliner';
 import {isPlainObject} from '@utils';
 
 /* MAIN */
@@ -27,7 +27,6 @@ const initCommands = (): void => {
     'event.trigger': EventEmitter.trigger,
     [ConsoleClear.command]: ConsoleClear.trigger,
     [CpuThrottler.command]: CpuThrottler.trigger,
-    [CustomElementOutliner.command]: CustomElementOutliner.trigger,
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
@@ -38,7 +37,8 @@ const initCommands = (): void => {
     [MutationHighlighter.command]: MutationHighlighter.trigger,
     [PaintHighlighter.command]: PaintHighlighter.trigger,
     [Rulers.command]: Rulers.trigger,
-    [ScrollBottleneckHighlighter.command]: ScrollBottleneckHighlighter.trigger
+    [ScrollBottleneckHighlighter.command]: ScrollBottleneckHighlighter.trigger,
+    [WebComponentOutliner.command]: WebComponentOutliner.trigger
   };
 
   chrome.runtime.onMessage.addListener ( data => {
@@ -58,7 +58,6 @@ const initShortcuts = (): void => {
   const SHORTCUTS = {
     [ConsoleClear.shortcut]: ConsoleClear.trigger,
     [CpuThrottler.shortcut]: CpuThrottler.trigger,
-    [CustomElementOutliner.shortcut]: CustomElementOutliner.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
@@ -69,7 +68,8 @@ const initShortcuts = (): void => {
     [MutationHighlighter.shortcut]: MutationHighlighter.trigger,
     [PaintHighlighter.shortcut]: PaintHighlighter.trigger,
     [Rulers.shortcut]: Rulers.trigger,
-    [ScrollBottleneckHighlighter.shortcut]: ScrollBottleneckHighlighter.trigger
+    [ScrollBottleneckHighlighter.shortcut]: ScrollBottleneckHighlighter.trigger,
+    [WebComponentOutliner.shortcut]: WebComponentOutliner.trigger
   };
 
   const shortcuts = new ShoSho ({

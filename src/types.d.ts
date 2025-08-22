@@ -41,10 +41,6 @@ type CpuThrottlerState = {
   active: Observable<boolean>
 };
 
-type CustomElementOutlinerState = {
-  active: Observable<boolean>
-};
-
 type DashboardState = {
   active: Observable<boolean>
 };
@@ -81,10 +77,13 @@ type ScrollBottlenckHighlighterState = {
   active: Observable<boolean>
 };
 
+type WebComponentOutlinerState = {
+  active: Observable<boolean>
+};
+
 type State = {
   animationThrottler: AnimationThrottlerState,
   cpuThrottler: CpuThrottlerState,
-  customElementOutliner: CustomElementOutlinerState,
   dashboard: DashboardState,
   elementOutliner: ElementOutlinerState,
   fpsMeter: FpsMeterState,
@@ -93,7 +92,8 @@ type State = {
   mutationHighlighter: MutationHighlighterState,
   paintHighlighter: PaintHighlighterState,
   rulers: RulersState,
-  scrollBottleneckHighlighter: ScrollBottlenckHighlighterState
+  scrollBottleneckHighlighter: ScrollBottlenckHighlighterState,
+  webComponentOutliner: WebComponentOutlinerState
 };
 
 type ToolConfig<State extends {} = unknown> = {

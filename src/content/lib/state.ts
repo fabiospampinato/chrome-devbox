@@ -13,9 +13,6 @@ const State: State = {
   cpuThrottler: {
     active: $(false)
   },
-  customElementOutliner: {
-    active: $(false)
-  },
   dashboard: {
     active: $(false)
   },
@@ -41,6 +38,9 @@ const State: State = {
     active: $(false)
   },
   scrollBottleneckHighlighter: {
+    active: $(false)
+  },
+  webComponentOutliner: {
     active: $(false)
   }
 };

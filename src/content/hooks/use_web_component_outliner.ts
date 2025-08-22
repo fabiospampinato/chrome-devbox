@@ -21,9 +21,9 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 /* MAIN */
 
-const useCustomElementOutliner = ( ref: $<Element | undefined> = document.body ): void => {
+const useWebComponentOutliner = ( ref: $<Element | undefined> = document.body ): void => {
 
-  const canvas = useCanvasOverlay ( 'custom-element-outliner' );
+  const canvas = useCanvasOverlay ( 'web-component-outliner' );
   const ctx = canvas.getContext ( '2d' );
 
   if ( !ctx ) return;
@@ -108,4 +108,4 @@ const useCustomElementOutliner = ( ref: $<Element | undefined> = document.body )
 
 /* EXPORT */
 
-export default useCustomElementOutliner;
+export default useWebComponentOutliner;

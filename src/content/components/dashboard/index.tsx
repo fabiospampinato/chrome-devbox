@@ -6,7 +6,6 @@ import ToolButton from '@components/tool_button';
 import Tools from '@components/tools';
 import ConsoleClear from '@tools/console_clear';
 import CpuThrottler from '@tools/cpu_throttler';
-import CustomElementOutliner from '@tools/custom_element_outliner';
 import DebuggerStart from '@tools/debugger_start';
 import ElementOutliner from '@tools/element_outliner';
 import FpsMeter from '@tools/fps_meter';
@@ -16,6 +15,7 @@ import MutationHighlighter from '@tools/mutation_highlighter';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
+import WebComponentOutliner from '@tools/web_component_outliner';
 
 /* MAIN */
 
@@ -37,11 +37,11 @@ const Dashboard = (): JSX.Element => {
         <ToolButton active={ScrollBottleneckHighlighter.state.active} tool={ScrollBottleneckHighlighter} />
       </Tools>
       <Tools name="Custom Overlays">
-        <ToolButton active={CustomElementOutliner.state.active} tool={CustomElementOutliner} />
         <ToolButton active={ElementOutliner.state.active} tool={ElementOutliner} />
         <ToolButton active={LagRadar.state.active} tool={LagRadar} />
         <ToolButton active={MutationHighlighter.state.active} tool={MutationHighlighter} />
         <ToolButton active={Rulers.state.active} tool={Rulers} />
+        <ToolButton active={WebComponentOutliner.state.active} tool={WebComponentOutliner} />
       </Tools>
     </div>
   );
