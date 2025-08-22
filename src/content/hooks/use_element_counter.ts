@@ -21,9 +21,9 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 /* MAIN */
 
-const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void => {
+const useElementCounter = ( ref: $<Element | undefined> = document.body ): void => {
 
-  const canvas = useCanvasOverlay ( 'element-outliner' );
+  const canvas = useCanvasOverlay ( 'element-counter' );
   const ctx = canvas.getContext ( '2d' );
 
   if ( !ctx ) return;
@@ -128,4 +128,4 @@ const useElementOutliner = ( ref: $<Element | undefined> = document.body ): void
 
 /* EXPORT */
 
-export default useElementOutliner;
+export default useElementCounter;

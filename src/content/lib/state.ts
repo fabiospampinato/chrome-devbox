@@ -16,7 +16,7 @@ const State: State = {
   dashboard: {
     active: $(false)
   },
-  elementOutliner: {
+  elementCounter: {
     active: $(false)
   },
   fpsMeter: {

@@ -7,7 +7,7 @@ import Tools from '@components/tools';
 import ConsoleClear from '@tools/console_clear';
 import CpuThrottler from '@tools/cpu_throttler';
 import DebuggerStart from '@tools/debugger_start';
-import ElementOutliner from '@tools/element_outliner';
+import ElementCounter from '@tools/element_counter';
 import FpsMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
@@ -37,7 +37,7 @@ const Dashboard = (): JSX.Element => {
         <ToolButton active={ScrollBottleneckHighlighter.state.active} tool={ScrollBottleneckHighlighter} />
       </Tools>
       <Tools name="Custom Overlays">
-        <ToolButton active={ElementOutliner.state.active} tool={ElementOutliner} />
+        <ToolButton active={ElementCounter.state.active} tool={ElementCounter} />
         <ToolButton active={LagRadar.state.active} tool={LagRadar} />
         <ToolButton active={MutationHighlighter.state.active} tool={MutationHighlighter} />
         <ToolButton active={Rulers.state.active} tool={Rulers} />
