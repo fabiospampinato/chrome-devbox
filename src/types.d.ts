@@ -37,6 +37,10 @@ type AnimationThrottlerState = {
   active: Observable<boolean>
 };
 
+type ContainmentOutlinerState = {
+  active: Observable<boolean>
+};
+
 type CpuThrottlerState = {
   active: Observable<boolean>
 };
@@ -87,6 +91,7 @@ type WebComponentOutlinerState = {
 
 type State = {
   animationThrottler: AnimationThrottlerState,
+  containmentOutliner: ContainmentOutlinerState,
   cpuThrottler: CpuThrottlerState,
   dashboard: DashboardState,
   elementCounter: ElementCounterState,
