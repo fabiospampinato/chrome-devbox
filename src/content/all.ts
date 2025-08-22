@@ -15,6 +15,7 @@ import FpsMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import MutationHighlighter from '@tools/mutation_highlighter';
+import OverflowOutliner from '@tools/overflow_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
@@ -39,6 +40,7 @@ const initCommands = (): void => {
     [LagRadar.command]: LagRadar.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
     [MutationHighlighter.command]: MutationHighlighter.trigger,
+    [OverflowOutliner.command]: OverflowOutliner.trigger,
     [PaintHighlighter.command]: PaintHighlighter.trigger,
     [Rulers.command]: Rulers.trigger,
     [ScrollBottleneckHighlighter.command]: ScrollBottleneckHighlighter.trigger,
@@ -72,6 +74,7 @@ const initShortcuts = (): void => {
     [LagRadar.shortcut]: LagRadar.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
     [MutationHighlighter.shortcut]: MutationHighlighter.trigger,
+    [OverflowOutliner.shortcut]: OverflowOutliner.trigger,
     [PaintHighlighter.shortcut]: PaintHighlighter.trigger,
     [Rulers.shortcut]: Rulers.trigger,
     [ScrollBottleneckHighlighter.shortcut]: ScrollBottleneckHighlighter.trigger,

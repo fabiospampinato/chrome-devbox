@@ -37,6 +37,9 @@ const State: State = {
   mutationHighlighter: {
     active: $(false)
   },
+  overflowOutliner: {
+    active: $(false)
+  },
   paintHighlighter: {
     active: $(false)
   },

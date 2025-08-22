@@ -73,6 +73,10 @@ type MutationHighlighterState = {
   active: Observable<boolean>
 };
 
+type OverflowOutlinerState = {
+  active: Observable<boolean>
+};
+
 type PaintHighlighterState = {
   active: Observable<boolean>
 };
@@ -100,6 +104,7 @@ type State = {
   lagRadar: LagRadarState,
   layerOutliner: LayerOutlinerState,
   mutationHighlighter: MutationHighlighterState,
+  overflowOutliner: OverflowOutlinerState,
   paintHighlighter: PaintHighlighterState,
   rulers: RulersState,
   scrollBottleneckHighlighter: ScrollBottlenckHighlighterState,
