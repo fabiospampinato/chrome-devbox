@@ -16,7 +16,9 @@ const ExtensionReloader: ToolConfig<{}> = {
   state: {},
   trigger: useToolTrigger ( (): void => {
     RPC.extensionReload ();
-    window.location.reload ();
+    setTimeout ( () => {
+      window.location.reload ();
+    }, 150 );
   })
 };
 
