@@ -49,6 +49,10 @@ type ElementCounterState = {
   active: Observable<boolean>
 };
 
+type ElementOutlinerState = {
+  active: Observable<boolean>
+};
+
 type FpsMeterState = {
   active: Observable<boolean>
 };
@@ -86,6 +90,7 @@ type State = {
   cpuThrottler: CpuThrottlerState,
   dashboard: DashboardState,
   elementCounter: ElementCounterState,
+  elementOutliner: ElementOutlinerState,
   fpsMeter: FpsMeterState,
   lagRadar: LagRadarState,
   layerOutliner: LayerOutlinerState,

@@ -8,6 +8,7 @@ import CpuThrottler from '@tools/cpu_throttler';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
 import ElementCounter from '@tools/element_counter';
+import ElementOutliner from '@tools/element_outliner';
 import ExtensionReloader from '@tools/extension_reloader';
 import FpsMeter from '@tools/fps_meter';
 import LagRadar from '@tools/lag_radar';
@@ -30,6 +31,7 @@ const initCommands = (): void => {
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
     [ElementCounter.command]: ElementCounter.trigger,
+    [ElementOutliner.command]: ElementOutliner.trigger,
     [ExtensionReloader.command]: ExtensionReloader.trigger,
     [FpsMeter.command]: FpsMeter.trigger,
     [LagRadar.command]: LagRadar.trigger,
@@ -61,6 +63,7 @@ const initShortcuts = (): void => {
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
     [ElementCounter.shortcut]: ElementCounter.trigger,
+    [ElementOutliner.shortcut]: ElementOutliner.trigger,
     [ExtensionReloader.shortcut]: ExtensionReloader.trigger,
     [FpsMeter.shortcut]: FpsMeter.trigger,
     [LagRadar.shortcut]: LagRadar.trigger,

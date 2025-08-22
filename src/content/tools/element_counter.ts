@@ -14,7 +14,7 @@ const ElementCounter: ToolConfig<ElementCounterState> = {
   name: 'Element Counter',
   description: 'Toggle the element counter, to spot unnecessary elements being used in the page',
   command: 'devbox.element-counter.toggle',
-  shortcut: IS_MAC ? 'Ctrl+Cmd+E' : 'Ctrl+Alt+Shift+E',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+X' : 'Ctrl+Alt+Shift+X',
   state: State.elementCounter,
   trigger: useToolTrigger ( (): Disposer => {
     State.elementCounter.active ( true );
