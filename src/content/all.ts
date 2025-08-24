@@ -4,7 +4,7 @@
 import ShoSho from 'shosho';
 import EventEmitter from '@lib/event_emitter';
 import ConsoleClear from '@tools/console_clear';
-import ContainmentOutliner from '@tools/containment_outliner';
+import ContainOutliner from '@tools/contain_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
@@ -29,7 +29,7 @@ const initCommands = (): void => {
   const COMMANDS = {
     'event.trigger': EventEmitter.trigger,
     [ConsoleClear.command]: ConsoleClear.trigger,
-    [ContainmentOutliner.command]: ContainmentOutliner.trigger,
+    [ContainOutliner.command]: ContainOutliner.trigger,
     [CpuThrottler.command]: CpuThrottler.trigger,
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
@@ -63,7 +63,7 @@ const initShortcuts = (): void => {
 
   const SHORTCUTS = {
     [ConsoleClear.shortcut]: ConsoleClear.trigger,
-    [ContainmentOutliner.shortcut]: ContainmentOutliner.trigger,
+    [ContainOutliner.shortcut]: ContainOutliner.trigger,
     [CpuThrottler.shortcut]: CpuThrottler.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,

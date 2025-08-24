@@ -5,7 +5,7 @@ import './styles.css';
 import ToolButton from '@components/tool_button';
 import Tools from '@components/tools';
 import ConsoleClear from '@tools/console_clear';
-import ContainmentOutliner from '@tools/containment_outliner';
+import ContainOutliner from '@tools/contain_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import DebuggerStart from '@tools/debugger_start';
 import ElementCounter from '@tools/element_counter';
@@ -40,7 +40,7 @@ const Dashboard = (): JSX.Element => {
         <ToolButton active={ScrollBottleneckHighlighter.state.active} tool={ScrollBottleneckHighlighter} />
       </Tools>
       <Tools name="Custom Overlays">
-        <ToolButton active={ContainmentOutliner.state.active} tool={ContainmentOutliner} />
+        <ToolButton active={ContainOutliner.state.active} tool={ContainOutliner} />
         <ToolButton active={ElementCounter.state.active} tool={ElementCounter} />
         <ToolButton active={ElementOutliner.state.active} tool={ElementOutliner} />
         <ToolButton active={LagRadar.state.active} tool={LagRadar} />

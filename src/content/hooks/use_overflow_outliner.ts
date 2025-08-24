@@ -36,7 +36,7 @@ const BACKGROUNDS_BY_VALUE: Partial<Record<string, string>> = {
 
 const useOverflowOutliner = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean = () => true ): void => {
 
-  const canvas = useCanvasOverlay ( 'containment-outliner' );
+  const canvas = useCanvasOverlay ( 'overflow-outliner' );
   const ctx = canvas.getContext ( '2d' );
 
   if ( !ctx ) return;
