@@ -28,6 +28,9 @@ const State: State = {
   fpsMeter: {
     active: $(false)
   },
+  intrinsicSizeOutliner: {
+    active: $(false)
+  },
   lagRadar: {
     active: $(false)
   },

@@ -61,6 +61,10 @@ type FpsMeterState = {
   active: Observable<boolean>
 };
 
+type IntrinsicSizeOutlinerState = {
+  active: Observable<boolean>
+};
+
 type LagRadarState = {
   active: Observable<boolean>
 };
@@ -101,6 +105,7 @@ type State = {
   elementCounter: ElementCounterState,
   elementOutliner: ElementOutlinerState,
   fpsMeter: FpsMeterState,
+  intrinsicSizeOutliner: IntrinsicSizeOutlinerState,
   lagRadar: LagRadarState,
   layerOutliner: LayerOutlinerState,
   mutationHighlighter: MutationHighlighterState,

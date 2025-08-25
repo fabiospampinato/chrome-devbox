@@ -128,6 +128,18 @@ const isTruthy = <T> ( value: T ): value is Exclude<T, 0 | -0 | 0n | -0n | '' | 
 
 };
 
+const isUndefined = ( value: unknown ): value is undefined => {
+
+  return value === undefined;
+
+};
+
+const last = <T> ( values: T[] ): T | undefined => {
+
+  return values[values.length - 1];
+
+};
+
 const sigmoid = ( value: number ): number => {
 
   return 1 / ( 1 + Math.exp ( -value ) );
@@ -202,6 +214,8 @@ export {
   isPlainObject,
   isText,
   isTruthy,
+  isUndefined,
+  last,
   sigmoid,
   traverseElement,
   traverseElementChildren

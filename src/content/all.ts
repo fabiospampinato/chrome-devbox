@@ -12,6 +12,7 @@ import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
 import ExtensionReloader from '@tools/extension_reloader';
 import FpsMeter from '@tools/fps_meter';
+import IntrinsicSizeOutliner from '@tools/intrinsic_size_outliner';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import MutationHighlighter from '@tools/mutation_highlighter';
@@ -37,6 +38,7 @@ const initCommands = (): void => {
     [ElementOutliner.command]: ElementOutliner.trigger,
     [ExtensionReloader.command]: ExtensionReloader.trigger,
     [FpsMeter.command]: FpsMeter.trigger,
+    [IntrinsicSizeOutliner.command]: IntrinsicSizeOutliner.trigger,
     [LagRadar.command]: LagRadar.trigger,
     [LayerOutliner.command]: LayerOutliner.trigger,
     [MutationHighlighter.command]: MutationHighlighter.trigger,
@@ -71,6 +73,7 @@ const initShortcuts = (): void => {
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
     [ExtensionReloader.shortcut]: ExtensionReloader.trigger,
     [FpsMeter.shortcut]: FpsMeter.trigger,
+    [IntrinsicSizeOutliner.shortcut]: IntrinsicSizeOutliner.trigger,
     [LagRadar.shortcut]: LagRadar.trigger,
     [LayerOutliner.shortcut]: LayerOutliner.trigger,
     [MutationHighlighter.shortcut]: MutationHighlighter.trigger,

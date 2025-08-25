@@ -11,6 +11,7 @@ import DebuggerStart from '@tools/debugger_start';
 import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
 import FpsMeter from '@tools/fps_meter';
+import IntrinsicSizeOutliner from '@tools/intrinsic_size_outliner';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import MutationHighlighter from '@tools/mutation_highlighter';
@@ -43,6 +44,7 @@ const Dashboard = (): JSX.Element => {
         <ToolButton active={ContainOutliner.state.active} tool={ContainOutliner} />
         <ToolButton active={ElementCounter.state.active} tool={ElementCounter} />
         <ToolButton active={ElementOutliner.state.active} tool={ElementOutliner} />
+        <ToolButton active={IntrinsicSizeOutliner.state.active} tool={IntrinsicSizeOutliner} />
         <ToolButton active={LagRadar.state.active} tool={LagRadar} />
         <ToolButton active={MutationHighlighter.state.active} tool={MutationHighlighter} />
         <ToolButton active={OverflowOutliner.state.active} tool={OverflowOutliner} />
