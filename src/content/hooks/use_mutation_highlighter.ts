@@ -5,6 +5,7 @@ import {$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
 import useMutationObserver from '@hooks/use_mutation_observer';
+import Canvas from '@lib/canvas';
 import {isElement, isText} from '@utils';
 
 /* TYPES */
@@ -142,22 +143,12 @@ const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): 
     boxes = boxes.filter ( box => {
 
       const {rect, timestamp} = box;
-      const {left, top, width, height} = rect;
 
       if ( timestamp + HIGHLIGHT_TIMEOUT <= now ) return false; // No longer needed
 
-      /* PAINTING STROKE */
-
       const easing = 1 - ( ( now - timestamp ) / HIGHLIGHT_TIMEOUT );
 
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = `rgba(0, 200, 0, ${1 * easing})`;
-      ctx.strokeRect ( left, top, width, height );
-
-      /* PAINTING FILL */
-
-      ctx.fillStyle = `rgba(0, 200, 0, ${0.25 * easing})`;
-      ctx.fillRect ( left, top, width, height );
+      Canvas.flashingBox.paint ( ctx, rect, easing );
 
       return true; // Still needed
 

@@ -40,6 +40,31 @@ const Canvas = {
 
     }
 
+  },
+
+  flashingBox: {
+
+    paint: ( ctx: CanvasRenderingContext2D, rect: DOMRect, easing: number ): void => {
+
+      Canvas.flashingBox.paintFill ( ctx, rect, easing );
+      Canvas.flashingBox.paintStroke ( ctx, rect, easing );
+
+    },
+
+    paintFill: ( ctx: CanvasRenderingContext2D, rect: DOMRect, easing: number ): void => {
+
+      ctx.fillStyle = `rgba(0, 200, 0, ${0.25 * easing})`;
+      ctx.fillRect ( rect.left, rect.top, rect.width, rect.height, );
+
+    },
+
+    paintStroke: ( ctx: CanvasRenderingContext2D, rect: DOMRect, easing: number ): void => {
+
+      ctx.strokeStyle = `rgba(0, 200, 0, ${1 * easing})`;
+      ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
+
+    }
+
   }
 
 };
