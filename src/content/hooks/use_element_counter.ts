@@ -4,6 +4,7 @@
 import {$$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import Canvas from '@lib/canvas';
 import {forEachRight, getElementDescendantsCount, traverseElement} from '@utils';
 
 /* TYPES */
@@ -87,31 +88,12 @@ const useElementCounter = ( ref: $<Element | undefined> = document.body ): void 
       const background = BACKGROUNDS[level % BACKGROUNDS.length];
       const foreground = FOREGROUNDS[level % FOREGROUNDS.length];
 
-      /* PAINTING STROKE */
-
-      ctx.strokeStyle = background;
-      ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
-
-      /* PAINTING LABEL */
-
       const descendants = getElementDescendantsCount ( element, descendantsCountCache );
       const modifier = element === canvas.parentElement ? 0 : 1; // Count itself, but not the canvas
       const count = descendants + modifier;
-      const label = `${count}`;
+      const label = count > 1 ? `${count}` : undefined;
 
-      if ( count < 2 ) return;
-
-      ctx.font = '10px sans-serif';
-
-      const measure = ctx.measureText ( label );
-      const width = measure.width;
-      const height = 10;
-
-      ctx.fillStyle = background;
-      ctx.fillRect ( rect.left, rect.top, width + 2, height + 4 );
-
-      ctx.fillStyle = foreground;
-      ctx.fillText ( label, rect.left + 1, rect.top + height );
+      Canvas.box.paint ( ctx, rect, background, foreground, label );
 
     });
 

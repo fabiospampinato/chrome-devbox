@@ -4,6 +4,7 @@
 import {$$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
 /* TYPES */
@@ -105,28 +106,11 @@ const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter
       const {rect, containment} = box;
       const {isLayout, isPaint, isSize, isInlineSIze, isStyle} = containment;
       const labelShort = `${isLayout ? 'L' : ''}${isPaint ? 'P' : ''}${isSize ? 'S' : isInlineSIze ? 'I' : ''}${isStyle ? 'Y' : ''}`;
-      // const labelLong = [isLayout ? 'layout' : '', isPaint ? 'paint' : '', isSize ? 'size' : isInlineSIze ? 'isize' : '', isStyle ? 'style' : ''].filter ( Boolean ).join ( '/' );
+      const labelLong = [isLayout ? 'layout' : '', isPaint ? 'paint' : '', isSize ? 'size' : isInlineSIze ? 'isize' : '', isStyle ? 'style' : ''].filter ( Boolean ).join ( ' ' );
       const background = BACKGROUND_COLORS_BY_LENGTH[labelShort.length];
       const foreground = FOREGROUND_COLORS_BY_LENGTH[labelShort.length];
 
-      /* PAINTING STROKE */
-
-      ctx.strokeStyle = background;
-      ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
-
-      /* PAINTING LABEL */
-
-      ctx.font = '10px sans-serif';
-
-      const measure = ctx.measureText ( labelShort );
-      const width = measure.width;
-      const height = 10;
-
-      ctx.fillStyle = background;
-      ctx.fillRect ( rect.left, rect.top, width + 2, height + 4 );
-
-      ctx.fillStyle = foreground;
-      ctx.fillText ( labelShort, rect.left + 1, rect.top + height );
+      Canvas.box.paint ( ctx, rect, background, foreground, labelLong );
 
     });
 

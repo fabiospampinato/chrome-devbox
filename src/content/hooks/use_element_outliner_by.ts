@@ -4,6 +4,7 @@
 import {$$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
 /* TYPES */
@@ -23,7 +24,7 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean ): void => {
 
-  const canvas = useCanvasOverlay ( 'web-component-outliner' );
+  const canvas = useCanvasOverlay ( 'element-outliner-by' );
   const ctx = canvas.getContext ( '2d' );
 
   if ( !ctx ) return;
@@ -69,27 +70,9 @@ const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filt
       const {element, level, rect} = box;
       const background = BACKGROUNDS[level % BACKGROUNDS.length];
       const foreground = FOREGROUNDS[level % FOREGROUNDS.length];
-
-      /* PAINTING STROKE */
-
-      ctx.strokeStyle = background;
-      ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
-
-      /* PAINTING LABEL */
-
       const label = element.tagName.toLowerCase ();
 
-      ctx.font = '10px sans-serif';
-
-      const measure = ctx.measureText ( label );
-      const width = measure.width;
-      const height = 10;
-
-      ctx.fillStyle = background;
-      ctx.fillRect ( rect.left, rect.top, width + 2, height + 4 );
-
-      ctx.fillStyle = foreground;
-      ctx.fillText ( label, rect.left + 1, rect.top + height );
+      Canvas.box.paint ( ctx, rect, background, foreground, label );
 
     });
 

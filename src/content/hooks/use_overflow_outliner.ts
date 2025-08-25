@@ -4,6 +4,7 @@
 import {$$} from 'voby';
 import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
 /* TYPES */
@@ -85,24 +86,7 @@ const useOverflowOutliner = ( ref: $<Element | undefined> = document.body, filte
       const background = BACKGROUNDS_BY_VALUE[overflow] ?? BACKGROUND;
       const foreground = FOREGROUND;
 
-      /* PAINTING STROKE */
-
-      ctx.strokeStyle = background;
-      ctx.strokeRect ( rect.left, rect.top, rect.width, rect.height );
-
-      /* PAINTING LABEL */
-
-      ctx.font = '10px sans-serif';
-
-      const measure = ctx.measureText ( label );
-      const width = measure.width;
-      const height = 10;
-
-      ctx.fillStyle = background;
-      ctx.fillRect ( rect.left, rect.top, width + 2, height + 4 );
-
-      ctx.fillStyle = foreground;
-      ctx.fillText ( label, rect.left + 1, rect.top + height );
+      Canvas.box.paint ( ctx, rect, background, foreground, label );
 
     });
 
