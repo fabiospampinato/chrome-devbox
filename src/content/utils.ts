@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import once from 'function-once';
 import cloneDeepJSON from 'json-clone-deep';
 import isEqualJSON from 'json-is-sorted-equal';
 
@@ -216,6 +217,7 @@ export {
   isTruthy,
   isUndefined,
   last,
+  once,
   sigmoid,
   traverseElement,
   traverseElementChildren
