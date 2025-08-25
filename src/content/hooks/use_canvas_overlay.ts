@@ -4,11 +4,14 @@
 import {$$} from 'voby';
 import useDevicePixelRatio from '@hooks/use_device_pixel_ratio';
 import useEffect from '@hooks/use_effect';
+import useOverscrollDisabler from '@hooks/use_overscroll_disabler';
 import useWindowDimensions from '@hooks/use_window_dimensions';
 
 /* MAIN */
 
 const useCanvasOverlay = ( name: string, size?: $<Dimensions> ): HTMLCanvasElement => {
+
+  useOverscrollDisabler ();
 
   const canvas = document.createElement ( 'canvas' );
   const context = canvas.getContext ( '2d' );
