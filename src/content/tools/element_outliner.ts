@@ -13,6 +13,7 @@ const ElementOutliner: ToolConfig<ElementOutlinerState> = {
   id: 'element-outliner',
   name: 'Element Outliner',
   description: 'Toggle the element outliner, to spot where and which elements are used in the page',
+  enabled: true,
   command: 'devbox.element-outliner.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+E' : 'Ctrl+Alt+Shift+E',
   state: State.elementOutliner,

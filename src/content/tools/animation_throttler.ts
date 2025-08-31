@@ -14,6 +14,7 @@ const AnimationThrottler: ToolConfig<AnimationThrottlerState> = {
   id: 'animation-throttler',
   name: 'Animation Throttler',
   description: 'Toggle 5x animation speed throttling, to spot issues with animations in the page',
+  enabled: true,
   command: 'devbox.animation-throttler.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+A' : 'Ctrl+Alt+Shift+A',
   state: State.animationThrottler,

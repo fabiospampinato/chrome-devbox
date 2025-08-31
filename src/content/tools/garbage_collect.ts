@@ -13,6 +13,7 @@ const GarbageCollect: ToolConfig<{}> = {
   id: 'garbage-collect',
   name: 'Collect Garbage',
   description: 'Trigger a garbage collection',
+  enabled: true,
   command: 'devbox.garbage-collect.trigger',
   shortcut: IS_MAC ? 'Ctrl+Cmd+G' : 'Ctrl+Alt+Shift+G',
   state: {},

@@ -13,6 +13,7 @@ const Rulers: ToolConfig<RulersState> = {
   id: 'rulers',
   name: 'Rulers',
   description: 'Toggle the rulers overlay, to spot misalignment issues in the page',
+  enabled: true,
   command: 'devbox.rulers.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+R' : 'Ctrl+Alt+Shift+R',
   state: State.rulers,

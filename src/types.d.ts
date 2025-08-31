@@ -125,6 +125,7 @@ type ToolConfig<State extends {} = unknown> = {
   id: string,
   name: string,
   description: string,
+  enabled: boolean,
   command: string,
   shortcut: string,
   state: State,

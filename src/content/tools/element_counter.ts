@@ -13,6 +13,7 @@ const ElementCounter: ToolConfig<ElementCounterState> = {
   id: 'element-counter',
   name: 'Element Counter',
   description: 'Toggle the element counter, to spot unnecessary elements being used in the page',
+  enabled: true,
   command: 'devbox.element-counter.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+X' : 'Ctrl+Alt+Shift+X',
   state: State.elementCounter,

@@ -13,6 +13,7 @@ const ContainmentOutliner: ToolConfig<ContainmentOutlinerState> = {
   id: 'containment-outliner',
   name: 'Containment Outliner',
   description: 'Toggle the containment outliner, to spot missing contain enforcements (layout/paint/size/inline-size/style)',
+  enabled: true,
   command: 'devbox.contain-outliner.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+C' : 'Ctrl+Alt+Shift+C',
   state: State.containmentOutliner,

@@ -13,6 +13,7 @@ const LagRadar: ToolConfig<LagRadarState> = {
   id: 'lag-radar',
   name: 'Lag Radar',
   description: 'Toggle the lag radar, to spot smoothness issues in the page',
+  enabled: true,
   command: 'devbox.lag-radar.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+B' : 'Ctrl+Alt+Shift+B',
   state: State.lagRadar,

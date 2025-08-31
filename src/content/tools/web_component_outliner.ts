@@ -13,6 +13,7 @@ const WebComponentOutliner: ToolConfig<WebComponentOutlinerState> = {
   id: 'wc-outliner',
   name: 'Web Component Outliner',
   description: 'Toggle the web component outliner, to spot where and which web components are used in the page',
+  enabled: true,
   command: 'devbox.wc-outliner.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+W' : 'Ctrl+Alt+Shift+W',
   state: State.webComponentOutliner,

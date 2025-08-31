@@ -9,6 +9,10 @@
     padding-top: 8px;
   }
 
+  &:has(> .devbox-tools-buttons:empty) {
+    display: none;
+  }
+
   .devbox-tools-name {
     all: initial;
     display: flex;

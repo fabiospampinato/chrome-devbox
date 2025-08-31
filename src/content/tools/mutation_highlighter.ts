@@ -13,6 +13,7 @@ const MutationHighlighter: ToolConfig<MutationHighlighterState> = {
   id: 'mutation-highlighter',
   name: 'Mutation Highlighter',
   description: 'Toggle the mutation highlighter, to spot unnecessary mutations happening in the page',
+  enabled: true,
   command: 'devbox.mutation-highlighter.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+M' : 'Ctrl+Alt+Shift+M',
   state: State.mutationHighlighter,

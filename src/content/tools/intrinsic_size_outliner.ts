@@ -13,6 +13,7 @@ const IntrinsicSizeOutliner: ToolConfig<IntrinsicSizeOutlinerState> = {
   id: 'intrinsic-size-outliner',
   name: 'Intrinsic Size Outliner',
   description: 'Toggle the intrinsic size outliner, to spot predicted vs measured size mismatches',
+  enabled: true,
   command: 'devbox.intrinsic-size-outliner.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+V' : 'Ctrl+Alt+Shift+V',
   state: State.intrinsicSizeOutliner,

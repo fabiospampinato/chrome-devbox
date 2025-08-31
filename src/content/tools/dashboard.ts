@@ -14,6 +14,7 @@ const Dashboard: ToolConfig<DashboardState> = {
   id: 'dashboard',
   name: 'Dashboard',
   description: 'Toggle the dashboard',
+  enabled: true,
   command: 'devbox.dashboard.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+Space' : 'Ctrl+Alt+Shift+Space',
   state: State.dashboard,

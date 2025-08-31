@@ -10,6 +10,8 @@ import type {Props} from './types';
 
 const ToolButton = ( { active, tool }: Props ): JSX.Element => {
 
+  if ( !$$(tool).enabled ) return;
+
   const name = () => $$(tool).name;
   const description = () => $$(tool).description;
   const shortcut = () => $$(tool).shortcut;

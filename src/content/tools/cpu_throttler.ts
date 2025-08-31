@@ -12,6 +12,7 @@ const CpuThrottler: ToolConfig<CpuThrottlerState> = {
   id: 'cpu-throttler',
   name: 'CPU Throttler',
   description: 'Toggle 4x CPU speed throttling, to spot performance issues in the page',
+  enabled: true,
   command: 'devbox.cpu-throttler.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+K' : 'Ctrl+Alt+Shift+K',
   state: State.cpuThrottler,

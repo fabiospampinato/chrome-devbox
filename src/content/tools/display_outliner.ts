@@ -13,6 +13,7 @@ const DisplayOutliner: ToolConfig<DisplayOutlinerState> = {
   id: 'display-outliner',
   name: 'Display Outliner',
   description: 'Toggle the display outliner, to spot incorrect display values',
+  enabled: false,
   command: 'devbox.display-outliner.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+G' : 'Ctrl+Alt+Shift+G',
   state: State.displayOutliner,

@@ -12,6 +12,7 @@ const LayerOutliner: ToolConfig<LayerOutlinerState> = {
   id: 'layer-outliner',
   name: 'Layer Outliner',
   description: 'Toggle the layer outliner, to spot issues with the resulting layers in the page',
+  enabled: true,
   command: 'devbox.layer-outliner.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+L' : 'Ctrl+Alt+Shift+L',
   state: State.layerOutliner,

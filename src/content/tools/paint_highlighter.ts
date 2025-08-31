@@ -12,6 +12,7 @@ const PaintHighlighter: ToolConfig<PaintHighlighterState> = {
   id: 'paint-highlighter',
   name: 'Paint Highlighter',
   description: 'Toggle the paint highlighter, to spot unnecessary painting events happening in the page',
+  enabled: true,
   command: 'devbox.paint-highlighter.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+P' : 'Ctrl+Alt+Shift+P',
   state: State.paintHighlighter,

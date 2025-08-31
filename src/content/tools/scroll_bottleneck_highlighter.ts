@@ -12,6 +12,7 @@ const ScrollBottleneckHighlighter: ToolConfig<ScrollBottlenckHighlighterState> =
   id: 'scroll-bottleneck-highlighter',
   name: 'Scroll Bottleneck Highlighter',
   description: 'Toggle the scroll bottleneck highlighter, to spot scroll smoothness issues in the page, maybe',
+  enabled: true,
   command: 'devbox.scroll-bottleneck-highlighter.toggle',
   shortcut: IS_MAC ? 'Ctrl+Cmd+S' : 'Ctrl+Alt+Shift+S',
   state: State.scrollBottleneckHighlighter,

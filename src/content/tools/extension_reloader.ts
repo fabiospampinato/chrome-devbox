@@ -11,6 +11,7 @@ const ExtensionReloader: ToolConfig<{}> = {
   id: 'extension-reloader',
   name: 'Extension Reloader',
   description: 'Trigger an extension reload, to update it',
+  enabled: true,
   command: 'devbox.extension-reloader.trigger',
   shortcut: IS_DEV ? 'CmdOrCtrl+R' : '',
   state: {},
