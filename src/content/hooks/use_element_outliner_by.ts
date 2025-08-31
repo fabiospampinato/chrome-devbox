@@ -11,7 +11,8 @@ import {forEachRight, traverseElement} from '@utils';
 type Box = {
   element: Element,
   level: number,
-  rect: DOMRect
+  rect: DOMRect,
+  name: string
 };
 
 /* HELPERS */
@@ -48,20 +49,40 @@ const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filt
       if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;
       if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
-      boxes.push ({ element, level, rect });
+      const name = element.tagName.toLowerCase ();
+
+      boxes.push ({ element, level, rect, name });
+
+    });
+
+    /* FILTERING BOXES */
+
+    const boxesIdsToLength = new Map<string, number>();
+
+    const boxesFiltered = boxes.filter ( box => {
+
+      const {top, left, width, height} = box.rect;
+      const id = `${left}-${top}-${width}-${height}`;
+      const lengthPrev = boxesIdsToLength.get ( id ) ?? 0;
+      const lengthNext = box.name.length;
+
+      if ( lengthPrev >= lengthNext ) return false; // This box won't be visible
+
+      boxesIdsToLength.set ( id, lengthNext );
+
+      return true;
 
     });
 
     /* PAINTING BOXES */
 
-    forEachRight ( boxes, box => {
+    forEachRight ( boxesFiltered, box => {
 
-      const {element, level, rect} = box;
+      const {level, rect, name} = box;
       const background = BACKGROUNDS[level % BACKGROUNDS.length];
       const foreground = FOREGROUNDS[level % FOREGROUNDS.length];
-      const label = element.tagName.toLowerCase ();
 
-      Canvas.box.paint ( ctx, rect, background, foreground, label );
+      Canvas.box.paint ( ctx, rect, background, foreground, name );
 
     });
 
