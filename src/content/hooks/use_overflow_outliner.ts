@@ -60,7 +60,7 @@ const useOverflowOutliner = ( ref: $<Element | undefined> = document.body, filte
       if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       const style = getComputedStyle ( element );
-      const overflow = style.getPropertyValue ( 'overflow' );
+      const overflow = style.overflow;
 
       boxes.push ({ element, level, rect, overflow });
 

@@ -69,6 +69,7 @@ const useContainmentOutliner = ( ref: $<Element | undefined> = document.body, fi
       if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       const style = getComputedStyle ( element );
+
       const contain = style.contain;
       const contentVisibility = style.contentVisibility
 

@@ -1,6 +1,7 @@
 
 .devbox-dashboard {
   all: initial;
+  contain: layout paint style;
   box-sizing: border-box;
   position: fixed;
   z-index: 2147483646;
