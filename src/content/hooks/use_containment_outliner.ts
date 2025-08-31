@@ -69,14 +69,20 @@ const useContainmentOutliner = ( ref: $<Element | undefined> = document.body, fi
       if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       const style = getComputedStyle ( element );
-      const contain = style.getPropertyValue ( 'contain' );
-      const contentVisibility = style.getPropertyValue ( 'content-visibility' );
+      const contain = style.contain;
+      const contentVisibility = style.contentVisibility
+
+      const overflowX = style.overflowX;
+      const overflowY = style.overflowY;
+      const isOverflowXContained = overflowX === 'auto' || overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'clip';
+      const isOverflowYContained = overflowY === 'auto' || overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'clip';
+      const isOverflowContained = isOverflowXContained && isOverflowYContained;
 
       const isContent = contain === 'content' || contentVisibility === 'auto' || contentVisibility === 'hidden';
       const isStrict = contain === 'strict';
 
-      const isLayout = isStrict || isContent || /\blayout\b/i.test ( contain );
-      const isPaint = isStrict || isContent || /\bpaint\b/i.test ( contain );
+      const isLayout = isStrict || isContent || isOverflowContained || /\blayout\b/i.test ( contain );
+      const isPaint = isStrict || isContent || isOverflowContained || /\bpaint\b/i.test ( contain );
       const isSize = isStrict || /\bsize\b/i.test ( contain );
       const isInlineSIze = isStrict || /\binline-size\b/i.test ( contain );
       const isStyle = isStrict || isContent || /\bsize\b/i.test ( contain );
