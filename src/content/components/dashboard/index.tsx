@@ -8,6 +8,7 @@ import ConsoleClear from '@tools/console_clear';
 import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import DebuggerStart from '@tools/debugger_start';
+import DisplayOutliner from '@tools/display_outliner';
 import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
 import FpsMeter from '@tools/fps_meter';
@@ -42,6 +43,7 @@ const Dashboard = (): JSX.Element => {
       </Tools>
       <Tools name="Custom Overlays">
         <ToolButton active={ContainmentOutliner.state.active} tool={ContainmentOutliner} />
+        <ToolButton active={DisplayOutliner.state.active} tool={DisplayOutliner} />
         <ToolButton active={ElementCounter.state.active} tool={ElementCounter} />
         <ToolButton active={ElementOutliner.state.active} tool={ElementOutliner} />
         <ToolButton active={IntrinsicSizeOutliner.state.active} tool={IntrinsicSizeOutliner} />

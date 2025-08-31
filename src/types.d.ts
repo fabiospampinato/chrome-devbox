@@ -49,6 +49,10 @@ type DashboardState = {
   active: Observable<boolean>
 };
 
+type DisplayOutlinerState = {
+  active: Observable<boolean>
+};
+
 type ElementCounterState = {
   active: Observable<boolean>
 };
@@ -102,6 +106,7 @@ type State = {
   containmentOutliner: ContainmentOutlinerState,
   cpuThrottler: CpuThrottlerState,
   dashboard: DashboardState,
+  displayOutliner: DisplayOutlinerState,
   elementCounter: ElementCounterState,
   elementOutliner: ElementOutlinerState,
   fpsMeter: FpsMeterState,

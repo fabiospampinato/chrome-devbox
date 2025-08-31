@@ -19,6 +19,9 @@ const State: State = {
   dashboard: {
     active: $(false)
   },
+  displayOutliner: {
+    active: $(false)
+  },
   elementCounter: {
     active: $(false)
   },

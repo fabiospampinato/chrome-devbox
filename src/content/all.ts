@@ -8,6 +8,7 @@ import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
+import DisplayOutliner from '@tools/display_outliner';
 import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
 import ExtensionReloader from '@tools/extension_reloader';
@@ -34,6 +35,7 @@ const initCommands = (): void => {
     [CpuThrottler.command]: CpuThrottler.trigger,
     [Dashboard.command]: Dashboard.trigger,
     [DebuggerStart.command]: DebuggerStart.trigger,
+    [DisplayOutliner.command]: DisplayOutliner.trigger,
     [ElementCounter.command]: ElementCounter.trigger,
     [ElementOutliner.command]: ElementOutliner.trigger,
     [ExtensionReloader.command]: ExtensionReloader.trigger,
@@ -69,6 +71,7 @@ const initShortcuts = (): void => {
     [CpuThrottler.shortcut]: CpuThrottler.trigger,
     [Dashboard.shortcut]: Dashboard.trigger,
     [DebuggerStart.shortcut]: DebuggerStart.trigger,
+    [DisplayOutliner.shortcut]: DisplayOutliner.trigger,
     [ElementCounter.shortcut]: ElementCounter.trigger,
     [ElementOutliner.shortcut]: ElementOutliner.trigger,
     [ExtensionReloader.shortcut]: ExtensionReloader.trigger,
