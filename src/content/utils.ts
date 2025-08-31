@@ -41,12 +41,15 @@ const getCurrentTabId = async (): Promise<number | undefined> => {
 
 };
 
-const getElementChildren = ( element: Element ): Element[] => {
+const getElementChildren = ( element: Element ): Element[] | null => {
 
   const root = element.shadowRoot || element; // Supporting custom elements too
+  const length = root.childElementCount;
+
+  if ( !length ) return null;
 
   let index = 0;
-  let children = new Array ( root.childElementCount );
+  let children = new Array ( length );
   let child = root.firstElementChild;
 
   while ( child ) {
@@ -180,7 +183,7 @@ const traverseElement = ( element: Element, iterator: ( value: Element, level: n
 
       const children = getElementChildren ( element );
 
-      if ( children.length ) {
+      if ( children?.length ) {
 
         queues.push ([ level + 1, children ]);
 
