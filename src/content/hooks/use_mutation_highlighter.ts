@@ -2,7 +2,8 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
+import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
 import useMutationObserver from '@hooks/use_mutation_observer';
 import Canvas from '@lib/canvas';
 import {isElement, isText} from '@utils';
@@ -27,6 +28,8 @@ const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): 
   /* OBSERVING */
 
   const node2target = ( node: Node ): Element | Text | null => {
+
+    if ( node === canvas ) return null;
 
     if ( isElement ( node ) ) return node;
 
@@ -124,7 +127,9 @@ const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): 
 
   /* PAINTING */
 
-  useCanvasOverlayRenderLoop ( 'mutation-highlighter', ( canvas, ctx ) => {
+  const canvas = useCanvasOverlay ( 'mutation-highlighter' );
+
+  useCanvasRenderLoop ( canvas, ctx => {
 
     const now = Date.now ();
 
