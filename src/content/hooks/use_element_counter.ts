@@ -44,8 +44,8 @@ const useElementCounter = ( ref: $<Element | undefined> = document.body ): void 
     /* COMPUTING BOXES */
 
     const boxes: Box[] = [];
-    const viewportHeight = window.outerHeight;
-    const viewportWidth = window.outerWidth;
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
 
     traverseElement ( root, ( element, level ) => {
 
