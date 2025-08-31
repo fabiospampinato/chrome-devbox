@@ -70,11 +70,12 @@ const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body )
 
       if ( element === canvas ) return;
 
+      const isSkippable = !!boxes.length;
       const rect = element.getBoundingClientRect ();
 
       if ( !rect.width || !rect.height ) return;
-      if ( rect.top > viewportHeight || rect.bottom < 0 ) return;
-      if ( rect.left > viewportWidth || rect.right < 0 ) return;
+      if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;
+      if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       const style = getComputedStyle ( element );
       const intrinsicHeight = parseIntrinsicDimension ( style.containIntrinsicHeight );
@@ -114,6 +115,14 @@ const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body )
       Canvas.box.paintLabel ( ctx, rect, background, foreground, label );
 
     });
+
+    /* PAINTING FALLBACK */
+
+    if ( !boxes.length ) {
+
+      Canvas.notice.paint ( ctx, 'no intrinsic sizes' );
+
+    }
 
   };
 

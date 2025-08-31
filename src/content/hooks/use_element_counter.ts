@@ -51,11 +51,12 @@ const useElementCounter = ( ref: $<Element | undefined> = document.body ): void 
 
       if ( element === canvas ) return;
 
+      const isSkippable = !!boxes.length;
       const rect = element.getBoundingClientRect ();
 
       if ( !rect.width || !rect.height ) return;
-      if ( rect.top > viewportHeight || rect.bottom < 0 ) return;
-      if ( rect.left > viewportWidth || rect.right < 0 ) return;
+      if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;
+      if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       boxes.push ({ element, level, rect });
 
@@ -96,6 +97,14 @@ const useElementCounter = ( ref: $<Element | undefined> = document.body ): void 
       Canvas.box.paint ( ctx, rect, background, foreground, label );
 
     });
+
+    /* PAINTING FALLBACK */
+
+    if ( !boxes.length ) {
+
+      Canvas.notice.paint ( ctx, 'no elements' );
+
+    }
 
   };
 

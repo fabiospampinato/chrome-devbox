@@ -65,6 +65,23 @@ const Canvas = {
 
     }
 
+  },
+
+  notice: {
+
+    paint: ( ctx: CanvasRenderingContext2D, message: string ): void => {
+
+      const x = 1;
+      const y = 1;
+      const width = window.innerWidth - ( x * 2 );
+      const height = window.innerHeight - ( y * 2 );
+      const rect = new DOMRect ( x, y, width, height );
+      const label = ` ${message.trim ()} `;
+
+      Canvas.box.paintLabel ( ctx, rect, '#900000', '#FFFFFF', label );
+
+    }
+
   }
 
 };

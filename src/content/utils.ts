@@ -81,6 +81,12 @@ const getElementDescendantsCount = ( element: Element, cache: Map<Element, numbe
 
 };
 
+const isCustomEelement = ( value: Element ): boolean => {
+
+  return value.tagName.includes ( '-' );
+
+};
+
 const isElement = ( value: unknown ): value is Element => {
 
   return value instanceof Element;
@@ -90,6 +96,12 @@ const isElement = ( value: unknown ): value is Element => {
 const isFunction = ( value: unknown ): value is Function => {
 
   return typeof value === 'function';
+
+};
+
+const isNativeElement = ( value: Element ): boolean => {
+
+  return !value.tagName.includes ( '-' );
 
 };
 
@@ -207,9 +219,11 @@ export {
   getCurrentTabId,
   getElementChildren,
   getElementDescendantsCount,
+  isCustomEelement,
   isElement,
   isEqualJSON,
   isFunction,
+  isNativeElement,
   isNil,
   isObjectLike,
   isPlainObject,

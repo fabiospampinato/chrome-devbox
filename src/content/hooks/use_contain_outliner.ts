@@ -73,11 +73,12 @@ const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter
 
       if ( element === canvas ) return;
 
+      const isSkippable = !!boxes.length;
       const rect = element.getBoundingClientRect ();
 
       if ( !rect.width || !rect.height ) return;
-      if ( rect.top > viewportHeight || rect.bottom < 0 ) return;
-      if ( rect.left > viewportWidth || rect.right < 0 ) return;
+      if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;
+      if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       const style = getComputedStyle ( element );
       const contain = style.getPropertyValue ( 'contain' );
@@ -113,6 +114,14 @@ const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter
       Canvas.box.paint ( ctx, rect, background, foreground, labelLong );
 
     });
+
+    /* PAINTING FALLBACK */
+
+    if ( !boxes.length ) {
+
+      Canvas.notice.paint ( ctx, 'no containment' );
+
+    }
 
   };
 

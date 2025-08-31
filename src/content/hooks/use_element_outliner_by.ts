@@ -22,7 +22,7 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 /* MAIN */
 
-const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean ): void => {
+const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean, fallback: string ): void => {
 
   const canvas = useCanvasOverlay ( 'element-outliner-by' );
   const ctx = canvas.getContext ( '2d' );
@@ -53,11 +53,12 @@ const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filt
 
       if ( !filter ( element ) ) return; // Filtered out
 
+      const isSkippable = !!boxes.length;
       const rect = element.getBoundingClientRect ();
 
       if ( !rect.width || !rect.height ) return;
-      if ( rect.top > viewportHeight || rect.bottom < 0 ) return;
-      if ( rect.left > viewportWidth || rect.right < 0 ) return;
+      if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;
+      if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
       boxes.push ({ element, level, rect });
 
@@ -75,6 +76,14 @@ const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filt
       Canvas.box.paint ( ctx, rect, background, foreground, label );
 
     });
+
+    /* PAINTING FALLBACK */
+
+    if ( !boxes.length ) {
+
+      Canvas.notice.paint ( ctx, fallback );
+
+    }
 
   };
 
