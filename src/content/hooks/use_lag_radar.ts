@@ -27,7 +27,7 @@ const useLagRadar = (): void => {
   canvas.style.backdropFilter = 'blur(3px)';
   canvas.style.boxShadow = '0 7px 10px 1px rgba(0, 0, 0, .14), 0 2px 16px 2px rgba(0, 0, 0, .12), 0 4px 5px -3px rgba(0, 0, 0, .4)'; // elevation-8
 
-  if ( !ctx ) return;
+  if ( !ctx ) throw new Error ( 'Failed to get a 2d context for a canvas' );
 
   let x = 0;
 

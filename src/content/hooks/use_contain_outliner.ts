@@ -2,8 +2,7 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
+import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
@@ -46,9 +45,7 @@ const FOREGROUND_COLORS_BY_LENGTH = [ // L -> LPSY
 
 const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean = () => true ): void => {
 
-  const canvas = useCanvasOverlay ( 'contain-outliner' );
-
-  useCanvasRenderLoop ( canvas, ctx => {
+  useCanvasOverlayRenderLoop ( 'contain-outliner', ( canvas, ctx ) => {
 
     const root = $$(ref);
 

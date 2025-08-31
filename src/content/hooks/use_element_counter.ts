@@ -2,8 +2,7 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
+import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, getElementDescendantsCount, traverseElement} from '@utils';
 
@@ -24,9 +23,7 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 const useElementCounter = ( ref: $<Element | undefined> = document.body ): void => {
 
-  const canvas = useCanvasOverlay ( 'element-counter' );
-
-  useCanvasRenderLoop ( canvas, ctx => {
+  useCanvasOverlayRenderLoop ( 'element-counter', ( canvas, ctx ) => {
 
     const root = $$(ref);
 

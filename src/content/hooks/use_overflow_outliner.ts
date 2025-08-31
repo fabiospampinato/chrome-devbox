@@ -2,8 +2,7 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
+import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
@@ -37,12 +36,7 @@ const BACKGROUNDS_BY_VALUE: Partial<Record<string, string>> = {
 
 const useOverflowOutliner = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean = () => true ): void => {
 
-  const canvas = useCanvasOverlay ( 'overflow-outliner' );
-  const ctx = canvas.getContext ( '2d' );
-
-  if ( !ctx ) return;
-
-  useCanvasRenderLoop ( canvas, ctx => {
+  useCanvasOverlayRenderLoop ( 'overflow-outliner', ( canvas, ctx ) => {
 
     const root = $$(ref);
 

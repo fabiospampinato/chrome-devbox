@@ -2,8 +2,7 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import useEffect from '@hooks/use_effect';
+import useCanvasOverlayRenderLoop from './use_canvas_overlay_render_loop';
 import useEventListener from '@hooks/use_event_listener';
 import useFallbacked from '@hooks/use_fallbacked';
 import useLocalStorage from '@hooks/use_local_storage';
@@ -62,23 +61,17 @@ const CLOSEST_RADIUS = 5;
 
 const useRulers = (): void => {
 
-  const canvas = useCanvasOverlay ( 'rulers' );
-  const ctx = canvas.getContext ( '2d' );
+  /* STATE */
+
   const grid = useFallbacked ( useLocalStorage<boolean> ( 'devbox.rulers.grid' ), false );
   const lines = useFallbacked ( useLocalStorage<Line[]> ( 'devbox.rulers.lines' ), [] );
 
   const pill = $<Pill>();
   const rect = useWindowRect ();
 
-  if ( !ctx ) return;
+  /* HELPERS */
 
-  const clear = (): void => {
-
-    ctx.clearRect ( 0, 0, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER );
-
-  };
-
-  const getClosestLine = ( x: number, y: number, radius: number = Infinity ): Line | undefined => {
+  const getClosestLine = ( ctx: CanvasRenderingContext2D, x: number, y: number, radius: number = Infinity ): Line | undefined => {
 
     const getDistance = ( line: Line ) => line.horizontal ? Math.abs ( line.offset - y ) : Math.abs ( line.offset - x );
     const line = [...lines ()].sort ( ( a, b ) => getDistance ( a ) - getDistance ( b ) )[0];
@@ -93,14 +86,14 @@ const useRulers = (): void => {
 
   };
 
-  const paintBackground = ( x: number, y: number, width: number, height: number ): void => {
+  const paintBackground = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = BACKGROUND_COLOR;
     ctx.fillRect ( RULER_TICKNESS, RULER_TICKNESS, width, height );
 
   };
 
-  const paintLines = ( x: number, y: number, width: number, height: number ): void => {
+  const paintLines = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( const line of lines () ) {
 
@@ -122,7 +115,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintPill = ( x: number, y: number, width: number, height: number ): void => {
+  const paintPill = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     useResolved ( pill, pill => {
 
@@ -158,7 +151,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintCornerRuler = ( x: number, y: number, width: number, height: number ): void => {
+  const paintCornerRuler = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = COLOR_RULER;
 
@@ -174,14 +167,14 @@ const useRulers = (): void => {
 
   };
 
-  const paintHorizontalRuler = ( x: number, y: number, width: number, height: number ): void => {
+  const paintHorizontalRuler = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = COLOR_RULER;
     ctx.fillRect ( x + RULER_TICKNESS, y, width - RULER_TICKNESS, RULER_TICKNESS );
 
   };
 
-  const paintHorizontalMarks = ( x: number, y: number, width: number, height: number ): void => {
+  const paintHorizontalMarks = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_SMALL; i <= width; i += MARK_GAP_SMALL ) {
       if ( i % MARK_GAP_BIG === 0 ) {
@@ -198,7 +191,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintHorizontalLabels = ( x: number, y: number, width: number, height: number ): void => {
+  const paintHorizontalLabels = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = COLOR_LABEL;
     ctx.font = `${LABEL_SIZE}px ${FONT_FAMILY}`;
@@ -211,7 +204,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintHorizontalGridSmall = ( x: number, y: number, width: number, height: number ): void => {
+  const paintHorizontalGridSmall = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_SMALL; i <= width; i += MARK_GAP_SMALL ) {
       if ( i <= RULER_TICKNESS ) continue;
@@ -221,7 +214,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintHorizontalGridMedium = ( x: number, y: number, width: number, height: number ): void => {
+  const paintHorizontalGridMedium = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_MEDIUM; i <= width; i += MARK_GAP_MEDIUM ) {
       if ( i <= RULER_TICKNESS ) continue;
@@ -231,7 +224,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintHorizontalGridBig = ( x: number, y: number, width: number, height: number ): void => {
+  const paintHorizontalGridBig = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_BIG; i <= width; i += MARK_GAP_BIG ) {
       if ( i <= RULER_TICKNESS ) continue;
@@ -241,14 +234,14 @@ const useRulers = (): void => {
 
   };
 
-  const paintVerticalRuler = ( x: number, y: number, width: number, height: number ): void => {
+  const paintVerticalRuler = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = COLOR_RULER;
     ctx.fillRect ( x, y, RULER_TICKNESS, height );
 
   };
 
-  const paintVerticalMarks = ( x: number, y: number, width: number, height: number ): void => {
+  const paintVerticalMarks = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_SMALL; i < height; i += MARK_GAP_SMALL ) {
       if ( i % MARK_GAP_BIG === 0 ) {
@@ -265,7 +258,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintVerticalLabels = ( x: number, y: number, width: number, height: number ): void => {
+  const paintVerticalLabels = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.rotate ( ( Math.PI / 180 ) * -90 );
 
@@ -282,7 +275,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintVerticalGridSmall = ( x: number, y: number, width: number, height: number ): void => {
+  const paintVerticalGridSmall = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_SMALL; i < height; i += MARK_GAP_SMALL ) {
       if ( i <= RULER_TICKNESS ) continue;
@@ -292,7 +285,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintVerticalGridMedium = ( x: number, y: number, width: number, height: number ): void => {
+  const paintVerticalGridMedium = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_MEDIUM; i < height; i += MARK_GAP_MEDIUM ) {
       if ( i <= RULER_TICKNESS ) continue;
@@ -302,7 +295,7 @@ const useRulers = (): void => {
 
   };
 
-  const paintVerticalGridBig = ( x: number, y: number, width: number, height: number ): void => {
+  const paintVerticalGridBig = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_BIG; i < height; i += MARK_GAP_BIG ) {
       if ( i <= RULER_TICKNESS ) continue;
@@ -312,52 +305,53 @@ const useRulers = (): void => {
 
   };
 
-  const paint = ( x: number, y: number, width: number, height: number ): void => {
+  const paint = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.beginPath ();
 
-    paintBackground ( x, y, width, height );
+    paintBackground ( ctx, x, y, width, height );
 
-    paintHorizontalRuler ( x, y, width, height );
-    paintVerticalRuler ( x, y, width, height );
-    paintCornerRuler ( x, y, width, height );
+    paintHorizontalRuler ( ctx, x, y, width, height );
+    paintVerticalRuler ( ctx, x, y, width, height );
+    paintCornerRuler ( ctx, x, y, width, height );
 
-    paintHorizontalMarks ( x, y, width, height );
-    paintVerticalMarks ( x, y, width, height );
+    paintHorizontalMarks ( ctx, x, y, width, height );
+    paintVerticalMarks ( ctx, x, y, width, height );
 
-    paintHorizontalLabels ( x, y, width, height );
-    paintVerticalLabels ( x, y, width, height );
+    paintHorizontalLabels ( ctx, x, y, width, height );
+    paintVerticalLabels ( ctx, x, y, width, height );
 
     if ( grid () ) {
 
-      paintHorizontalGridSmall ( x, y, width, height );
-      paintVerticalGridSmall ( x, y, width, height );
+      paintHorizontalGridSmall ( ctx, x, y, width, height );
+      paintVerticalGridSmall ( ctx, x, y, width, height );
 
-      paintHorizontalGridMedium ( x, y, width, height );
-      paintVerticalGridMedium ( x, y, width, height );
+      paintHorizontalGridMedium ( ctx, x, y, width, height );
+      paintVerticalGridMedium ( ctx, x, y, width, height );
 
-      paintHorizontalGridBig ( x, y, width, height );
-      paintVerticalGridBig ( x, y, width, height );
+      paintHorizontalGridBig ( ctx, x, y, width, height );
+      paintVerticalGridBig ( ctx, x, y, width, height );
 
     }
 
-    paintLines ( x, y, width, height );
-    paintPill ( x, y, width, height );
+    paintLines ( ctx, x, y, width, height );
+    paintPill ( ctx, x, y, width, height );
 
     ctx.closePath ();
 
   };
 
-  useEffect ( () => {
+  /* PAINTING */
 
-    useResolved ( rect, rect => {
+  useCanvasOverlayRenderLoop ( 'rulers', ( canvas, ctx ) => {
 
-      clear ();
-      paint ( rect.x, rect.y, rect.width, rect.height );
+    const {x, y, width, height} = rect ();
 
-    });
+    paint ( ctx, x, y, width, height );
 
   });
+
+  /* EVENT LISTENERS */
 
   useEventListener ( window, 'click', event => { // Toggling the grid on corner click, and resetting lines on alt click
 

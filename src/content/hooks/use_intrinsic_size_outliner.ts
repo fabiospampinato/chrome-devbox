@@ -2,8 +2,7 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useCanvasOverlay from '@hooks/use_canvas_overlay';
-import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
+import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, isUndefined, last, traverseElement} from '@utils';
 
@@ -43,9 +42,7 @@ const parseIntrinsicDimension = ( value: string ): number | undefined => {
 
 const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body ): void => {
 
-  const canvas = useCanvasOverlay ( 'intrinsic-size-outliner' );
-
-  useCanvasRenderLoop ( canvas, ctx => {
+  useCanvasOverlayRenderLoop ( 'intrinsic-size-outliner', ( canvas, ctx ) => {
 
     const root = $$(ref);
 
