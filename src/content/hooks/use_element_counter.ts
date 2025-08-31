@@ -92,7 +92,7 @@ const useElementCounter = ( ref: $<Element | undefined> = document.body ): void 
       const descendants = getElementDescendantsCount ( element, descendantsCountCache );
       const modifier = element === canvas.parentElement ? 0 : 1; // Count itself, but not the canvas
       const count = descendants + modifier;
-      const label = count > 1 ? `${count}` : undefined;
+      const label = `${count}`;
 
       Canvas.box.paint ( ctx, rect, background, foreground, label );
 
