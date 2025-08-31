@@ -4,7 +4,6 @@
 import ShoSho from 'shosho';
 import EventEmitter from '@lib/event_emitter';
 import Tools from '@tools';
-import Dashboard from '@tools/dashboard';
 import {isPlainObject} from '@utils';
 
 /* MAIN */
