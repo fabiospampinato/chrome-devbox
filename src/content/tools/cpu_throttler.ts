@@ -14,7 +14,7 @@ const CpuThrottler: ToolConfig<CpuThrottlerState> = {
   description: 'Toggle 4x CPU speed throttling, to spot performance issues in the page',
   enabled: true,
   command: 'devbox.cpu-throttler.toggle',
-  shortcut: IS_MAC ? 'Ctrl+Cmd+K' : 'Ctrl+Alt+Shift+K',
+  shortcut: IS_MAC ? 'Ctrl+Cmd+T' : 'Ctrl+Alt+Shift+T',
   state: State.cpuThrottler,
   trigger: useToolTrigger ( (): Disposer => {
     State.cpuThrottler.active ( true );
