@@ -71,7 +71,7 @@ const useRulers = (): void => {
 
   /* HELPERS */
 
-  const getClosestLine = ( ctx: CanvasRenderingContext2D, x: number, y: number, radius: number = Infinity ): Line | undefined => {
+  const getClosestLine = ( x: number, y: number, radius: number = Infinity ): Line | undefined => {
 
     const getDistance = ( line: Line ) => line.horizontal ? Math.abs ( line.offset - y ) : Math.abs ( line.offset - x );
     const line = [...lines ()].sort ( ( a, b ) => getDistance ( a ) - getDistance ( b ) )[0];
@@ -377,7 +377,7 @@ const useRulers = (): void => {
 
   });
 
-  useEventListener ( window, 'mousedown', ({ clientX, clientY }) => { // Creating a new line
+  useEventListener ( window, 'mousedown', ({ clientX, clientY }) => { // Creating a new line or moving an existing line
 
     useResolved ( rect, rect => {
 
