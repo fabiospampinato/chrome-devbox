@@ -43,9 +43,9 @@ const FOREGROUND_COLORS_BY_LENGTH = [ // L -> LPSY
 
 /* MAIN */
 
-const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean = () => true ): void => {
+const useContainmentOutliner = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean = () => true ): void => {
 
-  useCanvasOverlayRenderLoop ( 'contain-outliner', ( canvas, ctx ) => {
+  useCanvasOverlayRenderLoop ( 'containment-outliner', ( canvas, ctx ) => {
 
     const root = $$(ref);
 
@@ -117,4 +117,4 @@ const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter
 
 /* EXPORT */
 
-export default useContainOutliner;
+export default useContainmentOutliner;

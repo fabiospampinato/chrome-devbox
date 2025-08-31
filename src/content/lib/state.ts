@@ -10,7 +10,7 @@ const State: State = {
   animationThrottler: {
     active: $(false)
   },
-  containOutliner: {
+  containmentOutliner: {
     active: $(false)
   },
   cpuThrottler: {
