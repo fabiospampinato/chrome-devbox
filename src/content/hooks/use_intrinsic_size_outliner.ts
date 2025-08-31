@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, isUndefined, last, traverseElement} from '@utils';
 
@@ -44,17 +44,8 @@ const parseIntrinsicDimension = ( value: string ): number | undefined => {
 const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body ): void => {
 
   const canvas = useCanvasOverlay ( 'intrinsic-size-outliner' );
-  const ctx = canvas.getContext ( '2d' );
 
-  if ( !ctx ) return;
-
-  const clear = (): void => {
-
-    ctx.clearRect ( 0, 0, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER );
-
-  };
-
-  const paint = (): void => {
+  useCanvasRenderLoop ( canvas, ctx => {
 
     const root = $$(ref);
 
@@ -123,13 +114,6 @@ const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body )
       Canvas.notice.paint ( ctx, 'no intrinsic sizes' );
 
     }
-
-  };
-
-  useAnimationLoop ( () => {
-
-    clear ();
-    paint ();
 
   });
 

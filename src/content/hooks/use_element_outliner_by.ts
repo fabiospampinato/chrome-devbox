@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
@@ -25,17 +25,8 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean, fallback: string ): void => {
 
   const canvas = useCanvasOverlay ( 'element-outliner-by' );
-  const ctx = canvas.getContext ( '2d' );
 
-  if ( !ctx ) return;
-
-  const clear = (): void => {
-
-    ctx.clearRect ( 0, 0, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER );
-
-  };
-
-  const paint = (): void => {
+  useCanvasRenderLoop ( canvas, ctx => {
 
     const root = $$(ref);
 
@@ -84,13 +75,6 @@ const useElementOutlinerBy = ( ref: $<Element | undefined> = document.body, filt
       Canvas.notice.paint ( ctx, fallback );
 
     }
-
-  };
-
-  useAnimationLoop ( () => {
-
-    clear ();
-    paint ();
 
   });
 

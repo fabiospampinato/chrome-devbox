@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import {$} from 'voby';
-import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
 import useMutationObserver from '@hooks/use_mutation_observer';
 import Canvas from '@lib/canvas';
 import {isElement, isText} from '@utils';
@@ -24,9 +24,6 @@ const HIGHLIGHT_TIMEOUT = 750;
 const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): void => {
 
   const canvas = useCanvasOverlay ( 'mutation-highlighter' );
-  const ctx = canvas.getContext ( '2d' );
-
-  if ( !ctx ) return;
 
   let boxes: MutationBox[] = [];
 
@@ -130,13 +127,7 @@ const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): 
 
   /* PAINTING */
 
-  const clear = (): void => {
-
-    ctx.clearRect ( 0, 0, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER );
-
-  };
-
-  const paint = (): void => {
+  useCanvasRenderLoop ( canvas, ctx => {
 
     const now = Date.now ();
 
@@ -153,13 +144,6 @@ const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): 
       return true; // Still needed
 
     });
-
-  };
-
-  useAnimationLoop ( () => {
-
-    clear ();
-    paint ();
 
   });
 

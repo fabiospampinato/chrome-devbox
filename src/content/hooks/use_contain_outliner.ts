@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import {$$} from 'voby';
-import useAnimationLoop from '@hooks/use_animation_loop';
 import useCanvasOverlay from '@hooks/use_canvas_overlay';
+import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
 import Canvas from '@lib/canvas';
 import {forEachRight, traverseElement} from '@utils';
 
@@ -47,17 +47,8 @@ const FOREGROUND_COLORS_BY_LENGTH = [ // L -> LPSY
 const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter: ( element: Element ) => boolean = () => true ): void => {
 
   const canvas = useCanvasOverlay ( 'contain-outliner' );
-  const ctx = canvas.getContext ( '2d' );
 
-  if ( !ctx ) return;
-
-  const clear = (): void => {
-
-    ctx.clearRect ( 0, 0, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER );
-
-  };
-
-  const paint = (): void => {
+  useCanvasRenderLoop ( canvas, ctx => {
 
     const root = $$(ref);
 
@@ -122,13 +113,6 @@ const useContainOutliner = ( ref: $<Element | undefined> = document.body, filter
       Canvas.notice.paint ( ctx, 'no containment' );
 
     }
-
-  };
-
-  useAnimationLoop ( () => {
-
-    clear ();
-    paint ();
 
   });
 
