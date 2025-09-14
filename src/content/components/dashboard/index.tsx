@@ -18,6 +18,7 @@ import LayerOutliner from '@tools/layer_outliner';
 import MutationHighlighter from '@tools/mutation_highlighter';
 import OverflowOutliner from '@tools/overflow_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
+import PointerHighlighter from '@tools/pointer_highlighter';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
 import WebComponentOutliner from '@tools/web_component_outliner';
@@ -50,6 +51,7 @@ const Dashboard = (): JSX.Element => {
         <ToolButton active={LagRadar.state.active} tool={LagRadar} />
         <ToolButton active={MutationHighlighter.state.active} tool={MutationHighlighter} />
         <ToolButton active={OverflowOutliner.state.active} tool={OverflowOutliner} />
+        <ToolButton active={PointerHighlighter.state.active} tool={PointerHighlighter} />
         <ToolButton active={Rulers.state.active} tool={Rulers} />
         <ToolButton active={WebComponentOutliner.state.active} tool={WebComponentOutliner} />
       </Tools>

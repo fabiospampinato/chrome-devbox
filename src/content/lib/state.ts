@@ -49,6 +49,9 @@ const State: State = {
   paintHighlighter: {
     active: $(false)
   },
+  pointerHighlighter: {
+    active: $(false)
+  },
   rulers: {
     active: $(false)
   },

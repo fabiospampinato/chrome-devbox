@@ -89,6 +89,10 @@ type PaintHighlighterState = {
   active: Observable<boolean>
 };
 
+type PointerHighlighterState = {
+  active: Observable<boolean>
+};
+
 type RulersState = {
   active: Observable<boolean>
 };
@@ -116,6 +120,7 @@ type State = {
   mutationHighlighter: MutationHighlighterState,
   overflowOutliner: OverflowOutlinerState,
   paintHighlighter: PaintHighlighterState,
+  pointerHighlighter: PointerHighlighterState,
   rulers: RulersState,
   scrollBottleneckHighlighter: ScrollBottlenckHighlighterState,
   webComponentOutliner: WebComponentOutlinerState
