@@ -81,7 +81,16 @@ const usePointerHighlighter = ( ref: $<Element | undefined> = document.body ): v
 
   useEventListener ( window, 'mousemove', ( event: MouseEvent ) => {
 
-    state ( prev => prev && event2state ( event ) );
+    state ( prev => {
+
+      if ( !prev ) return;
+
+      const button = prev.button;
+      const stateNext = event2state ( event );
+
+      return { ...stateNext, button };
+
+    });
 
   });
 
