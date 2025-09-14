@@ -3,7 +3,7 @@
 
 import './styles.css';
 import ShoSho from 'shosho';
-import {$$} from 'voby';
+import {$$, If} from 'voby';
 import type {Props} from './types';
 
 /* MAIN */
@@ -14,9 +14,11 @@ const ShortcutPill = ( { children }: Props ): JSX.Element => {
   const title = () => ShoSho.format ( $$(children), 'short-inflexible-directional' );
 
   return (
-    <div class="devbox-shortcut-pill" title={title}>
-      {label}
-    </div>
+    <If when={label}>
+      <div class="devbox-shortcut-pill" title={title}>
+        {label}
+      </div>
+    </If>
   );
 
 };
