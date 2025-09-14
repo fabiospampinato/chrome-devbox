@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "DevBox",
-  "description": "A collection of utilities for web developers.",
-  "version": "0.1.0",
+  "description": "A collection of tools for web developers.",
+  "version": "0.2.0",
   "action": {
     "default_title": "DevBox",
     "default_icon": "./resources/icon/icon-256.png"
