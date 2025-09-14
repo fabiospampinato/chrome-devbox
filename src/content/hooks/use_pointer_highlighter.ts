@@ -13,10 +13,14 @@ type Angles = {
   end: number
 };
 
-type Point = {
+type State = {
   button: number,
   x: number,
-  y: number
+  y: number,
+  alt: boolean,
+  ctrl: boolean,
+  meta: boolean,
+  shift: boolean
 };
 
 /* HELPERS */
@@ -31,6 +35,7 @@ const COLOR_BLACK = '#220A4F';
 const COLOR_WHITE = '#FFFFFF';
 
 const RENDER_BUTTON = true;
+const RENDER_MODIFIERS = true;
 
 const CIRCLE_BUTTON_ARC_ANGLES: Partial<Record<number, Angles>> = {
   0: { // left
@@ -47,46 +52,49 @@ const CIRCLE_BUTTON_ARC_ANGLES: Partial<Record<number, Angles>> = {
   },
 };
 
-const event2point = ( event: MouseEvent ): Point => {
+const event2state = ( event: MouseEvent ): State => {
   const button = event.button;
   const x = event.clientX;
   const y = event.clientY;
-  return { button, x, y };
+  const alt = event.altKey;
+  const ctrl = event.ctrlKey;
+  const meta = event.metaKey;
+  const shift = event.shiftKey;
+  return { button, x, y, alt, ctrl, meta, shift };
 };
 
 /* MAIN */
 
-//TODO: Make modifier keys visible (Shift, Ctrl, Alt, Meta)
 //TODO: Support multiple pointers
 
 const usePointerHighlighter = ( ref: $<Element | undefined> = document.body ): void => {
 
-  let point = $<Point>();
+  let state = $<State>();
 
   /* OBSERVING */
 
   useEventListener ( window, 'mousedown', ( event: MouseEvent ) => {
 
-    point ( event2point ( event ) );
+    state ( event2state ( event ) );
 
   });
 
   useEventListener ( window, 'mousemove', ( event: MouseEvent ) => {
 
-    point ( prev => prev && event2point ( event ) );
+    state ( prev => prev && event2state ( event ) );
 
   });
 
   useEventListener ( window, 'mouseup', ( event: MouseEvent ) => {
 
-    point ( undefined );
+    state ( undefined );
 
   });
 
   useEventListener ( window, 'contextmenu', ( event: MouseEvent ) => {
 
     setTimeout ( () => {
-      point ( undefined );
+      state ( undefined );
     }, 50 );
 
   });
@@ -97,11 +105,12 @@ const usePointerHighlighter = ( ref: $<Element | undefined> = document.body ): v
 
   useCanvasRenderLoop ( canvas, ctx => {
 
-    useResolved ( point, point => {
+    useResolved ( state, state => {
 
-      if ( !point ) return;
+      if ( !state ) return;
 
-      const {button, x, y} = point;
+      const {button, x, y} = state;
+      const {alt, ctrl, meta, shift} = state;
 
       if ( RENDER_BUTTON && button >= 0 && button <= 2 ) {
 
@@ -158,6 +167,36 @@ const usePointerHighlighter = ( ref: $<Element | undefined> = document.body ): v
 
         paintCircle ( CIRCLE_RADIUS, COLOR_BLACK );
         paintCircle ( CIRCLE_RADIUS - CIRCLE_THICKNESS, COLOR_WHITE );
+
+      }
+
+      if ( RENDER_MODIFIERS ) {
+
+        const modifiers = [
+          alt ? 'Alt' : null,
+          ctrl ? 'Ctrl' : null,
+          meta ? 'Cmd' : null,
+          shift ? 'Shift' : null
+        ].filter ( Boolean ).join ( '+' );
+
+        if ( modifiers ) {
+
+          ctx.font = '10px sans-serif';
+
+          const measure = ctx.measureText ( modifiers );
+          const width = measure.width;
+          const height = 10;
+
+          const rectLeft = x - ( width / 2 ) - 1;
+          const rectTop = y + CIRCLE_RADIUS + 5;
+
+          ctx.fillStyle = COLOR_BLACK;
+          ctx.fillRect ( rectLeft, rectTop, width + 2, height + 4 );
+
+          ctx.fillStyle = COLOR_WHITE;
+          ctx.fillText ( modifiers, rectLeft + 1, rectTop + height );
+
+        }
 
       }
 
