@@ -146,7 +146,7 @@ Renders a linear radar at the top of the page, showing slowdowns in red.
 
 Useful for checking if an interaction is causing some jank, which will cause some red to be rendered in the radar, even though it may not be obviously perceivable on your device.
 
-This is built on top of an 8ms interval, where the idea is that if longer than 8ms has passed since the previous invokation that's considered a lag event, and the longer it passed the more and the more saturated red blocks will be rendered.
+This is built on top of an 8ms interval, where the idea is that if longer than 8ms has passed since the previous invocation that's considered a lag event, and the longer it passed the more and the more saturated red blocks will be rendered.
 
 ### Mutation Highlighter
 
