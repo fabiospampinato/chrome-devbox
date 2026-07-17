@@ -97,7 +97,7 @@ type RulersState = {
   active: Observable<boolean>
 };
 
-type ScrollBottlenckHighlighterState = {
+type ScrollBottleneckHighlighterState = {
   active: Observable<boolean>
 };
 
@@ -122,7 +122,7 @@ type State = {
   paintHighlighter: PaintHighlighterState,
   pointerHighlighter: PointerHighlighterState,
   rulers: RulersState,
-  scrollBottleneckHighlighter: ScrollBottlenckHighlighterState,
+  scrollBottleneckHighlighter: ScrollBottleneckHighlighterState,
   webComponentOutliner: WebComponentOutlinerState
 };
 

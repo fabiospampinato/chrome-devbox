@@ -8,7 +8,7 @@ import State from '@lib/state';
 
 /* MAIN */
 
-const ScrollBottleneckHighlighter: ToolConfig<ScrollBottlenckHighlighterState> = {
+const ScrollBottleneckHighlighter: ToolConfig<ScrollBottleneckHighlighterState> = {
   id: 'scroll-bottleneck-highlighter',
   name: 'Scroll Bottleneck Highlighter',
   description: 'Toggle the scroll bottleneck highlighter, to spot scroll smoothness issues in the page, maybe',

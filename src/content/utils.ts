@@ -84,7 +84,7 @@ const getElementDescendantsCount = ( element: Element, cache: Map<Element, numbe
 
 };
 
-const isCustomEelement = ( value: Element ): boolean => {
+const isCustomElement = ( value: Element ): boolean => {
 
   return value.tagName.includes ( '-' );
 
@@ -222,7 +222,7 @@ export {
   getCurrentTabId,
   getElementChildren,
   getElementDescendantsCount,
-  isCustomEelement,
+  isCustomElement,
   isElement,
   isEqualJSON,
   isFunction,
