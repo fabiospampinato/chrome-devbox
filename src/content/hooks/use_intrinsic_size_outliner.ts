@@ -40,7 +40,7 @@ const parseIntrinsicDimension = ( value: string ): number | undefined => {
 
 /* MAIN */
 
-const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body ): void => {
+const useIntrinsicSizeOutliner = ( ref: $<Element | undefined> = document.body ): void => {
 
   useCanvasOverlayRenderLoop ( 'intrinsic-size-outliner', ( canvas, ctx ) => {
 
@@ -118,4 +118,4 @@ const useIntrinsicSizeOutlienr = ( ref: $<Element | undefined> = document.body )
 
 /* EXPORT */
 
-export default useIntrinsicSizeOutlienr;
+export default useIntrinsicSizeOutliner;

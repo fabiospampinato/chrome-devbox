@@ -37,10 +37,10 @@ const COLOR_GRID_MEDIUM = '#80808022';
 const COLOR_GRID_BIG = '#80808033';
 const COLOR_PILL = '#101010BB';
 const COLOR_PILL_LABEL = '#FFFFFF';
-const GRID_TICKNESS = 1;
-const LINE_TICKNESS = 1;
-const RULER_TICKNESS = 22;
-const MARK_TICKNESS = 1;
+const GRID_THICKNESS = 1;
+const LINE_THICKNESS = 1;
+const RULER_THICKNESS = 22;
+const MARK_THICKNESS = 1;
 const MARK_SIZE_SMALL = 4;
 const MARK_SIZE_MEDIUM = 8;
 const MARK_SIZE_BIG = 12;
@@ -89,7 +89,7 @@ const useRulers = (): void => {
   const paintBackground = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = BACKGROUND_COLOR;
-    ctx.fillRect ( RULER_TICKNESS, RULER_TICKNESS, width, height );
+    ctx.fillRect ( RULER_THICKNESS, RULER_THICKNESS, width, height );
 
   };
 
@@ -97,17 +97,17 @@ const useRulers = (): void => {
 
     for ( const line of lines () ) {
 
-      if ( line.offset <= RULER_TICKNESS ) continue;
+      if ( line.offset <= RULER_THICKNESS ) continue;
 
       ctx.fillStyle = COLOR_LINE;
 
       if ( line.horizontal ) {
 
-        ctx.fillRect ( x + RULER_TICKNESS, y + line.offset - LINE_TICKNESS, width - RULER_TICKNESS, LINE_TICKNESS );
+        ctx.fillRect ( x + RULER_THICKNESS, y + line.offset - LINE_THICKNESS, width - RULER_THICKNESS, LINE_THICKNESS );
 
       } else {
 
-        ctx.fillRect ( x + line.offset - LINE_TICKNESS, y + RULER_TICKNESS, LINE_TICKNESS, height - RULER_TICKNESS );
+        ctx.fillRect ( x + line.offset - LINE_THICKNESS, y + RULER_THICKNESS, LINE_THICKNESS, height - RULER_THICKNESS );
 
       }
 
@@ -155,14 +155,14 @@ const useRulers = (): void => {
 
     ctx.fillStyle = COLOR_RULER;
 
-    ctx.translate ( RULER_TICKNESS, RULER_TICKNESS );
+    ctx.translate ( RULER_THICKNESS, RULER_THICKNESS );
     ctx.moveTo ( 0, 0 );
     ctx.lineTo ( 5, 0 );
     ctx.lineTo ( 5, 0 );
     ctx.bezierCurveTo ( 2.75, 0, 0, 2.75, 0, 5 );
     ctx.lineTo ( 0, 5 );
     ctx.lineTo ( 0, 0 );
-    ctx.translate ( -RULER_TICKNESS, -RULER_TICKNESS );
+    ctx.translate ( -RULER_THICKNESS, -RULER_THICKNESS );
     ctx.fill ();
 
   };
@@ -170,7 +170,7 @@ const useRulers = (): void => {
   const paintHorizontalRuler = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = COLOR_RULER;
-    ctx.fillRect ( x + RULER_TICKNESS, y, width - RULER_TICKNESS, RULER_TICKNESS );
+    ctx.fillRect ( x + RULER_THICKNESS, y, width - RULER_THICKNESS, RULER_THICKNESS );
 
   };
 
@@ -179,13 +179,13 @@ const useRulers = (): void => {
     for ( let i = MARK_GAP_SMALL; i <= width; i += MARK_GAP_SMALL ) {
       if ( i % MARK_GAP_BIG === 0 ) {
         ctx.fillStyle = COLOR_MARK_BIG;
-        ctx.fillRect ( x + i - MARK_TICKNESS, y, MARK_TICKNESS, MARK_SIZE_BIG );
+        ctx.fillRect ( x + i - MARK_THICKNESS, y, MARK_THICKNESS, MARK_SIZE_BIG );
       } else if ( i % MARK_GAP_MEDIUM === 0 ) {
         ctx.fillStyle = COLOR_MARK_MEDIUM;
-        ctx.fillRect ( x + i - MARK_TICKNESS, y, MARK_TICKNESS, MARK_SIZE_MEDIUM );
+        ctx.fillRect ( x + i - MARK_THICKNESS, y, MARK_THICKNESS, MARK_SIZE_MEDIUM );
       } else {
         ctx.fillStyle = COLOR_MARK_SMALL;
-        ctx.fillRect ( x + i - MARK_TICKNESS, y, MARK_TICKNESS, MARK_SIZE_SMALL );
+        ctx.fillRect ( x + i - MARK_THICKNESS, y, MARK_THICKNESS, MARK_SIZE_SMALL );
       }
     }
 
@@ -207,9 +207,9 @@ const useRulers = (): void => {
   const paintHorizontalGridSmall = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_SMALL; i <= width; i += MARK_GAP_SMALL ) {
-      if ( i <= RULER_TICKNESS ) continue;
+      if ( i <= RULER_THICKNESS ) continue;
       ctx.fillStyle = COLOR_GRID_SMALL;
-      ctx.fillRect ( x + i - GRID_TICKNESS, y + RULER_TICKNESS, GRID_TICKNESS, height - RULER_TICKNESS );
+      ctx.fillRect ( x + i - GRID_THICKNESS, y + RULER_THICKNESS, GRID_THICKNESS, height - RULER_THICKNESS );
     }
 
   };
@@ -217,9 +217,9 @@ const useRulers = (): void => {
   const paintHorizontalGridMedium = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_MEDIUM; i <= width; i += MARK_GAP_MEDIUM ) {
-      if ( i <= RULER_TICKNESS ) continue;
+      if ( i <= RULER_THICKNESS ) continue;
       ctx.fillStyle = COLOR_GRID_MEDIUM;
-      ctx.fillRect ( x + i - GRID_TICKNESS, y + RULER_TICKNESS, GRID_TICKNESS, height - RULER_TICKNESS );
+      ctx.fillRect ( x + i - GRID_THICKNESS, y + RULER_THICKNESS, GRID_THICKNESS, height - RULER_THICKNESS );
     }
 
   };
@@ -227,9 +227,9 @@ const useRulers = (): void => {
   const paintHorizontalGridBig = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_BIG; i <= width; i += MARK_GAP_BIG ) {
-      if ( i <= RULER_TICKNESS ) continue;
+      if ( i <= RULER_THICKNESS ) continue;
       ctx.fillStyle = COLOR_GRID_BIG;
-      ctx.fillRect ( x + i - GRID_TICKNESS, y + RULER_TICKNESS, GRID_TICKNESS, height - RULER_TICKNESS );
+      ctx.fillRect ( x + i - GRID_THICKNESS, y + RULER_THICKNESS, GRID_THICKNESS, height - RULER_THICKNESS );
     }
 
   };
@@ -237,7 +237,7 @@ const useRulers = (): void => {
   const paintVerticalRuler = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     ctx.fillStyle = COLOR_RULER;
-    ctx.fillRect ( x, y, RULER_TICKNESS, height );
+    ctx.fillRect ( x, y, RULER_THICKNESS, height );
 
   };
 
@@ -246,13 +246,13 @@ const useRulers = (): void => {
     for ( let i = MARK_GAP_SMALL; i < height; i += MARK_GAP_SMALL ) {
       if ( i % MARK_GAP_BIG === 0 ) {
         ctx.fillStyle = COLOR_MARK_BIG;
-        ctx.fillRect ( x, y + i - MARK_TICKNESS, MARK_SIZE_BIG, MARK_TICKNESS );
+        ctx.fillRect ( x, y + i - MARK_THICKNESS, MARK_SIZE_BIG, MARK_THICKNESS );
       } else if ( i % MARK_GAP_MEDIUM === 0 ) {
         ctx.fillStyle = COLOR_MARK_MEDIUM;
-        ctx.fillRect ( x, y + i - MARK_TICKNESS, MARK_SIZE_MEDIUM, MARK_TICKNESS );
+        ctx.fillRect ( x, y + i - MARK_THICKNESS, MARK_SIZE_MEDIUM, MARK_THICKNESS );
       } else {
         ctx.fillStyle = COLOR_MARK_SMALL;
-        ctx.fillRect ( x, y + i - MARK_TICKNESS, MARK_SIZE_SMALL, MARK_TICKNESS );
+        ctx.fillRect ( x, y + i - MARK_THICKNESS, MARK_SIZE_SMALL, MARK_THICKNESS );
       }
     }
 
@@ -278,9 +278,9 @@ const useRulers = (): void => {
   const paintVerticalGridSmall = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_SMALL; i < height; i += MARK_GAP_SMALL ) {
-      if ( i <= RULER_TICKNESS ) continue;
+      if ( i <= RULER_THICKNESS ) continue;
       ctx.fillStyle = COLOR_GRID_SMALL;
-      ctx.fillRect ( x + RULER_TICKNESS, y + i - GRID_TICKNESS, width - RULER_TICKNESS, GRID_TICKNESS );
+      ctx.fillRect ( x + RULER_THICKNESS, y + i - GRID_THICKNESS, width - RULER_THICKNESS, GRID_THICKNESS );
     }
 
   };
@@ -288,9 +288,9 @@ const useRulers = (): void => {
   const paintVerticalGridMedium = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_MEDIUM; i < height; i += MARK_GAP_MEDIUM ) {
-      if ( i <= RULER_TICKNESS ) continue;
+      if ( i <= RULER_THICKNESS ) continue;
       ctx.fillStyle = COLOR_GRID_MEDIUM;
-      ctx.fillRect ( x + RULER_TICKNESS, y + i - GRID_TICKNESS, width - RULER_TICKNESS, GRID_TICKNESS );
+      ctx.fillRect ( x + RULER_THICKNESS, y + i - GRID_THICKNESS, width - RULER_THICKNESS, GRID_THICKNESS );
     }
 
   };
@@ -298,9 +298,9 @@ const useRulers = (): void => {
   const paintVerticalGridBig = ( ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number ): void => {
 
     for ( let i = MARK_GAP_BIG; i < height; i += MARK_GAP_BIG ) {
-      if ( i <= RULER_TICKNESS ) continue;
+      if ( i <= RULER_THICKNESS ) continue;
       ctx.fillStyle = COLOR_GRID_BIG;
-      ctx.fillRect ( x + RULER_TICKNESS, y + i - GRID_TICKNESS, width - RULER_TICKNESS, GRID_TICKNESS );
+      ctx.fillRect ( x + RULER_THICKNESS, y + i - GRID_THICKNESS, width - RULER_THICKNESS, GRID_THICKNESS );
     }
 
   };
@@ -359,9 +359,9 @@ const useRulers = (): void => {
 
     useResolved ( rect, rect => {
 
-      if ( clientX < rect.x || clientX > rect.x + RULER_TICKNESS ) return;
+      if ( clientX < rect.x || clientX > rect.x + RULER_THICKNESS ) return;
 
-      if ( clientY < rect.y || clientY > rect.y + RULER_TICKNESS ) return;
+      if ( clientY < rect.y || clientY > rect.y + RULER_THICKNESS ) return;
 
       if ( altKey ) {
 
@@ -381,12 +381,12 @@ const useRulers = (): void => {
 
     useResolved ( rect, rect => {
 
-      const isHorizontalX = ( clientX >= rect.x + RULER_TICKNESS ) && ( clientX <= rect.x + RULER_TICKNESS + rect.width );
-      const isHorizontalY = ( clientY >= rect.y ) && ( clientY <= rect.y + RULER_TICKNESS );
+      const isHorizontalX = ( clientX >= rect.x + RULER_THICKNESS ) && ( clientX <= rect.x + RULER_THICKNESS + rect.width );
+      const isHorizontalY = ( clientY >= rect.y ) && ( clientY <= rect.y + RULER_THICKNESS );
       const isHorizontal = isHorizontalX && isHorizontalY;
 
-      const isVerticalX = ( clientX >= rect.x ) && ( clientX <= rect.x + RULER_TICKNESS );
-      const isVerticalY = ( clientY >= rect.y + RULER_TICKNESS ) && ( clientY <= rect.y + RULER_TICKNESS + rect.height );
+      const isVerticalX = ( clientX >= rect.x ) && ( clientX <= rect.x + RULER_THICKNESS );
+      const isVerticalY = ( clientY >= rect.y + RULER_THICKNESS ) && ( clientY <= rect.y + RULER_THICKNESS + rect.height );
       const isVertical = isVerticalX && isVerticalY;
 
       const isNew = isVertical || isHorizontal;

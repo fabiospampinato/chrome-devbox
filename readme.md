@@ -78,7 +78,7 @@ Useful to make sure the layers that are used make sense, as having too many of t
 
 Renders a rectangle over areas that are repainted by the browser.
 
-Useful for checking that the browser is not repaiting too much stuff unnecessarily, which would be slow.
+Useful for checking that the browser is not repainting too much stuff unnecessarily, which would be slow.
 
 ### Scroll Bottleneck Highlighter
 
@@ -168,7 +168,7 @@ This is similar to the Paint Highlighter, in that a mutation often causes a repa
 
 Renders a circle around the pointer when performing an interaction with it.
 
-A segment indicating which button was presesed will be rendered too, along with a label showing the active modifier keys, if any.
+A segment indicating which button was pressed will be rendered too, along with a label showing the active modifier keys, if any.
 
 Useful for screencasts or demos.
 
