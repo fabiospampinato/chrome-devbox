@@ -4,7 +4,7 @@
 import {$$} from 'voby';
 import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
-import {forEachRight, traverseElement, traverseElementChildren} from '@utils';
+import {forEachRight, getElementRect, getElementStyle, traverseElement, traverseElementChildren} from '@utils';
 
 /* TYPES */
 
@@ -33,8 +33,8 @@ const getPseudoElementCount = ( element: Element, cache: Map<Element, number> ):
 
   let count = 0;
 
-  if ( isGenerated ( getComputedStyle ( element, '::before' ) ) ) count += 1;
-  if ( isGenerated ( getComputedStyle ( element, '::after' ) ) ) count += 1;
+  if ( isGenerated ( getElementStyle ( element, '::before' ) ) ) count += 1;
+  if ( isGenerated ( getElementStyle ( element, '::after' ) ) ) count += 1;
 
   traverseElementChildren ( element, child => {
 
@@ -74,7 +74,7 @@ const usePseudoElementCounter = ( ref: $<Element | undefined> = document.body ):
       if ( !count ) return false;
 
       const isSkippable = !!boxes.length;
-      const rect = element.getBoundingClientRect ();
+      const rect = getElementRect ( element );
 
       if ( !rect.width || !rect.height ) return true;
       if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return true;

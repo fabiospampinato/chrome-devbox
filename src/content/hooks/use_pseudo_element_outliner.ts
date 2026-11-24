@@ -4,7 +4,7 @@
 import {$$} from 'voby';
 import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
-import {forEachRight, traverseElement} from '@utils';
+import {forEachRight, getElementRect, getElementStyle, traverseElement} from '@utils';
 
 /* TYPES */
 
@@ -47,13 +47,13 @@ const usePseudoElementOutliner = ( ref: $<Element | undefined> = document.body )
 
       if ( element === canvas ) return;
 
-      const before = isGenerated ( getComputedStyle ( element, '::before' ) );
-      const after = isGenerated ( getComputedStyle ( element, '::after' ) );
+      const before = isGenerated ( getElementStyle ( element, '::before' ) );
+      const after = isGenerated ( getElementStyle ( element, '::after' ) );
 
       if ( !before && !after ) return;
 
       const isSkippable = !!boxes.length;
-      const rect = element.getBoundingClientRect ();
+      const rect = getElementRect ( element );
 
       if ( !rect.width || !rect.height ) return;
       if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;

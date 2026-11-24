@@ -5,7 +5,7 @@ import {$, $$} from 'voby';
 import useEffect from '@hooks/use_effect';
 import useEventListener from '@hooks/use_event_listener';
 import useResizeObserver from '@hooks/use_resize_observer';
-import {isEqualJSON} from '@utils';
+import {getElementRect, isEqualJSON} from '@utils';
 
 /* MAIN */
 
@@ -19,7 +19,7 @@ const useRect = ( ref: $<Element | undefined> ): ObservableReadonly<BoundingBox>
 
     if ( !target ) return;
 
-    const get = () => target.getBoundingClientRect ();
+    const get = () => getElementRect ( target );
     const update = () => rect ( get () );
 
     update ();

@@ -4,7 +4,7 @@
 import {$$} from 'voby';
 import useCanvasOverlayRenderLoop from '@hooks/use_canvas_overlay_render_loop';
 import Canvas from '@lib/canvas';
-import {forEachRight, traverseElement} from '@utils';
+import {forEachRight, getElementRect, getElementStyle, traverseElement} from '@utils';
 
 /* TYPES */
 
@@ -62,13 +62,13 @@ const useContainmentOutliner = ( ref: $<Element | undefined> = document.body, fi
       if ( element === canvas ) return;
 
       const isSkippable = !!boxes.length;
-      const rect = element.getBoundingClientRect ();
+      const rect = getElementRect ( element );
 
       if ( !rect.width || !rect.height ) return;
       if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return;
       if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return;
 
-      const style = getComputedStyle ( element );
+      const style = getElementStyle ( element );
 
       const contain = style.contain;
       const contentVisibility = style.contentVisibility

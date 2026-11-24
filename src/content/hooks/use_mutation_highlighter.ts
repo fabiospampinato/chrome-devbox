@@ -6,7 +6,7 @@ import useCanvasOverlay from '@hooks/use_canvas_overlay';
 import useCanvasRenderLoop from '@hooks/use_canvas_render_loop';
 import useMutationObserver from '@hooks/use_mutation_observer';
 import Canvas from '@lib/canvas';
-import {isElement, isText} from '@utils';
+import {getElementRect, isElement, isText} from '@utils';
 
 /* TYPES */
 
@@ -83,7 +83,7 @@ const useMutationHighlighter = ( ref: $<Element | undefined> = document.body ): 
 
     if ( isElement ( target ) ) {
 
-      return target.getBoundingClientRect ();
+      return getElementRect ( target );
 
     } else {
 

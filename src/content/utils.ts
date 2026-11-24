@@ -84,6 +84,18 @@ const getElementDescendantsCount = ( element: Element, cache: Map<Element, numbe
 
 };
 
+const getElementRect = ( element: Element ): DOMRect => {
+
+  return element.getBoundingClientRect ();
+
+};
+
+const getElementStyle = ( element: Element, pseudoElement?: string ): CSSStyleDeclaration => {
+
+  return getComputedStyle ( element, pseudoElement );
+
+};
+
 const isCustomElement = ( value: Element ): boolean => {
 
   return value.tagName.includes ( '-' );
@@ -222,6 +234,8 @@ export {
   getCurrentTabId,
   getElementChildren,
   getElementDescendantsCount,
+  getElementRect,
+  getElementStyle,
   isCustomElement,
   isElement,
   isEqualJSON,
