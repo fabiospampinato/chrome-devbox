@@ -1,6 +1,6 @@
 
 @font-face {
-  src: url(./ShortcutsFont.ttf) format("truetype");
+  src: url(./ShortcutsFont.woff2) format("woff2");
   font-family: "DevBox ShortcutsFont";
   font-weight: normal;
   font-style: normal;
