@@ -11,7 +11,7 @@ const getStylesheet = once ( (): HTMLStyleElement => {
   const style = document.createElement ( 'style' );
 
   style.className = 'devbox-overscroll-stylesheet';
-  style.textContent = `* { overscroll-behavior: none !important; }`;
+  style.textContent = `html, body { overscroll-behavior: none !important; }`;
 
   return style;
 
