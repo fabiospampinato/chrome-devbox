@@ -19,6 +19,7 @@ import MutationHighlighter from '@tools/mutation_highlighter';
 import OverflowOutliner from '@tools/overflow_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
 import PointerHighlighter from '@tools/pointer_highlighter';
+import PseudoElementOutliner from '@tools/pseudo_element_outliner';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
 import WebComponentOutliner from '@tools/web_component_outliner';
@@ -44,6 +45,7 @@ const Tools: ToolConfig[] = [
   OverflowOutliner,
   PaintHighlighter,
   PointerHighlighter,
+  PseudoElementOutliner,
   Rulers,
   ScrollBottleneckHighlighter,
   WebComponentOutliner

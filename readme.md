@@ -14,6 +14,7 @@ A collection of tools for web developers.
 |                                   |                                 |                                                                 | [Lag Radar](#lag-radar)                             |
 |                                   |                                 |                                                                 | [Mutation Highlighter](#mutation-highlighter)       |
 |                                   |                                 |                                                                 | [Pointer Highlighter](#pointer-highlighter)         |
+|                                   |                                 |                                                                 | [Pseudo-element Outliner](#pseudo-element-outliner) |
 |                                   |                                 |                                                                 | [Rulers](#rulers)                                   |
 |                                   |                                 |                                                                 | [Web Component Outliner](#web-component-outliner)   |
 
@@ -182,6 +183,16 @@ Renders a circle around the pointer when performing an interaction with it.
 A segment indicating which button was pressed will be rendered too, along with a label showing the active modifier keys, if any.
 
 Useful for screencasts or demos.
+
+### Pseudo-element Outliner
+
+| Demo                                                                | Demo                                                                |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| ![](./resources/demo/custom_overlays/pseudo_element_outliner_1.png) | ![](./resources/demo/custom_overlays/pseudo_element_outliner_2.png) |
+
+Renders an outline around each element that generates a `::before` or `::after` pseudo-element, along with a label showing which pseudo-elements it generates.
+
+Useful for quickly spotting generated content throughout the page.
 
 ### Rulers
 
