@@ -99,6 +99,10 @@ type PointerHighlighterState = {
   active: Observable<boolean>
 };
 
+type PseudoElementCounterState = {
+  active: Observable<boolean>
+};
+
 type PseudoElementOutlinerState = {
   active: Observable<boolean>
 };
@@ -132,6 +136,7 @@ type State = {
   overflowOutliner: OverflowOutlinerState,
   paintHighlighter: PaintHighlighterState,
   pointerHighlighter: PointerHighlighterState,
+  pseudoElementCounter: PseudoElementCounterState,
   pseudoElementOutliner: PseudoElementOutlinerState,
   rulers: RulersState,
   scrollBottleneckHighlighter: ScrollBottleneckHighlighterState,

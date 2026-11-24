@@ -55,6 +55,9 @@ const State: State = {
   pointerHighlighter: {
     active: $(false)
   },
+  pseudoElementCounter: {
+    active: $(false)
+  },
   pseudoElementOutliner: {
     active: $(false)
   },
