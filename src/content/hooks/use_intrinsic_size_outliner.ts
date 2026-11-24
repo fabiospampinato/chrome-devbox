@@ -80,13 +80,17 @@ const useIntrinsicSizeOutliner = ( ref: $<Element | undefined> = document.body )
     forEachRight ( boxes, box => {
 
       const {rect} = box;
+      const heightRounded = Math.round ( rect.height * 10 ) / 10;
+      const widthRounded = Math.round ( rect.width * 10 ) / 10;
       const intrinsicHeight = box.intrinsicHeight ?? rect.height;
+      const intrinsicHeightRounded = Math.round ( intrinsicHeight * 10 ) / 10;
       const intrinsicWidth = box.intrinsicWidth ?? rect.width;
+      const intrinsicWidthRounded = Math.round ( intrinsicWidth * 10 ) / 10;
       const intrinsicRect = new DOMRect ( rect.left, rect.top, intrinsicWidth, intrinsicHeight );
       const isMatching = intrinsicHeight === rect.height && intrinsicWidth === rect.width;
       const background = isMatching ? BACKGROUND_MATCHING : BACKGROUND_NOT_MATCHING;
       const foreground = isMatching ? FOREGROUND_MATCHING : FOREGROUND_NOT_MATCHING;
-      const label = isMatching ? `${rect.width}x${rect.height}` : `${intrinsicWidth}x${intrinsicHeight} → ${rect.width}x${rect.height}`;
+      const label = isMatching ? `${widthRounded}x${heightRounded}` : `${intrinsicWidthRounded}x${intrinsicHeightRounded} → ${widthRounded}x${heightRounded}`;
 
       /* PAINTING INTRINSIC STROKE */
 
