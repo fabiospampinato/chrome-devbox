@@ -41,15 +41,73 @@ const getCurrentTabId = async (): Promise<number | undefined> => {
 
 };
 
+const getDocumentFrame = ( document: Document ): HTMLIFrameElement | null => {
+
+  try {
+
+    const frame = document.defaultView?.frameElement;
+
+    return frame?.tagName === 'IFRAME' ? frame as HTMLIFrameElement : null;
+
+  } catch {
+
+    return null;
+
+  }
+
+};
+
+const getDocumentRect = ( rect: DOMRect, document: Document ): DOMRect => {
+
+  let currentRect = rect;
+  let currentDocument = document;
+
+  while ( true ) {
+
+    const frame = getDocumentFrame ( currentDocument );
+
+    if ( !frame ) return currentRect;
+
+    const frameRect = frame.getBoundingClientRect ();
+    const scaleX = frame.offsetWidth ? frameRect.width / frame.offsetWidth : 1;
+    const scaleY = frame.offsetHeight ? frameRect.height / frame.offsetHeight : 1;
+    const left = frameRect.left + ( frame.clientLeft + currentRect.left ) * scaleX;
+    const top = frameRect.top + ( frame.clientTop + currentRect.top ) * scaleY;
+
+    currentRect = new DOMRect ( left, top, currentRect.width * scaleX, currentRect.height * scaleY );
+    currentDocument = frame.ownerDocument;
+
+  }
+
+};
+
+const getElementFrameRoot = ( element: Element ): Element | null => {
+
+  if ( element.tagName !== 'IFRAME' ) return null;
+
+  try {
+
+    return ( element as HTMLIFrameElement ).contentDocument?.documentElement || null;
+
+  } catch {
+
+    return null;
+
+  }
+
+};
+
 const getElementChildren = ( element: Element ): Element[] | null => {
 
   const root = element.shadowRoot || element; // Supporting custom elements too
-  const length = root.childElementCount;
+  const frameRoot = getElementFrameRoot ( element );
+
+  const length = root.childElementCount + ( frameRoot ? 1 : 0 );
 
   if ( !length ) return null;
 
   let index = 0;
-  let children = new Array ( length );
+  let children = new Array<Element> ( length );
   let child = root.firstElementChild;
 
   while ( child ) {
@@ -59,6 +117,8 @@ const getElementChildren = ( element: Element ): Element[] | null => {
     child = child.nextElementSibling;
 
   }
+
+  if ( frameRoot ) children[index] = frameRoot;
 
   return children;
 
@@ -86,13 +146,15 @@ const getElementDescendantsCount = ( element: Element, cache: Map<Element, numbe
 
 const getElementRect = ( element: Element ): DOMRect => {
 
-  return element.getBoundingClientRect ();
+  return getDocumentRect ( element.getBoundingClientRect (), element.ownerDocument );
 
 };
 
 const getElementStyle = ( element: Element, pseudoElement?: string ): CSSStyleDeclaration => {
 
-  return getComputedStyle ( element, pseudoElement );
+  const view = element.ownerDocument.defaultView || window;
+
+  return view.getComputedStyle ( element, pseudoElement );
 
 };
 
@@ -209,17 +271,13 @@ const traverseElement = ( element: Element, iterator: ( value: Element, level: n
 
 const traverseElementChildren = ( element: Element, iterator: ( value: Element, level: number ) => boolean | void ): void => {
 
-  const root = element.shadowRoot || element; // Supporting custom elements too
+  const children = getElementChildren ( element );
 
-  let child = root.firstElementChild;
+  if ( !children ) return;
 
-  while ( child ) {
+  for ( let i = 0; i < children.length; i++ ) {
 
-    const result = iterator ( child, 0 );
-
-    if ( result === false ) return;
-
-    child = child.nextElementSibling;
+    if ( iterator ( children[i], 0 ) === false ) return;
 
   }
 
