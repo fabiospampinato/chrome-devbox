@@ -20,9 +20,9 @@ const FOREGROUNDS = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FF
 
 /* MAIN */
 
-const useDimensionsOutliner = ( ref: $<Element | undefined> = document.body ): void => {
+const useSizeOutliner = ( ref: $<Element | undefined> = document.body ): void => {
 
-  useCanvasOverlayRenderLoop ( 'dimensions-outliner', ( canvas, ctx ) => {
+  useCanvasOverlayRenderLoop ( 'size-outliner', ( canvas, ctx ) => {
 
     const root = $$(ref);
 
@@ -95,4 +95,4 @@ const useDimensionsOutliner = ( ref: $<Element | undefined> = document.body ): v
 
 /* EXPORT */
 
-export default useDimensionsOutliner;
+export default useSizeOutliner;

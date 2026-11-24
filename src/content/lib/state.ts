@@ -19,9 +19,6 @@ const State: State = {
   dashboard: {
     active: $(false)
   },
-  dimensionsOutliner: {
-    active: $(false)
-  },
   displayOutliner: {
     active: $(false)
   },
@@ -65,6 +62,9 @@ const State: State = {
     active: $(false)
   },
   scrollBottleneckHighlighter: {
+    active: $(false)
+  },
+  sizeOutliner: {
     active: $(false)
   },
   webComponentOutliner: {

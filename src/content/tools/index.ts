@@ -6,7 +6,6 @@ import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
-import DimensionsOutliner from '@tools/dimensions_outliner';
 import DisplayOutliner from '@tools/display_outliner';
 import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
@@ -23,6 +22,7 @@ import PseudoElementCounter from '@tools/pseudo_element_counter';
 import PseudoElementOutliner from '@tools/pseudo_element_outliner';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
+import SizeOutliner from '@tools/size_outliner';
 import WebComponentOutliner from '@tools/web_component_outliner';
 
 /* MAIN */
@@ -33,7 +33,6 @@ const Tools: ToolConfig[] = [
   CpuThrottler,
   Dashboard,
   DebuggerStart,
-  DimensionsOutliner,
   DisplayOutliner,
   ElementCounter,
   ElementOutliner,
@@ -50,6 +49,7 @@ const Tools: ToolConfig[] = [
   PseudoElementOutliner,
   Rulers,
   ScrollBottleneckHighlighter,
+  SizeOutliner,
   WebComponentOutliner
 ];
 

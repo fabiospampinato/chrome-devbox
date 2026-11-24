@@ -51,10 +51,6 @@ type DashboardState = {
   active: Observable<boolean>
 };
 
-type DimensionsOutlinerState = {
-  active: Observable<boolean>
-};
-
 type DisplayOutlinerState = {
   active: Observable<boolean>
 };
@@ -115,6 +111,10 @@ type ScrollBottleneckHighlighterState = {
   active: Observable<boolean>
 };
 
+type SizeOutlinerState = {
+  active: Observable<boolean>
+};
+
 type WebComponentOutlinerState = {
   active: Observable<boolean>
 };
@@ -124,7 +124,6 @@ type State = {
   containmentOutliner: ContainmentOutlinerState,
   cpuThrottler: CpuThrottlerState,
   dashboard: DashboardState,
-  dimensionsOutliner: DimensionsOutlinerState,
   displayOutliner: DisplayOutlinerState,
   elementCounter: ElementCounterState,
   elementOutliner: ElementOutlinerState,
@@ -140,6 +139,7 @@ type State = {
   pseudoElementOutliner: PseudoElementOutlinerState,
   rulers: RulersState,
   scrollBottleneckHighlighter: ScrollBottleneckHighlighterState,
+  sizeOutliner: SizeOutlinerState,
   webComponentOutliner: WebComponentOutlinerState
 };
 

@@ -8,7 +8,6 @@ import ConsoleClear from '@tools/console_clear';
 import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import DebuggerStart from '@tools/debugger_start';
-import DimensionsOutliner from '@tools/dimensions_outliner';
 import DisplayOutliner from '@tools/display_outliner';
 import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
@@ -24,6 +23,7 @@ import PseudoElementCounter from '@tools/pseudo_element_counter';
 import PseudoElementOutliner from '@tools/pseudo_element_outliner';
 import Rulers from '@tools/rulers';
 import ScrollBottleneckHighlighter from '@tools/scroll_bottleneck_highlighter';
+import SizeOutliner from '@tools/size_outliner';
 import WebComponentOutliner from '@tools/web_component_outliner';
 
 /* MAIN */
@@ -47,7 +47,6 @@ const Dashboard = (): JSX.Element => {
       </Tools>
       <Tools name="Custom Overlays">
         <ToolButton active={ContainmentOutliner.state.active} tool={ContainmentOutliner} />
-        <ToolButton active={DimensionsOutliner.state.active} tool={DimensionsOutliner} />
         <ToolButton active={DisplayOutliner.state.active} tool={DisplayOutliner} />
         <ToolButton active={ElementCounter.state.active} tool={ElementCounter} />
         <ToolButton active={ElementOutliner.state.active} tool={ElementOutliner} />
@@ -59,6 +58,7 @@ const Dashboard = (): JSX.Element => {
         <ToolButton active={PseudoElementCounter.state.active} tool={PseudoElementCounter} />
         <ToolButton active={PseudoElementOutliner.state.active} tool={PseudoElementOutliner} />
         <ToolButton active={Rulers.state.active} tool={Rulers} />
+        <ToolButton active={SizeOutliner.state.active} tool={SizeOutliner} />
         <ToolButton active={WebComponentOutliner.state.active} tool={WebComponentOutliner} />
       </Tools>
     </div>

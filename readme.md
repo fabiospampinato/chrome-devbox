@@ -7,16 +7,16 @@ A collection of tools for web developers.
 | [Actions](#actions)               | [Throttlers](#throttlers)       | [Native Overlays](#native-overlays)                             | [Custom Overlays](#custom-overlays)                 |
 | --------------------------------- | ------------------------------- | --------------------------------------------------------------- | --------------------------------------------------- |
 | [Clear Console](#clear-console)   | [CPU Throttler](#cpu-throttler) | [FPS Meter](#fps-meter)                                         | [Containment Outliner](#containment-outliner)       |
-| [Start Debugger](#start-debugger) |                                 | [Layer Outliner](#layer-outliner)                               | [Dimensions Outliner](#dimensions-outliner)         |
-|                                   |                                 | [Paint Highlighter](#paint-highlighter)                         | [Element Counter](#element-counter)                 |
-|                                   |                                 | [Scroll Bottleneck Highlighter](#scroll-bottleneck-highlighter) | [Element Outliner](#element-outliner)               |
-|                                   |                                 |                                                                 | [Intrinsic Size Outliner](#intrinsic-size-outliner) |
+| [Start Debugger](#start-debugger) |                                 | [Layer Outliner](#layer-outliner)                               | [Element Counter](#element-counter)                 |
+|                                   |                                 | [Paint Highlighter](#paint-highlighter)                         | [Element Outliner](#element-outliner)               |
+|                                   |                                 | [Scroll Bottleneck Highlighter](#scroll-bottleneck-highlighter) | [Intrinsic Size Outliner](#intrinsic-size-outliner) |
 |                                   |                                 |                                                                 | [Lag Radar](#lag-radar)                             |
 |                                   |                                 |                                                                 | [Mutation Highlighter](#mutation-highlighter)       |
 |                                   |                                 |                                                                 | [Pointer Highlighter](#pointer-highlighter)         |
 |                                   |                                 |                                                                 | [Pseudo-element Counter](#pseudo-element-counter)   |
 |                                   |                                 |                                                                 | [Pseudo-element Outliner](#pseudo-element-outliner) |
 |                                   |                                 |                                                                 | [Rulers](#rulers)                                   |
+|                                   |                                 |                                                                 | [Size Outliner](#size-outliner)                     |
 |                                   |                                 |                                                                 | [Web Component Outliner](#web-component-outliner)   |
 
 ## Tools Selector
@@ -108,16 +108,6 @@ Renders an outline around each element that sets some form of containment.
 Useful for checking that containment is being used where it can, as it can speed-up rendering in some cases.
 
 Only the following CSS properties are currently looked at: `contain`, `content-visibility`, `overflow`.
-
-### Dimensions Outliner
-
-| Demo                                                            | Demo                                                            |
-| --------------------------------------------------------------- | --------------------------------------------------------------- |
-| ![](./resources/demo/custom_overlays/dimensions_outliner_1.png) | ![](./resources/demo/custom_overlays/dimensions_outliner_2.png) |
-
-Renders an outline around each element in the page, along with a label showing its measured width and height.
-
-Useful for quickly checking the dimensions of elements throughout the page.
 
 ### Element Counter
 
@@ -221,6 +211,16 @@ The following interactions are supported:
 - Alt+Clicking a guide will remove it.
 - Clicking the top-left corder where the two rulers meet will toggle the grid.
 - Alt+Clicking the top-left corner will remove all guides.
+
+### Size Outliner
+
+| Demo                                                      | Demo                                                      |
+| --------------------------------------------------------- | --------------------------------------------------------- |
+| ![](./resources/demo/custom_overlays/size_outliner_1.png) | ![](./resources/demo/custom_overlays/size_outliner_2.png) |
+
+Renders an outline around each element in the page, along with a label showing its measured width and height.
+
+Useful for quickly checking the sizes of elements throughout the page.
 
 ### Web Component Outliner
 
