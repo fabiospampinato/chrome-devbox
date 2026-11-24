@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import ShoSho from 'shosho';
+import TinyShoSho from 'tiny-shosho';
 import EventEmitter from '@lib/event_emitter';
 import Tools from '@tools';
 import {isPlainObject} from '@utils';
@@ -36,7 +36,7 @@ const initCommands = (): void => {
 
 const initShortcuts = (): void => {
 
-  const shortcuts = new ShoSho ({
+  const shortcuts = new TinyShoSho ({
     capture: true,
     target: document
   });

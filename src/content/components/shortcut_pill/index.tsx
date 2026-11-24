@@ -2,7 +2,6 @@
 /* IMPORT */
 
 import './styles.css';
-import ShoSho from 'shosho';
 import {$$, If} from 'voby';
 import type {Props} from './types';
 
@@ -10,13 +9,13 @@ import type {Props} from './types';
 
 const ShortcutPill = ( { children }: Props ): JSX.Element => {
 
-  const label = () => ShoSho.format ( $$(children), 'symbols' );
-  const title = () => ShoSho.format ( $$(children), 'short-inflexible-directional' );
+  const title = () => $$(children);
+  const symbols = () => title ().replaceAll ( '+' , '' );
 
   return (
-    <If when={label}>
+    <If when={title}>
       <div class="devbox-shortcut-pill" title={title}>
-        {label}
+        {symbols}
       </div>
     </If>
   );

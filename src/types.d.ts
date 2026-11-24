@@ -31,6 +31,8 @@ type ObservableReadonly<T> = import ( 'voby' ).ObservableReadonly<T>;
 
 type ObservableReadonlyLike<T> = import ( 'voby' ).ObservableReadonlyLike<T>;
 
+type Shortcut = import ( 'tiny-shosho' ).Shortcut;
+
 /* MAIN */
 
 type AnimationThrottlerState = {
@@ -137,7 +139,7 @@ type ToolConfig<State extends {} = unknown> = {
   description: string,
   enabled: boolean,
   command: string,
-  shortcut: string,
+  shortcut: Shortcut,
   state: State,
   trigger: () => Disposer | void
 };

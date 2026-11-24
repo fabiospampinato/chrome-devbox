@@ -25,7 +25,7 @@
     "isoplatform": "^1.0.0",
     "json-clone-deep": "^2.0.1",
     "json-is-sorted-equal": "^1.0.0",
-    "shosho": "^1.4.3",
+    "tiny-shosho": "^0.1.0",
     "voby": "^0.58.1"
   },
   "devDependencies": {
