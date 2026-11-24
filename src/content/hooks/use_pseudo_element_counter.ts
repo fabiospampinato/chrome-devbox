@@ -10,6 +10,7 @@ import {forEachRight, getElementRect, getElementStyle, traverseElement, traverse
 
 type Box = {
   count: number,
+  element: Element,
   level: number,
   rect: DOMRect
 };
@@ -80,7 +81,7 @@ const usePseudoElementCounter = ( ref: $<Element | undefined> = document.body ):
       if ( isSkippable && ( rect.top > viewportHeight || rect.bottom < 0 ) ) return true;
       if ( isSkippable && ( rect.left > viewportWidth || rect.right < 0 ) ) return true;
 
-      boxes.push ({ count, level, rect });
+      boxes.push ({ count, element, level, rect });
 
       return true;
 
@@ -91,6 +92,17 @@ const usePseudoElementCounter = ( ref: $<Element | undefined> = document.body ):
     const boxesIds = new Set<string>();
 
     const boxesFiltered = boxes.filter ( box => {
+
+      const {count, element} = box;
+      let childCountMax = 0;
+
+      traverseElementChildren ( element, child => {
+
+        childCountMax = Math.max ( childCountMax, getPseudoElementCount ( child, pseudoElementCountCache ) );
+
+      });
+
+      if ( count <= childCountMax ) return false; // This box adds no information over its children
 
       const {top, left, width, height} = box.rect;
       const id = `${left}-${top}-${width}-${height}`;
