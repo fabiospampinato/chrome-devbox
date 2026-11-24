@@ -6,6 +6,7 @@ import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
 import Dashboard from '@tools/dashboard';
 import DebuggerStart from '@tools/debugger_start';
+import DimensionsOutliner from '@tools/dimensions_outliner';
 import DisplayOutliner from '@tools/display_outliner';
 import ElementCounter from '@tools/element_counter';
 import ElementOutliner from '@tools/element_outliner';
@@ -30,6 +31,7 @@ const Tools: ToolConfig[] = [
   CpuThrottler,
   Dashboard,
   DebuggerStart,
+  DimensionsOutliner,
   DisplayOutliner,
   ElementCounter,
   ElementOutliner,

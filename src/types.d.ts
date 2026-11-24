@@ -49,6 +49,10 @@ type DashboardState = {
   active: Observable<boolean>
 };
 
+type DimensionsOutlinerState = {
+  active: Observable<boolean>
+};
+
 type DisplayOutlinerState = {
   active: Observable<boolean>
 };
@@ -110,6 +114,7 @@ type State = {
   containmentOutliner: ContainmentOutlinerState,
   cpuThrottler: CpuThrottlerState,
   dashboard: DashboardState,
+  dimensionsOutliner: DimensionsOutlinerState,
   displayOutliner: DisplayOutlinerState,
   elementCounter: ElementCounterState,
   elementOutliner: ElementOutlinerState,
