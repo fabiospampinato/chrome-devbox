@@ -15,6 +15,7 @@ import FpsMeter from '@tools/fps_meter';
 import IntrinsicSizeOutliner from '@tools/intrinsic_size_outliner';
 import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
+import LayoutShiftHighlighter from '@tools/layout_shift_highlighter';
 import MutationHighlighter from '@tools/mutation_highlighter';
 import OverflowOutliner from '@tools/overflow_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
@@ -42,6 +43,7 @@ const Dashboard = (): JSX.Element => {
       <Tools name="Native Overlays">
         <ToolButton active={FpsMeter.state.active} tool={FpsMeter} />
         <ToolButton active={LayerOutliner.state.active} tool={LayerOutliner} />
+        <ToolButton active={LayoutShiftHighlighter.state.active} tool={LayoutShiftHighlighter} />
         <ToolButton active={PaintHighlighter.state.active} tool={PaintHighlighter} />
         <ToolButton active={ScrollBottleneckHighlighter.state.active} tool={ScrollBottleneckHighlighter} />
       </Tools>

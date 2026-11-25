@@ -8,9 +8,9 @@ A collection of tools for web developers.
 | --------------------------------- | ------------------------------- | --------------------------------------------------------------- | --------------------------------------------------- |
 | [Clear Console](#clear-console)   | [CPU Throttler](#cpu-throttler) | [FPS Meter](#fps-meter)                                         | [Containment Outliner](#containment-outliner)       |
 | [Start Debugger](#start-debugger) |                                 | [Layer Outliner](#layer-outliner)                               | [Element Counter](#element-counter)                 |
-|                                   |                                 | [Paint Highlighter](#paint-highlighter)                         | [Element Outliner](#element-outliner)               |
-|                                   |                                 | [Scroll Bottleneck Highlighter](#scroll-bottleneck-highlighter) | [Intrinsic Size Outliner](#intrinsic-size-outliner) |
-|                                   |                                 |                                                                 | [Lag Radar](#lag-radar)                             |
+|                                   |                                 | [Layout Shift Highlighter](#layout-shift-highlighter)           | [Element Outliner](#element-outliner)               |
+|                                   |                                 | [Paint Highlighter](#paint-highlighter)                         | [Intrinsic Size Outliner](#intrinsic-size-outliner) |
+|                                   |                                 | [Scroll Bottleneck Highlighter](#scroll-bottleneck-highlighter) | [Lag Radar](#lag-radar)                             |
 |                                   |                                 |                                                                 | [Mutation Highlighter](#mutation-highlighter)       |
 |                                   |                                 |                                                                 | [Pointer Highlighter](#pointer-highlighter)         |
 |                                   |                                 |                                                                 | [Pseudo-element Counter](#pseudo-element-counter)   |
@@ -72,6 +72,16 @@ Useful for checking the smoothness of an interaction.
 Renders an outline around each rendering layer in the page.
 
 Useful to make sure the layers that are used make sense, as having too many of them can be slow.
+
+### Layout Shift Highlighter
+
+| Demo                                                                 | Demo                                                                 |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ![](./resources/demo/native_overlays/layout_shift_highlighter_1.png) | ![](./resources/demo/native_overlays/layout_shift_highlighter_2.png) |
+
+Renders a rectangle over areas where a layout shift happened.
+
+Useful for spotting content that unexpectedly moves around.
 
 ### Paint Highlighter
 

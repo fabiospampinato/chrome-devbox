@@ -79,6 +79,10 @@ type LayerOutlinerState = {
   active: Observable<boolean>
 };
 
+type LayoutShiftHighlighterState = {
+  active: Observable<boolean>
+};
+
 type MutationHighlighterState = {
   active: Observable<boolean>
 };
@@ -131,6 +135,7 @@ type State = {
   intrinsicSizeOutliner: IntrinsicSizeOutlinerState,
   lagRadar: LagRadarState,
   layerOutliner: LayerOutlinerState,
+  layoutShiftHighlighter: LayoutShiftHighlighterState,
   mutationHighlighter: MutationHighlighterState,
   overflowOutliner: OverflowOutlinerState,
   paintHighlighter: PaintHighlighterState,

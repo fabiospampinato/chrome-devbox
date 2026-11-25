@@ -40,6 +40,9 @@ const State: State = {
   layerOutliner: {
     active: $(false)
   },
+  layoutShiftHighlighter: {
+    active: $(false)
+  },
   mutationHighlighter: {
     active: $(false)
   },
@@ -81,6 +84,7 @@ EventEmitter.on ( 'devbox.debugger.detached', () => {
   State.cpuThrottler.active ( false );
   State.fpsMeter.active ( false );
   State.layerOutliner.active ( false );
+  State.layoutShiftHighlighter.active ( false );
   State.paintHighlighter.active ( false );
   State.scrollBottleneckHighlighter.active ( false );
 });
