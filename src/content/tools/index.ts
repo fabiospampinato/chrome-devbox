@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import AnimationThrottler from './animation_throttler';
 import ConsoleClear from '@tools/console_clear';
 import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
@@ -29,6 +30,7 @@ import WebComponentOutliner from '@tools/web_component_outliner';
 /* MAIN */
 
 const Tools: ToolConfig[] = [
+  AnimationThrottler,
   ConsoleClear,
   ContainmentOutliner,
   CpuThrottler,

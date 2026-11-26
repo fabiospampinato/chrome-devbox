@@ -4,6 +4,7 @@
 import './styles.css';
 import ToolButton from '@components/tool_button';
 import Tools from '@components/tools';
+import AnimationThrottler from '@tools/animation_throttler';
 import ConsoleClear from '@tools/console_clear';
 import ContainmentOutliner from '@tools/containment_outliner';
 import CpuThrottler from '@tools/cpu_throttler';
@@ -38,6 +39,7 @@ const Dashboard = (): JSX.Element => {
         <ToolButton tool={DebuggerStart} />
       </Tools>
       <Tools name="Throttlers">
+        <ToolButton active={AnimationThrottler.state.active} tool={AnimationThrottler} />
         <ToolButton active={CpuThrottler.state.active} tool={CpuThrottler} />
       </Tools>
       <Tools name="Native Overlays">
