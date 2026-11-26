@@ -17,6 +17,7 @@ import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import LayoutShiftHighlighter from '@tools/layout_shift_highlighter';
 import MutationHighlighter from '@tools/mutation_highlighter';
+import NetworkThrottler from '@tools/network_throttler';
 import OverflowOutliner from '@tools/overflow_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
 import PointerHighlighter from '@tools/pointer_highlighter';
@@ -46,6 +47,7 @@ const Tools: ToolConfig[] = [
   LayerOutliner,
   LayoutShiftHighlighter,
   MutationHighlighter,
+  NetworkThrottler,
   OverflowOutliner,
   PaintHighlighter,
   PointerHighlighter,

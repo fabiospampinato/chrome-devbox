@@ -4,20 +4,20 @@ A collection of tools for web developers.
 
 ## Tools
 
-| [Actions](#actions)               | [Throttlers](#throttlers)       | [Native Overlays](#native-overlays)                             | [Custom Overlays](#custom-overlays)                 |
-| --------------------------------- | ------------------------------- | --------------------------------------------------------------- | --------------------------------------------------- |
-| [Clear Console](#clear-console)   | [CPU Throttler](#cpu-throttler) | [FPS Meter](#fps-meter)                                         | [Containment Outliner](#containment-outliner)       |
-| [Start Debugger](#start-debugger) |                                 | [Layer Outliner](#layer-outliner)                               | [Element Counter](#element-counter)                 |
-|                                   |                                 | [Layout Shift Highlighter](#layout-shift-highlighter)           | [Element Outliner](#element-outliner)               |
-|                                   |                                 | [Paint Highlighter](#paint-highlighter)                         | [Intrinsic Size Outliner](#intrinsic-size-outliner) |
-|                                   |                                 | [Scroll Bottleneck Highlighter](#scroll-bottleneck-highlighter) | [Lag Radar](#lag-radar)                             |
-|                                   |                                 |                                                                 | [Mutation Highlighter](#mutation-highlighter)       |
-|                                   |                                 |                                                                 | [Pointer Highlighter](#pointer-highlighter)         |
-|                                   |                                 |                                                                 | [Pseudo-element Counter](#pseudo-element-counter)   |
-|                                   |                                 |                                                                 | [Pseudo-element Outliner](#pseudo-element-outliner) |
-|                                   |                                 |                                                                 | [Rulers](#rulers)                                   |
-|                                   |                                 |                                                                 | [Size Outliner](#size-outliner)                     |
-|                                   |                                 |                                                                 | [Web Component Outliner](#web-component-outliner)   |
+| [Actions](#actions)               | [Throttlers](#throttlers)               | [Native Overlays](#native-overlays)                             | [Custom Overlays](#custom-overlays)                 |
+| --------------------------------- | --------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------- |
+| [Clear Console](#clear-console)   | [CPU Throttler](#cpu-throttler)         | [FPS Meter](#fps-meter)                                         | [Containment Outliner](#containment-outliner)       |
+| [Start Debugger](#start-debugger) | [Network Throttler](#network-throttler) | [Layer Outliner](#layer-outliner)                               | [Element Counter](#element-counter)                 |
+|                                   |                                         | [Layout Shift Highlighter](#layout-shift-highlighter)           | [Element Outliner](#element-outliner)               |
+|                                   |                                         | [Paint Highlighter](#paint-highlighter)                         | [Intrinsic Size Outliner](#intrinsic-size-outliner) |
+|                                   |                                         | [Scroll Bottleneck Highlighter](#scroll-bottleneck-highlighter) | [Lag Radar](#lag-radar)                             |
+|                                   |                                         |                                                                 | [Mutation Highlighter](#mutation-highlighter)       |
+|                                   |                                         |                                                                 | [Pointer Highlighter](#pointer-highlighter)         |
+|                                   |                                         |                                                                 | [Pseudo-element Counter](#pseudo-element-counter)   |
+|                                   |                                         |                                                                 | [Pseudo-element Outliner](#pseudo-element-outliner) |
+|                                   |                                         |                                                                 | [Rulers](#rulers)                                   |
+|                                   |                                         |                                                                 | [Size Outliner](#size-outliner)                     |
+|                                   |                                         |                                                                 | [Web Component Outliner](#web-component-outliner)   |
 
 ## Tools Selector
 
@@ -48,6 +48,12 @@ Throttlers are tools that artificially slow things down in the page, to simulate
 ### CPU Throttler
 
 Toggles x4 CPU throttling on and off. Useful to check if things stay smooth on significantly slower devices.
+
+### Network Throttler
+
+Toggles Slow 4G network throttling on and off, using the same preset as DevTools.
+
+Useful to check how the page behaves when loading things over a slow connection.
 
 ## Native Overlays
 

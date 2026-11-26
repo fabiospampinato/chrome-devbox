@@ -87,6 +87,10 @@ type MutationHighlighterState = {
   active: Observable<boolean>
 };
 
+type NetworkThrottlerState = {
+  active: Observable<boolean>
+};
+
 type OverflowOutlinerState = {
   active: Observable<boolean>
 };
@@ -137,6 +141,7 @@ type State = {
   layerOutliner: LayerOutlinerState,
   layoutShiftHighlighter: LayoutShiftHighlighterState,
   mutationHighlighter: MutationHighlighterState,
+  networkThrottler: NetworkThrottlerState,
   overflowOutliner: OverflowOutlinerState,
   paintHighlighter: PaintHighlighterState,
   pointerHighlighter: PointerHighlighterState,

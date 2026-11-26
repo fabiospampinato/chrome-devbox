@@ -18,6 +18,7 @@ import LagRadar from '@tools/lag_radar';
 import LayerOutliner from '@tools/layer_outliner';
 import LayoutShiftHighlighter from '@tools/layout_shift_highlighter';
 import MutationHighlighter from '@tools/mutation_highlighter';
+import NetworkThrottler from '@tools/network_throttler';
 import OverflowOutliner from '@tools/overflow_outliner';
 import PaintHighlighter from '@tools/paint_highlighter';
 import PointerHighlighter from '@tools/pointer_highlighter';
@@ -41,6 +42,7 @@ const Dashboard = (): JSX.Element => {
       <Tools name="Throttlers">
         <ToolButton active={AnimationThrottler.state.active} tool={AnimationThrottler} />
         <ToolButton active={CpuThrottler.state.active} tool={CpuThrottler} />
+        <ToolButton active={NetworkThrottler.state.active} tool={NetworkThrottler} />
       </Tools>
       <Tools name="Native Overlays">
         <ToolButton active={FpsMeter.state.active} tool={FpsMeter} />

@@ -46,6 +46,9 @@ const State: State = {
   mutationHighlighter: {
     active: $(false)
   },
+  networkThrottler: {
+    active: $(false)
+  },
   overflowOutliner: {
     active: $(false)
   },
@@ -85,6 +88,7 @@ EventEmitter.on ( 'devbox.debugger.detached', () => {
   State.fpsMeter.active ( false );
   State.layerOutliner.active ( false );
   State.layoutShiftHighlighter.active ( false );
+  State.networkThrottler.active ( false );
   State.paintHighlighter.active ( false );
   State.scrollBottleneckHighlighter.active ( false );
 });
